@@ -26,7 +26,7 @@ public class CitiesController(CityRepository _repository) : ControllerBase
 		return Ok(dtos);
     }
 
-	// GET: api/Cities/Get/5
+	// GET: api/Cities/Get/51373a42-1d63-4277-b0af-1cbc21a08cf5
 	[HttpGet("{id}")]
     [SwaggerResponse(200, type: typeof(CityDto))]
     [SwaggerResponse(404)]
@@ -34,12 +34,9 @@ public class CitiesController(CityRepository _repository) : ControllerBase
     {
         var entity = await _repository.GetAsync(id);
 
-		if(entity == null)
-        {
-            return NotFound();
-        }
+		if(entity == null) return NotFound();
 
-        var dto = new CityDto
+		var dto = new CityDto
         {
             Id = entity.Id,
             Name = entity.Name

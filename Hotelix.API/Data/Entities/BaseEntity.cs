@@ -7,7 +7,7 @@ public abstract class BaseEntity
 {
 	[Key]
 	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-	public required Guid Id { get; set; }
+	public Guid Id { get; set; }
 	public DateTime CreatedAt { get; private set; }
 	public DateTime UpdatedAt { get; set; }
 	public bool SoftDeleted { get; set; }
@@ -15,5 +15,6 @@ public abstract class BaseEntity
 	public BaseEntity()
 	{
 		CreatedAt = DateTime.Now;
+		UpdatedAt = DateTime.Now;
 	}
 }

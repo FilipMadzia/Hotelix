@@ -7,6 +7,7 @@ namespace Hotelix.API.Data;
 public class HotelixAPIContext : DbContext
 {
     public DbSet<CityEntity> Cities { get; set; }
+	public DbSet<AddressEntity> Addresses { get; set; }
 
     public HotelixAPIContext(DbContextOptions<HotelixAPIContext> options) : base(options) { }
 

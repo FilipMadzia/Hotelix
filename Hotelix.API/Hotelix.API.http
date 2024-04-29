@@ -1,4 +1,4 @@
-@Hotelix.API_HostAddress = http://localhost:5000
+@Hotelix.API_HostAddress = http://localhost:5000/api
 
 GET {{Hotelix.API_HostAddress}}/Cities/GetAll
 Accept: application/json
@@ -6,6 +6,16 @@ Accept: application/json
 ###
 
 GET {{Hotelix.API_HostAddress}}/Cities/Get/51373a42-1d63-4277-b0af-1cbc21a08cf5
+Accept: application/json
+
+###
+
+GET {{Hotelix.API_HostAddress}}/Addresses/GetAll
+Accept: application/json
+
+###
+
+GET {{Hotelix.API_HostAddress}}/Addresses/Get/51373a42-1d63-4277-b0af-1cbc21a08cf5
 Accept: application/json
 
 ###
