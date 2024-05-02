@@ -1,9 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿namespace Hotelix.API.Data.Entities;
 
-namespace Hotelix.API.Data.Entities;
-
-[Table("Cities")]
 public class CityEntity : BaseEntity
 {
 	public required string Name { get; set; }
+
+	public virtual ICollection<AddressEntity>? Addresses { get; set; }
 }

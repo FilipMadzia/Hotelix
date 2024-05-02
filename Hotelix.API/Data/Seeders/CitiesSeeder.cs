@@ -9,9 +9,9 @@ public class CitiesSeeder
 	{
 		modelBuilder.Entity<CityEntity>().HasData(new List<CityEntity>
 		{
-			new() { Id = Guid.NewGuid(), Name = "Bielsko-Biała" },
-			new() { Id = Guid.NewGuid(), Name = "Kraków" },
-			new() { Id = Guid.NewGuid(), Name = "Katowice" }
+			new() { Id = 1, Name = "Bielsko-Biała" },
+			new() { Id = 2, Name = "Kraków" },
+			new() { Id = 3, Name = "Katowice" }
 		});
 	}
 }

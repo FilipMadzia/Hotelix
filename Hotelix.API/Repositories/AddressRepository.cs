@@ -17,7 +17,8 @@ public class AddressRepository : BaseRepository<AddressEntity>
 		.Include(x => x.City)
 		.ToListAsync();
 
-	public override async Task<AddressEntity?> GetAsync(Guid id) => await _context.Addresses
+	public override async Task<AddressEntity?> GetAsync(int id) => await _context.Addresses
+		.Where(x => !x.SoftDeleted)
 		.Include(x => x.City)
-		.SingleOrDefaultAsync();
+		.SingleOrDefaultAsync(x => x.Id == id);
 }

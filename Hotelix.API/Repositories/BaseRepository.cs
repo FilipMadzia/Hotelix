@@ -10,7 +10,7 @@ public abstract class BaseRepository<T>(HotelixAPIContext _context) : IBaseRepos
 		.Where(x => !x.SoftDeleted)
 		.ToListAsync();
 
-	public virtual async Task<T?> GetAsync(Guid id) => await _context.Set<T>()
+	public virtual async Task<T?> GetAsync(int id) => await _context.Set<T>()
 		.SingleOrDefaultAsync(x => x.Id == id);
 
 	public async Task AddAsync(T entity) => await _context.Set<T>().AddAsync(entity);
@@ -21,15 +21,10 @@ public abstract class BaseRepository<T>(HotelixAPIContext _context) : IBaseRepos
 		_context.Entry(entity).State = EntityState.Modified;
 	}
 
-	public void Delete(Guid id) => _context.Remove(GetAsync(id) ?? throw new NullReferenceException());
+	public void Delete(T entity) => _context.Remove(entity);
 
-	public async Task SoftDeleteAsync(Guid id)
+	public virtual void SoftDelete(T entity)
 	{
-		var entity = await GetAsync(id);
-
-		if(entity == null)
-			throw new NullReferenceException();
-
 		entity.SoftDeleted = true;
 		Update(entity);
 	}

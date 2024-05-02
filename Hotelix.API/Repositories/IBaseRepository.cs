@@ -3,10 +3,10 @@
 public interface IBaseRepository<T> where T : class
 {
 	Task<IEnumerable<T>> GetAllAsync();
-	Task<T?> GetAsync(Guid id);
+	Task<T?> GetAsync(int id);
 	Task AddAsync(T entity);
 	void Update(T entity);
-	void Delete(Guid id);
-	Task SoftDeleteAsync(Guid id);
+	void Delete(T entity);
+	void SoftDelete(T entity);
 	Task SaveChangesAsync();
 }
