@@ -8,36 +8,30 @@ namespace Hotelix.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class AddressesController : ControllerBase
+public class AddressesController(AddressRepository addressRepository, CityRepository cityRepository) : ControllerBase
 {
-	readonly AddressRepository _repository;
-	readonly CityRepository _cityRepository;
-
-	public AddressesController(AddressRepository addressRepository, CityRepository cityRepository)
-	{
-		_repository = addressRepository;
-		_cityRepository = cityRepository;
-	}
+	readonly AddressRepository _addressRepository = addressRepository;
+	readonly CityRepository _cityRepository = cityRepository;
 
 	// GET: api/Addresses
 	[HttpGet]
 	[SwaggerResponse(200, type: typeof(IEnumerable<AddressGet>))]
 	public async Task<IActionResult> Get()
 	{
-		var entities = await _repository.GetAllAsync();
+		var entities = await _addressRepository.GetAllAsync();
 
 		var addresses = entities
 			.Select(x => new AddressGet
 			{
 				Id = x.Id,
+				Street = x.Street,
+				HouseNumber = x.HouseNumber,
+				PostalCode = x.PostalCode,
 				City = new CityGet
 				{
 					Id = x.City.Id,
 					Name = x.City.Name
-				},
-				Street = x.Street,
-				HouseNumber = x.HouseNumber,
-				PostalCode = x.PostalCode
+				}
 			});
 
 		return Ok(addresses);
@@ -46,24 +40,24 @@ public class AddressesController : ControllerBase
 	// GET: api/Addresses/1
 	[HttpGet("{id}")]
 	[SwaggerResponse(200, type: typeof(AddressGet))]
-	[SwaggerResponse(400)]
+	[SwaggerResponse(404)]
 	public async Task<IActionResult> Get(int id)
 	{
-		var entity = await _repository.GetAsync(id);
+		var entity = await _addressRepository.GetAsync(id);
 
 		if(entity == null) return NotFound();
 
 		var address = new AddressGet
 		{
 			Id = entity.Id,
+			Street = entity.Street,
+			HouseNumber = entity.HouseNumber,
+			PostalCode = entity.PostalCode,
 			City = new CityGet
 			{
 				Id = entity.City.Id,
 				Name = entity.City.Name
-			},
-			Street = entity.Street,
-			HouseNumber = entity.HouseNumber,
-			PostalCode = entity.PostalCode
+			}
 		};
 
 		return Ok(address);
@@ -81,15 +75,15 @@ public class AddressesController : ControllerBase
 
 		var entity = new AddressEntity
 		{
-			CityId = cityEntity.Id,
-			City = cityEntity,
 			Street = address.Street,
 			HouseNumber = address.HouseNumber,
-			PostalCode = address.PostalCode
+			PostalCode = address.PostalCode,
+			CityId = cityEntity.Id,
+			City = cityEntity
 		};
 
-		await _repository.AddAsync(entity);
-		await _repository.SaveChangesAsync();
+		await _addressRepository.AddAsync(entity);
+		await _addressRepository.SaveChangesAsync();
 
 		return Created(entity.Id.ToString(), address);
 	}
@@ -100,19 +94,19 @@ public class AddressesController : ControllerBase
 	[SwaggerResponse(404)]
 	public async Task<IActionResult> Put(int id, [FromBody] AddressPut address)
 	{
-		var entity = await _repository.GetAsync(id);
+		var entity = await _addressRepository.GetAsync(id);
 		var cityEntity = await _cityRepository.GetAsync(address.CityId);
 
 		if(entity == null || cityEntity == null) return NotFound();
 
-		entity.CityId = cityEntity.Id;
-		entity.City = cityEntity;
 		entity.Street = address.Street;
 		entity.HouseNumber = address.HouseNumber;
 		entity.PostalCode = address.PostalCode;
+		entity.CityId = cityEntity.Id;
+		entity.City = cityEntity;
 
-		_repository.Update(entity);
-		await _repository.SaveChangesAsync();
+		_addressRepository.Update(entity);
+		await _addressRepository.SaveChangesAsync();
 
 		return NoContent();
 	}
@@ -123,12 +117,12 @@ public class AddressesController : ControllerBase
 	[SwaggerResponse(404)]
 	public async Task<IActionResult> Delete(int id)
 	{
-		var entity = await _repository.GetAsync(id);
+		var entity = await _addressRepository.GetAsync(id);
 
 		if(entity == null) return NotFound();
 
-		_repository.SoftDelete(entity);
-		await _repository.SaveChangesAsync();
+		_addressRepository.SoftDelete(entity);
+		await _addressRepository.SaveChangesAsync();
 
 		return NoContent();
 	}

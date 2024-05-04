@@ -8,14 +8,14 @@ namespace Hotelix.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class CitiesController(CityRepository _repository) : ControllerBase
+public class CitiesController(CityRepository _cityRepository) : ControllerBase
 {
 	// GET: api/Cities
 	[HttpGet]
 	[SwaggerResponse(200, type: typeof(IEnumerable<CityGet>))]
 	public async Task<IActionResult> Get()
 	{
-		var entities = await _repository.GetAllAsync();
+		var entities = await _cityRepository.GetAllAsync();
 
 		var cities = entities
 			.Select(x => new CityGet
@@ -33,7 +33,7 @@ public class CitiesController(CityRepository _repository) : ControllerBase
 	[SwaggerResponse(404)]
 	public async Task<IActionResult> Get(int id)
 	{
-		var entity = await _repository.GetAsync(id);
+		var entity = await _cityRepository.GetAsync(id);
 
 		if(entity == null) return NotFound();
 
@@ -54,8 +54,8 @@ public class CitiesController(CityRepository _repository) : ControllerBase
 	{
 		var entity = new CityEntity { Name = city.Name };
 
-		await _repository.AddAsync(entity);
-		await _repository.SaveChangesAsync();
+		await _cityRepository.AddAsync(entity);
+		await _cityRepository.SaveChangesAsync();
 
 		return Created(entity.Id.ToString(), city);
 	}
@@ -66,14 +66,14 @@ public class CitiesController(CityRepository _repository) : ControllerBase
 	[SwaggerResponse(404)]
 	public async Task<IActionResult> Put(int id, [FromBody] CityPut city)
 	{
-		var entity = await _repository.GetAsync(id);
+		var entity = await _cityRepository.GetAsync(id);
 
 		if(entity == null) return NotFound();
 
 		entity.Name = city.Name;
 
-		_repository.Update(entity);
-		await _repository.SaveChangesAsync();
+		_cityRepository.Update(entity);
+		await _cityRepository.SaveChangesAsync();
 
 		return NoContent();
 	}
@@ -84,12 +84,12 @@ public class CitiesController(CityRepository _repository) : ControllerBase
 	[SwaggerResponse(404)]
 	public async Task<IActionResult> Delete(int id)
 	{
-		var entity = await _repository.GetAsync(id);
+		var entity = await _cityRepository.GetAsync(id);
 
 		if(entity == null) return NotFound();
 
-		_repository.SoftDelete(entity);
-		await _repository.SaveChangesAsync();
+		_cityRepository.SoftDelete(entity);
+		await _cityRepository.SaveChangesAsync();
 
 		return NoContent();
 	}
