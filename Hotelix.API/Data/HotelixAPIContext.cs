@@ -13,22 +13,6 @@ public class HotelixAPIContext : DbContext
 
 	protected override void OnModelCreating(ModelBuilder builder)
 	{
-		builder.Entity<AddressEntity>(entity =>
-		{
-			entity.HasIndex(x => x.Id)
-				.IsUnique();
-
-			entity.HasOne(x => x.City)
-				.WithMany(x => x.Addresses)
-				.HasForeignKey(x => x.CityId);
-		});
-
-		builder.Entity<CityEntity>(entity =>
-		{
-			entity.HasIndex(x => x.Id)
-				.IsUnique();
-		});
-
 		base.OnModelCreating(builder);
 
 		CitiesSeeder.Seed(builder);
