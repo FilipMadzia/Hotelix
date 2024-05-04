@@ -13,11 +13,11 @@ public class AddressesController : ControllerBase
 	readonly AddressRepository _repository;
 	readonly CityRepository _cityRepository;
 
-    public AddressesController(AddressRepository addressRepository, CityRepository cityRepository)
-    {
-        _repository = addressRepository;
+	public AddressesController(AddressRepository addressRepository, CityRepository cityRepository)
+	{
+		_repository = addressRepository;
 		_cityRepository = cityRepository;
-    }
+	}
 
 	// GET: api/Addresses
 	[HttpGet]
