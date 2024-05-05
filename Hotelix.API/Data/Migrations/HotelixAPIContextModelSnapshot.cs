@@ -70,73 +70,73 @@ namespace Hotelix.API.Data.Migrations
                         {
                             Id = 1,
                             CityId = 1,
-                            CreatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4853),
+                            CreatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9229),
                             HotelId = 1,
                             HouseNumber = 10,
                             PostalCode = "43-382",
                             SoftDeleted = false,
                             Street = "Tańskiego",
-                            UpdatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4855)
+                            UpdatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9230)
                         },
                         new
                         {
                             Id = 2,
                             CityId = 1,
-                            CreatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4860),
+                            CreatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9236),
                             HotelId = 2,
                             HouseNumber = 12,
                             PostalCode = "43-345",
                             SoftDeleted = false,
                             Street = "Słowackiego",
-                            UpdatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4862)
+                            UpdatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9237)
                         },
                         new
                         {
                             Id = 3,
                             CityId = 2,
-                            CreatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4864),
+                            CreatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9240),
                             HotelId = 3,
                             HouseNumber = 1,
                             PostalCode = "31-436",
                             SoftDeleted = false,
                             Street = "Wojska polskiego",
-                            UpdatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4865)
+                            UpdatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9241)
                         },
                         new
                         {
                             Id = 4,
                             CityId = 2,
-                            CreatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4868),
+                            CreatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9243),
                             HotelId = 4,
                             HouseNumber = 24,
                             PostalCode = "31-450",
                             SoftDeleted = false,
                             Street = "Powstańców",
-                            UpdatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4869)
+                            UpdatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9244)
                         },
                         new
                         {
                             Id = 5,
                             CityId = 3,
-                            CreatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4871),
+                            CreatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9248),
                             HotelId = 5,
                             HouseNumber = 34,
                             PostalCode = "40-102",
                             SoftDeleted = false,
                             Street = "Węglowa",
-                            UpdatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4872)
+                            UpdatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9249)
                         },
                         new
                         {
                             Id = 6,
                             CityId = 3,
-                            CreatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4875),
+                            CreatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9252),
                             HotelId = 6,
                             HouseNumber = 4,
                             PostalCode = "40-304",
                             SoftDeleted = false,
                             Street = "Kopalniana",
-                            UpdatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4877)
+                            UpdatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9253)
                         });
                 });
 
@@ -169,26 +169,26 @@ namespace Hotelix.API.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4712),
+                            CreatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9091),
                             Name = "Bielsko-Biała",
                             SoftDeleted = false,
-                            UpdatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4760)
+                            UpdatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9134)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4766),
+                            CreatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9141),
                             Name = "Kraków",
                             SoftDeleted = false,
-                            UpdatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4767)
+                            UpdatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9142)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4769),
+                            CreatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9144),
                             Name = "Katowice",
                             SoftDeleted = false,
-                            UpdatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4771)
+                            UpdatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9145)
                         });
                 });
 
@@ -224,56 +224,56 @@ namespace Hotelix.API.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4802),
+                            CreatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9180),
                             Description = "Lorem Ipsum",
                             Name = "Hotel Prezydent",
                             SoftDeleted = false,
-                            UpdatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4804)
+                            UpdatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9181)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4808),
+                            CreatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9185),
                             Description = "Lorem Ipsum",
                             Name = "Hotel Prezes",
                             SoftDeleted = false,
-                            UpdatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4809)
+                            UpdatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9186)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4811),
+                            CreatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9188),
                             Description = "Lorem Ipsum",
                             Name = "Hotel Kierownik",
                             SoftDeleted = false,
-                            UpdatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4813)
+                            UpdatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9190)
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4815),
+                            CreatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9192),
                             Description = "Lorem Ipsum",
                             Name = "Hotel Praktykant",
                             SoftDeleted = false,
-                            UpdatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4816)
+                            UpdatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9193)
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4818),
+                            CreatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9195),
                             Description = "Lorem Ipsum",
                             Name = "Hotel Stażysta",
                             SoftDeleted = false,
-                            UpdatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4819)
+                            UpdatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9196)
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4823),
+                            CreatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9199),
                             Description = "Lorem Ipsum",
                             Name = "Hotel Senior",
                             SoftDeleted = false,
-                            UpdatedAt = new DateTime(2024, 5, 4, 22, 8, 40, 390, DateTimeKind.Local).AddTicks(4824)
+                            UpdatedAt = new DateTime(2024, 5, 5, 18, 33, 38, 611, DateTimeKind.Local).AddTicks(9200)
                         });
                 });
 

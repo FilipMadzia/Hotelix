@@ -1,4 +1,5 @@
-﻿using Hotelix.API.Models;
+﻿using Hotelix.API.Data.Entities;
+using Hotelix.API.Models;
 using Hotelix.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -7,19 +8,20 @@ namespace Hotelix.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class HotelsController(HotelRepository hotelRepository, AddressRepository addressRepository) : ControllerBase
+public class HotelsController(HotelRepository hotelRepository, AddressRepository addressRepository, CityRepository cityRepository) : ControllerBase
 {
 	readonly HotelRepository _hotelRepository = hotelRepository;
 	readonly AddressRepository _addressRepository = addressRepository;
+	readonly CityRepository _cityRepository = cityRepository;
 
 	// GET: api/Hotels
 	[HttpGet]
 	[SwaggerResponse(200, type: typeof(IEnumerable<HotelGet>))]
 	public async Task<IActionResult> Get()
 	{
-		var entities = await _hotelRepository.GetAllAsync();
+		var hotelEntities = await _hotelRepository.GetAllAsync();
 
-		var hotels = entities.Select(x => new HotelGet
+		var hotels = hotelEntities.Select(x => new HotelGet
 		{
 			Id = x.Id,
 			Name = x.Name,
@@ -47,29 +49,109 @@ public class HotelsController(HotelRepository hotelRepository, AddressRepository
 	[SwaggerResponse(404)]
 	public async Task<IActionResult> Get(int id)
 	{
-		var entity = await _hotelRepository.GetAsync(id);
+		var hotelEntity = await _hotelRepository.GetAsync(id);
 
-		if(entity == null) return NotFound();
+		if(hotelEntity == null) return NotFound();
 
 		var hotel = new HotelGet
 		{
-			Id = entity.Id,
-			Name = entity.Name,
-			Description = entity.Description,
+			Id = hotelEntity.Id,
+			Name = hotelEntity.Name,
+			Description = hotelEntity.Description,
 			Address = new AddressGet
 			{
-				Id = entity.Address.Id,
-				Street = entity.Address.Street,
-				HouseNumber = entity.Address.HouseNumber,
-				PostalCode = entity.Address.PostalCode,
+				Id = hotelEntity.Address.Id,
+				Street = hotelEntity.Address.Street,
+				HouseNumber = hotelEntity.Address.HouseNumber,
+				PostalCode = hotelEntity.Address.PostalCode,
 				City = new CityGet
 				{
-					Id = entity.Address.CityId,
-					Name = entity.Address.City.Name
+					Id = hotelEntity.Address.CityId,
+					Name = hotelEntity.Address.City.Name
 				}
 			}
 		};
 
 		return Ok(hotel);
+	}
+
+	// POST: api/Hotels
+	[HttpPost]
+	[SwaggerResponse(201)]
+	[SwaggerResponse(404)]
+	public async Task<IActionResult> Post([FromBody] HotelPost hotel)
+	{
+		var cityEntity = await _cityRepository.GetAsync(hotel.Address.CityId);
+
+		if(cityEntity == null) return NotFound();
+
+		var hotelEntity = new HotelEntity
+		{
+			Name = hotel.Name,
+			Description = hotel.Description
+		};
+
+		await _hotelRepository.AddAsync(hotelEntity);
+		await _hotelRepository.SaveChangesAsync();
+
+		var addressEntity = new AddressEntity
+		{
+			Street = hotel.Address.Street,
+			HouseNumber = hotel.Address.HouseNumber,
+			PostalCode = hotel.Address.PostalCode,
+			City = cityEntity,
+			HotelId = hotelEntity.Id
+		};
+
+		await _addressRepository.AddAsync(addressEntity);
+		await _addressRepository.SaveChangesAsync();
+
+		return CreatedAtAction(hotelEntity.Id.ToString(), hotel);
+	}
+
+	// PUT: api/Hotels/1
+	[HttpPut("{id}")]
+	[SwaggerResponse(204)]
+	[SwaggerResponse(404)]
+	public async Task<IActionResult> Put(int id, [FromBody] HotelPut hotel)
+	{
+		var hotelEntity = await _hotelRepository.GetAsync(id);
+		var addressEntity = await _addressRepository.GetAsync(id);
+		var cityEntity = await _cityRepository.GetAsync(hotel.Address.CityId);
+
+		if(hotelEntity == null || addressEntity == null || cityEntity == null) return NotFound();
+
+		hotelEntity.Name = hotel.Name;
+		hotelEntity.Description = hotel.Description;
+
+		_hotelRepository.Update(hotelEntity);
+		await _hotelRepository.SaveChangesAsync();
+
+		addressEntity.Street = hotel.Address.Street;
+		addressEntity.HouseNumber = hotel.Address.HouseNumber;
+		addressEntity.PostalCode = hotel.Address.PostalCode;
+		addressEntity.CityId = hotel.Address.CityId;
+		addressEntity.HotelId = hotelEntity.Id;
+
+		_addressRepository.Update(addressEntity);
+		await _addressRepository.SaveChangesAsync();
+
+		return NoContent();
+	}
+
+	// DELETE: api/Hotels/1
+	[HttpDelete]
+	[SwaggerResponse(204)]
+	[SwaggerResponse(404)]
+	public async Task<IActionResult> Delete(int id)
+	{
+		var hotelEntity = await _hotelRepository.GetAsync(id);
+
+		if(hotelEntity == null) return NotFound();
+
+		_hotelRepository.SoftDelete(hotelEntity);
+		await _hotelRepository.SaveChangesAsync();
+
+		return NoContent();
 	}
 }

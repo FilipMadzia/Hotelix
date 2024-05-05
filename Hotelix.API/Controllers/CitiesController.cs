@@ -15,9 +15,9 @@ public class CitiesController(CityRepository _cityRepository) : ControllerBase
 	[SwaggerResponse(200, type: typeof(IEnumerable<CityGet>))]
 	public async Task<IActionResult> Get()
 	{
-		var entities = await _cityRepository.GetAllAsync();
+		var cityEntities = await _cityRepository.GetAllAsync();
 
-		var cities = entities
+		var cities = cityEntities
 			.Select(x => new CityGet
 			{
 				Id = x.Id,
@@ -33,14 +33,14 @@ public class CitiesController(CityRepository _cityRepository) : ControllerBase
 	[SwaggerResponse(404)]
 	public async Task<IActionResult> Get(int id)
 	{
-		var entity = await _cityRepository.GetAsync(id);
+		var cityEntity = await _cityRepository.GetAsync(id);
 
-		if(entity == null) return NotFound();
+		if(cityEntity == null) return NotFound();
 
 		var city = new CityGet
 		{
-			Id = entity.Id,
-			Name = entity.Name
+			Id = cityEntity.Id,
+			Name = cityEntity.Name
 		};
 
 
@@ -52,12 +52,12 @@ public class CitiesController(CityRepository _cityRepository) : ControllerBase
 	[SwaggerResponse(201)]
 	public async Task<IActionResult> Post([FromBody] CityPost city)
 	{
-		var entity = new CityEntity { Name = city.Name };
+		var cityEntity = new CityEntity { Name = city.Name };
 
-		await _cityRepository.AddAsync(entity);
+		await _cityRepository.AddAsync(cityEntity);
 		await _cityRepository.SaveChangesAsync();
 
-		return Created(entity.Id.ToString(), city);
+		return CreatedAtAction(cityEntity.Id.ToString(), city);
 	}
 
 	// PUT: api/Cities/1
@@ -66,13 +66,13 @@ public class CitiesController(CityRepository _cityRepository) : ControllerBase
 	[SwaggerResponse(404)]
 	public async Task<IActionResult> Put(int id, [FromBody] CityPut city)
 	{
-		var entity = await _cityRepository.GetAsync(id);
+		var cityEntity = await _cityRepository.GetAsync(id);
 
-		if(entity == null) return NotFound();
+		if(cityEntity == null) return NotFound();
 
-		entity.Name = city.Name;
+		cityEntity.Name = city.Name;
 
-		_cityRepository.Update(entity);
+		_cityRepository.Update(cityEntity);
 		await _cityRepository.SaveChangesAsync();
 
 		return NoContent();
@@ -84,11 +84,11 @@ public class CitiesController(CityRepository _cityRepository) : ControllerBase
 	[SwaggerResponse(404)]
 	public async Task<IActionResult> Delete(int id)
 	{
-		var entity = await _cityRepository.GetAsync(id);
+		var cityEntity = await _cityRepository.GetAsync(id);
 
-		if(entity == null) return NotFound();
+		if(cityEntity == null) return NotFound();
 
-		_cityRepository.SoftDelete(entity);
+		_cityRepository.SoftDelete(cityEntity);
 		await _cityRepository.SaveChangesAsync();
 
 		return NoContent();

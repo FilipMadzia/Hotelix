@@ -18,9 +18,9 @@ public class AddressesController(AddressRepository addressRepository, CityReposi
 	[SwaggerResponse(200, type: typeof(IEnumerable<AddressGet>))]
 	public async Task<IActionResult> Get()
 	{
-		var entities = await _addressRepository.GetAllAsync();
+		var addressEntities = await _addressRepository.GetAllAsync();
 
-		var addresses = entities
+		var addresses = addressEntities
 			.Select(x => new AddressGet
 			{
 				Id = x.Id,
@@ -43,87 +43,23 @@ public class AddressesController(AddressRepository addressRepository, CityReposi
 	[SwaggerResponse(404)]
 	public async Task<IActionResult> Get(int id)
 	{
-		var entity = await _addressRepository.GetAsync(id);
+		var addressEntity = await _addressRepository.GetAsync(id);
 
-		if(entity == null) return NotFound();
+		if(addressEntity == null) return NotFound();
 
 		var address = new AddressGet
 		{
-			Id = entity.Id,
-			Street = entity.Street,
-			HouseNumber = entity.HouseNumber,
-			PostalCode = entity.PostalCode,
+			Id = addressEntity.Id,
+			Street = addressEntity.Street,
+			HouseNumber = addressEntity.HouseNumber,
+			PostalCode = addressEntity.PostalCode,
 			City = new CityGet
 			{
-				Id = entity.City.Id,
-				Name = entity.City.Name
+				Id = addressEntity.City.Id,
+				Name = addressEntity.City.Name
 			}
 		};
 
 		return Ok(address);
-	}
-
-	// POST: api/Addresses
-	[HttpPost]
-	[SwaggerResponse(201)]
-	[SwaggerResponse(404)]
-	public async Task<IActionResult> Post([FromBody] AddressPost address)
-	{
-		var cityEntity = await _cityRepository.GetAsync(address.CityId);
-
-		if(cityEntity == null) return NotFound();
-
-		var entity = new AddressEntity
-		{
-			Street = address.Street,
-			HouseNumber = address.HouseNumber,
-			PostalCode = address.PostalCode,
-			CityId = cityEntity.Id,
-			City = cityEntity
-		};
-
-		await _addressRepository.AddAsync(entity);
-		await _addressRepository.SaveChangesAsync();
-
-		return Created(entity.Id.ToString(), address);
-	}
-
-	// PUT: api/Addresses/1
-	[HttpPut("{id}")]
-	[SwaggerResponse(204)]
-	[SwaggerResponse(404)]
-	public async Task<IActionResult> Put(int id, [FromBody] AddressPut address)
-	{
-		var entity = await _addressRepository.GetAsync(id);
-		var cityEntity = await _cityRepository.GetAsync(address.CityId);
-
-		if(entity == null || cityEntity == null) return NotFound();
-
-		entity.Street = address.Street;
-		entity.HouseNumber = address.HouseNumber;
-		entity.PostalCode = address.PostalCode;
-		entity.CityId = cityEntity.Id;
-		entity.City = cityEntity;
-
-		_addressRepository.Update(entity);
-		await _addressRepository.SaveChangesAsync();
-
-		return NoContent();
-	}
-
-	// DELETE: api/Addresses/1
-	[HttpDelete("{id}")]
-	[SwaggerResponse(204)]
-	[SwaggerResponse(404)]
-	public async Task<IActionResult> Delete(int id)
-	{
-		var entity = await _addressRepository.GetAsync(id);
-
-		if(entity == null) return NotFound();
-
-		_addressRepository.SoftDelete(entity);
-		await _addressRepository.SaveChangesAsync();
-
-		return NoContent();
 	}
 }

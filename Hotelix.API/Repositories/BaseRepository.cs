@@ -21,7 +21,7 @@ public abstract class BaseRepository<T>(HotelixAPIContext _context) : IBaseRepos
 		_context.Entry(entity).State = EntityState.Modified;
 	}
 
-	public void Delete(T entity) => _context.Remove(entity);
+	public virtual void Delete(T entity) => _context.Remove(entity);
 
 	public virtual void SoftDelete(T entity)
 	{
