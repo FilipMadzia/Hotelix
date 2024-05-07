@@ -1,5 +1,4 @@
-﻿using Hotelix.API.Data.Entities;
-using Hotelix.API.Models;
+﻿using Hotelix.API.Models;
 using Hotelix.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

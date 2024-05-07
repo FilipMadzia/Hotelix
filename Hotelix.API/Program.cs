@@ -10,6 +10,7 @@ builder.Services.AddDbContext<HotelixAPIContext>(options =>
 builder.Services.AddTransient<CityRepository>();
 builder.Services.AddTransient<AddressRepository>();
 builder.Services.AddTransient<HotelRepository>();
+builder.Services.AddTransient<ContactRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

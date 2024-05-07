@@ -10,11 +10,11 @@ public class HotelsSeeder
 		modelBuilder.Entity<HotelEntity>().HasData(new List<HotelEntity>
 		{
 			new() { Id = 1, Name = "Hotel Prezydent", Description = "Lorem Ipsum" },
-			new() { Id = 2, Name = "Hotel Prezes", Description = "Lorem Ipsum" },
+			new() { Id = 2, Name = "Hotel Prezes" },
 			new() { Id = 3, Name = "Hotel Kierownik", Description = "Lorem Ipsum" },
-			new() { Id = 4, Name = "Hotel Praktykant", Description = "Lorem Ipsum" },
+			new() { Id = 4, Name = "Hotel Praktykant" },
 			new() { Id = 5, Name = "Hotel Stażysta", Description = "Lorem Ipsum" },
-			new() { Id = 6, Name = "Hotel Senior", Description = "Lorem Ipsum" }
+			new() { Id = 6, Name = "Hotel Senior" }
 		});
 	}
 }

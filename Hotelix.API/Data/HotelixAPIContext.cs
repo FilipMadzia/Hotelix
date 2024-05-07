@@ -9,6 +9,7 @@ public class HotelixAPIContext(DbContextOptions<HotelixAPIContext> options) : Db
 	public DbSet<CityEntity> Cities { get; set; } = default!;
 	public DbSet<AddressEntity> Addresses { get; set; } = default!;
 	public DbSet<HotelEntity> Hotels { get; set; } = default!;
+	public DbSet<ContactEntity> Contacts { get; set; } = default!;
 
 	protected override void OnModelCreating(ModelBuilder builder)
 	{
@@ -19,8 +20,14 @@ public class HotelixAPIContext(DbContextOptions<HotelixAPIContext> options) : Db
 			.WithOne(x => x.Hotel)
 			.HasForeignKey<AddressEntity>(x => x.HotelId);
 
+		builder.Entity<HotelEntity>()
+			.HasOne(x => x.Contact)
+			.WithOne(x => x.Hotel)
+			.HasForeignKey<ContactEntity>(x => x.HotelId);
+
 		CitiesSeeder.Seed(builder);
 		HotelsSeeder.Seed(builder);
 		AddressesSeeder.Seed(builder);
+		ContactsSeeder.Seed(builder);
 	}
 }

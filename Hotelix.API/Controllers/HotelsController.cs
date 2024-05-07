@@ -8,11 +8,12 @@ namespace Hotelix.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class HotelsController(HotelRepository hotelRepository, AddressRepository addressRepository, CityRepository cityRepository) : ControllerBase
+public class HotelsController(HotelRepository hotelRepository, AddressRepository addressRepository, CityRepository cityRepository, ContactRepository contactRepository) : ControllerBase
 {
 	readonly HotelRepository _hotelRepository = hotelRepository;
 	readonly AddressRepository _addressRepository = addressRepository;
 	readonly CityRepository _cityRepository = cityRepository;
+	readonly ContactRepository _contactRepository = contactRepository;
 
 	// GET: api/Hotels
 	[HttpGet]
@@ -37,6 +38,12 @@ public class HotelsController(HotelRepository hotelRepository, AddressRepository
 					Id = x.Address.CityId,
 					Name = x.Address.City.Name
 				}
+			},
+			Contact = new ContactGet
+			{
+				Id = x.Contact.Id,
+				PhoneNumber = x.Contact.PhoneNumber,
+				Email = x.Contact.Email
 			}
 		});
 
@@ -69,6 +76,12 @@ public class HotelsController(HotelRepository hotelRepository, AddressRepository
 					Id = hotelEntity.Address.CityId,
 					Name = hotelEntity.Address.City.Name
 				}
+			},
+			Contact = new ContactGet
+			{
+				Id = hotelEntity.Contact.Id,
+				PhoneNumber = hotelEntity.Contact.PhoneNumber,
+				Email = hotelEntity.Contact.Email
 			}
 		};
 
@@ -106,6 +119,16 @@ public class HotelsController(HotelRepository hotelRepository, AddressRepository
 		await _addressRepository.AddAsync(addressEntity);
 		await _addressRepository.SaveChangesAsync();
 
+		var contactEntity = new ContactEntity
+		{
+			PhoneNumber = hotel.Contact.PhoneNumber,
+			Email = hotel.Contact.Email,
+			HotelId = hotelEntity.Id
+		};
+
+		await _contactRepository.AddAsync(contactEntity);
+		await _contactRepository.SaveChangesAsync();
+
 		return CreatedAtAction(hotelEntity.Id.ToString(), hotel);
 	}
 
@@ -118,8 +141,9 @@ public class HotelsController(HotelRepository hotelRepository, AddressRepository
 		var hotelEntity = await _hotelRepository.GetAsync(id);
 		var addressEntity = await _addressRepository.GetAsync(id);
 		var cityEntity = await _cityRepository.GetAsync(hotel.Address.CityId);
+		var contactEntity = await _contactRepository.GetAsync(id);
 
-		if(hotelEntity == null || addressEntity == null || cityEntity == null) return NotFound();
+		if(hotelEntity == null || addressEntity == null || cityEntity == null || contactEntity == null) return NotFound();
 
 		hotelEntity.Name = hotel.Name;
 		hotelEntity.Description = hotel.Description;
@@ -135,6 +159,12 @@ public class HotelsController(HotelRepository hotelRepository, AddressRepository
 
 		_addressRepository.Update(addressEntity);
 		await _addressRepository.SaveChangesAsync();
+
+		contactEntity.PhoneNumber = hotel.Contact.PhoneNumber;
+		contactEntity.Email = hotel.Contact.Email;
+
+		_contactRepository.Update(contactEntity);
+		await _contactRepository.SaveChangesAsync();
 
 		return NoContent();
 	}

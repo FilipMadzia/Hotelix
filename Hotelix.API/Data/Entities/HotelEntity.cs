@@ -6,4 +6,5 @@ public class HotelEntity : BaseEntity
 	public string? Description { get; set; }
 
 	public AddressEntity Address { get; set; } = null!;
+	public ContactEntity Contact { get; set; } = null!;
 }
