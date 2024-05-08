@@ -57,7 +57,7 @@ public class CitiesController(CityRepository _cityRepository) : ControllerBase
 		await _cityRepository.AddAsync(cityEntity);
 		await _cityRepository.SaveChangesAsync();
 
-		return CreatedAtAction(cityEntity.Id.ToString(), city);
+		return CreatedAtAction(nameof(Get), new { cityEntity.Id }, city);
 	}
 
 	// PUT: api/Cities/1

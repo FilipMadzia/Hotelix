@@ -3,13 +3,15 @@ using Hotelix.API.Models;
 using Hotelix.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Drawing;
 
 namespace Hotelix.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class HotelsController(HotelRepository hotelRepository, AddressRepository addressRepository, CityRepository cityRepository, ContactRepository contactRepository) : ControllerBase
+public class HotelsController(IWebHostEnvironment environment, HotelRepository hotelRepository, AddressRepository addressRepository, CityRepository cityRepository, ContactRepository contactRepository) : ControllerBase
 {
+	readonly IWebHostEnvironment _environment = environment;
 	readonly HotelRepository _hotelRepository = hotelRepository;
 	readonly AddressRepository _addressRepository = addressRepository;
 	readonly CityRepository _cityRepository = cityRepository;
@@ -27,6 +29,7 @@ public class HotelsController(HotelRepository hotelRepository, AddressRepository
 			Id = x.Id,
 			Name = x.Name,
 			Description = x.Description,
+			CoverImagePath = x.CoverImagePath,
 			Address = new AddressGet
 			{
 				Id = x.Address.Id,
@@ -65,6 +68,7 @@ public class HotelsController(HotelRepository hotelRepository, AddressRepository
 			Id = hotelEntity.Id,
 			Name = hotelEntity.Name,
 			Description = hotelEntity.Description,
+			CoverImagePath = hotelEntity.CoverImagePath,
 			Address = new AddressGet
 			{
 				Id = hotelEntity.Address.Id,
@@ -98,10 +102,19 @@ public class HotelsController(HotelRepository hotelRepository, AddressRepository
 
 		if(cityEntity == null) return NotFound();
 
+		var coverImageName = hotel.Name + ".png";
+
+		using(var ms = new MemoryStream(hotel.CoverImage))
+		{
+			var coverImage = Image.FromStream(ms);
+			coverImage.Save(Path.Combine(_environment.WebRootPath, "Images", "Covers", coverImageName));
+		}
+
 		var hotelEntity = new HotelEntity
 		{
 			Name = hotel.Name,
-			Description = hotel.Description
+			Description = hotel.Description,
+			CoverImagePath = Path.Combine("Images", "Covers", coverImageName)
 		};
 
 		await _hotelRepository.AddAsync(hotelEntity);
@@ -129,7 +142,7 @@ public class HotelsController(HotelRepository hotelRepository, AddressRepository
 		await _contactRepository.AddAsync(contactEntity);
 		await _contactRepository.SaveChangesAsync();
 
-		return CreatedAtAction(hotelEntity.Id.ToString(), hotel);
+		return CreatedAtAction(nameof(Get), new { hotelEntity.Id }, hotel);
 	}
 
 	// PUT: api/Hotels/1
@@ -145,8 +158,17 @@ public class HotelsController(HotelRepository hotelRepository, AddressRepository
 
 		if(hotelEntity == null || addressEntity == null || cityEntity == null || contactEntity == null) return NotFound();
 
+		var coverImageName = hotel.Name + ".png";
+
+		using(var ms = new MemoryStream(hotel.CoverImage))
+		{
+			var coverImage = Image.FromStream(ms);
+			coverImage.Save(Path.Combine(_environment.WebRootPath, "Images", "Covers", coverImageName));
+		}
+
 		hotelEntity.Name = hotel.Name;
 		hotelEntity.Description = hotel.Description;
+		hotelEntity.CoverImagePath = coverImageName;
 
 		_hotelRepository.Update(hotelEntity);
 		await _hotelRepository.SaveChangesAsync();
