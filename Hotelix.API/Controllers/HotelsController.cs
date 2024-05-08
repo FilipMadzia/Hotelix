@@ -29,7 +29,7 @@ public class HotelsController(IWebHostEnvironment environment, HotelRepository h
 			Id = x.Id,
 			Name = x.Name,
 			Description = x.Description,
-			CoverImagePath = x.CoverImagePath,
+			CoverImagePath = Path.Combine("Images", "Covers", x.Name + ".png"),
 			Address = new AddressGet
 			{
 				Id = x.Address.Id,
@@ -68,7 +68,7 @@ public class HotelsController(IWebHostEnvironment environment, HotelRepository h
 			Id = hotelEntity.Id,
 			Name = hotelEntity.Name,
 			Description = hotelEntity.Description,
-			CoverImagePath = hotelEntity.CoverImagePath,
+			CoverImagePath = Path.Combine("Images", "Covers", hotelEntity.Name + ".png"),
 			Address = new AddressGet
 			{
 				Id = hotelEntity.Address.Id,
@@ -113,8 +113,7 @@ public class HotelsController(IWebHostEnvironment environment, HotelRepository h
 		var hotelEntity = new HotelEntity
 		{
 			Name = hotel.Name,
-			Description = hotel.Description,
-			CoverImagePath = Path.Combine("Images", "Covers", coverImageName)
+			Description = hotel.Description
 		};
 
 		await _hotelRepository.AddAsync(hotelEntity);
@@ -168,7 +167,6 @@ public class HotelsController(IWebHostEnvironment environment, HotelRepository h
 
 		hotelEntity.Name = hotel.Name;
 		hotelEntity.Description = hotel.Description;
-		hotelEntity.CoverImagePath = coverImageName;
 
 		_hotelRepository.Update(hotelEntity);
 		await _hotelRepository.SaveChangesAsync();

@@ -37,7 +37,6 @@ namespace Hotelix.API.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CoverImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     SoftDeleted = table.Column<bool>(type: "bit", nullable: false)
@@ -108,22 +107,22 @@ namespace Hotelix.API.Data.Migrations
                 columns: new[] { "Id", "CreatedAt", "Name", "SoftDeleted", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8847), "Bielsko-Biała", false, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8891) },
-                    { 2, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8897), "Kraków", false, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8898) },
-                    { 3, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8900), "Katowice", false, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8901) }
+                    { 1, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1812), "Bielsko-Biała", false, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1868) },
+                    { 2, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1877), "Kraków", false, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1880) },
+                    { 3, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1883), "Katowice", false, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1884) }
                 });
 
             migrationBuilder.InsertData(
                 table: "Hotels",
-                columns: new[] { "Id", "CoverImagePath", "CreatedAt", "Description", "Name", "SoftDeleted", "UpdatedAt" },
+                columns: new[] { "Id", "CreatedAt", "Description", "Name", "SoftDeleted", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, "Images\\Covers\\background.jpg", new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8934), "Lorem Ipsum", "Hotel Prezydent", false, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8935) },
-                    { 2, "Images\\Covers\\background2.jpg", new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8953), null, "Hotel Prezes", false, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8954) },
-                    { 3, "Images\\Covers\\background3.jpg", new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8957), "Lorem Ipsum", "Hotel Kierownik", false, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8958) },
-                    { 4, "Images\\Covers\\background4.jpg", new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8961), null, "Hotel Praktykant", false, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8963) },
-                    { 5, "Images\\Covers\\background5.jpg", new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8965), "Lorem Ipsum", "Hotel Stażysta", false, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8966) },
-                    { 6, "Images\\Covers\\background6.jpg", new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8970), null, "Hotel Senior", false, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8972) }
+                    { 1, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1936), "Lorem Ipsum", "Hotel Prezydent", false, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1939) },
+                    { 2, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1946), null, "Hotel Prezes", false, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1948) },
+                    { 3, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1951), "Lorem Ipsum", "Hotel Kierownik", false, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1953) },
+                    { 4, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1956), null, "Hotel Praktykant", false, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1957) },
+                    { 5, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1960), "Lorem Ipsum", "Hotel Stażysta", false, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1961) },
+                    { 6, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1967), null, "Hotel Senior", false, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(1969) }
                 });
 
             migrationBuilder.InsertData(
@@ -131,12 +130,12 @@ namespace Hotelix.API.Data.Migrations
                 columns: new[] { "Id", "CityId", "CreatedAt", "HotelId", "HouseNumber", "PostalCode", "SoftDeleted", "Street", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(8999), 1, 10, "43-382", false, "Tańskiego", new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9000) },
-                    { 2, 1, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9005), 2, 12, "43-345", false, "Słowackiego", new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9006) },
-                    { 3, 2, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9008), 3, 1, "31-436", false, "Wojska polskiego", new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9010) },
-                    { 4, 2, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9012), 4, 24, "31-450", false, "Powstańców", new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9013) },
-                    { 5, 3, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9015), 5, 34, "40-102", false, "Węglowa", new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9016) },
-                    { 6, 3, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9019), 6, 4, "40-304", false, "Kopalniana", new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9020) }
+                    { 1, 1, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2009), 1, 10, "43-382", false, "Tańskiego", new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2012) },
+                    { 2, 1, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2018), 2, 12, "43-345", false, "Słowackiego", new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2021) },
+                    { 3, 2, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2026), 3, 1, "31-436", false, "Wojska polskiego", new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2029) },
+                    { 4, 2, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2034), 4, 24, "31-450", false, "Powstańców", new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2037) },
+                    { 5, 3, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2041), 5, 34, "40-102", false, "Węglowa", new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2044) },
+                    { 6, 3, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2050), 6, 4, "40-304", false, "Kopalniana", new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2053) }
                 });
 
             migrationBuilder.InsertData(
@@ -144,12 +143,12 @@ namespace Hotelix.API.Data.Migrations
                 columns: new[] { "Id", "CreatedAt", "Email", "HotelId", "PhoneNumber", "SoftDeleted", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9046), "prezydent@hotelix.pl", 1, "123 456 789", false, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9047) },
-                    { 2, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9052), null, 2, "123 456 789", false, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9053) },
-                    { 3, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9055), "kierownik@hotelix.pl", 3, null, false, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9056) },
-                    { 4, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9058), "praktykant@hotelix.pl", 4, "123 456 789", false, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9059) },
-                    { 5, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9061), null, 5, "123 456 789", false, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9062) },
-                    { 6, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9065), "senior@hotelix.pl", 6, null, false, new DateTime(2024, 5, 8, 17, 37, 56, 794, DateTimeKind.Local).AddTicks(9066) }
+                    { 1, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2096), "prezydent@hotelix.pl", 1, "123 456 789", false, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2098) },
+                    { 2, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2103), null, 2, "123 456 789", false, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2104) },
+                    { 3, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2107), "kierownik@hotelix.pl", 3, null, false, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2109) },
+                    { 4, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2112), "praktykant@hotelix.pl", 4, "123 456 789", false, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2115) },
+                    { 5, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2117), null, 5, "123 456 789", false, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2119) },
+                    { 6, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2123), "senior@hotelix.pl", 6, null, false, new DateTime(2024, 5, 8, 20, 49, 57, 59, DateTimeKind.Local).AddTicks(2125) }
                 });
 
             migrationBuilder.CreateIndex(
