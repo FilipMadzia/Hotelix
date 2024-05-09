@@ -19,3 +19,23 @@ GET {{Hotelix.API_HostAddress}}/Addresses/1
 Accept: application/json
 
 ###
+
+GET {{Hotelix.API_HostAddress}}/Contacts
+Accept: application/json
+
+###
+
+GET {{Hotelix.API_HostAddress}}/Contacts/1
+Accept: application/json
+
+###
+
+GET {{Hotelix.API_HostAddress}}/Hotels
+Accept: application/json
+
+###
+
+GET {{Hotelix.API_HostAddress}}/Hotels/1
+Accept: application/json
+
+###

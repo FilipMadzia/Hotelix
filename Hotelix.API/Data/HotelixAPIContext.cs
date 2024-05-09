@@ -10,6 +10,7 @@ public class HotelixAPIContext(DbContextOptions<HotelixAPIContext> options) : Db
 	public DbSet<AddressEntity> Addresses { get; set; } = default!;
 	public DbSet<HotelEntity> Hotels { get; set; } = default!;
 	public DbSet<ContactEntity> Contacts { get; set; } = default!;
+	public DbSet<UserEntity> Users { get; set; } = default!;
 
 	protected override void OnModelCreating(ModelBuilder builder)
 	{
@@ -29,5 +30,6 @@ public class HotelixAPIContext(DbContextOptions<HotelixAPIContext> options) : Db
 		HotelsSeeder.Seed(builder);
 		AddressesSeeder.Seed(builder);
 		ContactsSeeder.Seed(builder);
+		UsersSeeder.Seed(builder);
 	}
 }

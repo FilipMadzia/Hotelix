@@ -1,5 +1,6 @@
 ﻿using Hotelix.API.Models;
 using Hotelix.API.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -7,10 +8,10 @@ namespace Hotelix.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class AddressesController(AddressRepository addressRepository, CityRepository cityRepository) : ControllerBase
+[Authorize]
+public class AddressesController(AddressRepository addressRepository) : ControllerBase
 {
 	readonly AddressRepository _addressRepository = addressRepository;
-	readonly CityRepository _cityRepository = cityRepository;
 
 	// GET: api/Addresses
 	[HttpGet]

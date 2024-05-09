@@ -1,6 +1,7 @@
 ﻿using Hotelix.API.Data.Entities;
 using Hotelix.API.Models;
 using Hotelix.API.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Drawing;
@@ -9,15 +10,16 @@ namespace Hotelix.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class HotelsController(IWebHostEnvironment environment, HotelRepository hotelRepository, AddressRepository addressRepository, CityRepository cityRepository, ContactRepository contactRepository) : ControllerBase
+[Authorize]
+public class HotelsController(
+	IWebHostEnvironment _environment,
+	HotelRepository _hotelRepository,
+	AddressRepository _addressRepository,
+	CityRepository _cityRepository,
+	ContactRepository _contactRepository) : ControllerBase
 {
-	readonly IWebHostEnvironment _environment = environment;
-	readonly HotelRepository _hotelRepository = hotelRepository;
-	readonly AddressRepository _addressRepository = addressRepository;
-	readonly CityRepository _cityRepository = cityRepository;
-	readonly ContactRepository _contactRepository = contactRepository;
-
 	// GET: api/Hotels
+	[AllowAnonymous]
 	[HttpGet]
 	[SwaggerResponse(200, type: typeof(IEnumerable<HotelGet>))]
 	public async Task<IActionResult> Get()
@@ -54,6 +56,7 @@ public class HotelsController(IWebHostEnvironment environment, HotelRepository h
 	}
 
 	// GET: api/Hotels/1
+	[AllowAnonymous]
 	[HttpGet("{id}")]
 	[SwaggerResponse(200, type: typeof(HotelGet))]
 	[SwaggerResponse(404)]
