@@ -9,10 +9,8 @@ namespace Hotelix.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 [Authorize]
-public class AddressesController(AddressRepository addressRepository) : ControllerBase
+public class AddressesController(AddressRepository _addressRepository) : ControllerBase
 {
-	readonly AddressRepository _addressRepository = addressRepository;
-
 	// GET: api/Addresses
 	[HttpGet]
 	[SwaggerResponse(200, type: typeof(IEnumerable<AddressGet>))]

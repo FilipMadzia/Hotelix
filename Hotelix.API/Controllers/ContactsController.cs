@@ -7,10 +7,8 @@ namespace Hotelix.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ContactsController(ContactRepository contactRepository) : ControllerBase
+public class ContactsController(ContactRepository _contactRepository) : ControllerBase
 {
-	readonly ContactRepository _contactRepository = contactRepository;
-
 	// GET: api/Contacts
 	[HttpGet]
 	[SwaggerResponse(200, type: typeof(IEnumerable<ContactGet>))]

@@ -31,7 +31,7 @@ public class HotelsController(
 			Id = x.Id,
 			Name = x.Name,
 			Description = x.Description,
-			CoverImagePath = Path.Combine("Images", "Covers", x.Name + ".png"),
+			CoverImagePath = Path.Combine("Images", "Covers", $"Cover{x.Id}.png"),
 			Address = new AddressGet
 			{
 				Id = x.Address.Id,
@@ -71,7 +71,7 @@ public class HotelsController(
 			Id = hotelEntity.Id,
 			Name = hotelEntity.Name,
 			Description = hotelEntity.Description,
-			CoverImagePath = Path.Combine("Images", "Covers", hotelEntity.Name + ".png"),
+			CoverImagePath = Path.Combine("Images", "Covers", $"Cover{hotelEntity.Id}.png"),
 			Address = new AddressGet
 			{
 				Id = hotelEntity.Address.Id,
@@ -105,14 +105,6 @@ public class HotelsController(
 
 		if(cityEntity == null) return NotFound();
 
-		var coverImageName = hotel.Name + ".png";
-
-		using(var ms = new MemoryStream(hotel.CoverImage))
-		{
-			var coverImage = Image.FromStream(ms);
-			coverImage.Save(Path.Combine(_environment.WebRootPath, "Images", "Covers", coverImageName));
-		}
-
 		var hotelEntity = new HotelEntity
 		{
 			Name = hotel.Name,
@@ -121,6 +113,12 @@ public class HotelsController(
 
 		await _hotelRepository.AddAsync(hotelEntity);
 		await _hotelRepository.SaveChangesAsync();
+
+		using(var ms = new MemoryStream(hotel.CoverImage))
+		{
+			var coverImage = Image.FromStream(ms);
+			coverImage.Save(Path.Combine(_environment.WebRootPath, "Images", "Covers", $"cover{hotelEntity.Id}.png"));
+		}
 
 		var addressEntity = new AddressEntity
 		{
@@ -160,12 +158,10 @@ public class HotelsController(
 
 		if(hotelEntity == null || addressEntity == null || cityEntity == null || contactEntity == null) return NotFound();
 
-		var coverImageName = hotel.Name + ".png";
-
 		using(var ms = new MemoryStream(hotel.CoverImage))
 		{
 			var coverImage = Image.FromStream(ms);
-			coverImage.Save(Path.Combine(_environment.WebRootPath, "Images", "Covers", coverImageName));
+			coverImage.Save(Path.Combine(_environment.WebRootPath, "Images", "Covers", $"cover{hotelEntity.Id}.png"));
 		}
 
 		hotelEntity.Name = hotel.Name;
