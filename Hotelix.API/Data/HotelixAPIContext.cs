@@ -17,6 +17,10 @@ public class HotelixAPIContext(DbContextOptions<HotelixAPIContext> options) : Db
 		base.OnModelCreating(builder);
 
 		builder.Entity<HotelEntity>()
+			.Property(x => x.PricePerNight)
+			.HasPrecision(10, 2);
+
+		builder.Entity<HotelEntity>()
 			.HasOne(x => x.Address)
 			.WithOne(x => x.Hotel)
 			.HasForeignKey<AddressEntity>(x => x.HotelId);

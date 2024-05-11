@@ -7,4 +7,11 @@ public class ContactEntity : BaseEntity
 
 	public int HotelId { get; set; }
 	public HotelEntity Hotel { get; set; } = null!;
+
+	public void Update(string? phoneNumber, string? email, int hotelId)
+	{
+		PhoneNumber = phoneNumber;
+		Email = email;
+		HotelId = hotelId;
+	}
 }

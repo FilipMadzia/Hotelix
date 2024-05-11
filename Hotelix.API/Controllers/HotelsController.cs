@@ -31,6 +31,11 @@ public class HotelsController(
 			Id = x.Id,
 			Name = x.Name,
 			Description = x.Description,
+			PricePerNight = x.PricePerNight,
+			HasInternet = x.HasInternet,
+			HasTelevision = x.HasTelevision,
+			HasParking = x.HasParking,
+			HasCafeteria = x.HasCafeteria,
 			CoverImagePath = Path.Combine("Images", "Covers", $"Cover{x.Id}.png"),
 			Address = new AddressGet
 			{
@@ -71,6 +76,11 @@ public class HotelsController(
 			Id = hotelEntity.Id,
 			Name = hotelEntity.Name,
 			Description = hotelEntity.Description,
+			PricePerNight = hotelEntity.PricePerNight,
+			HasInternet = hotelEntity.HasInternet,
+			HasTelevision = hotelEntity.HasTelevision,
+			HasParking = hotelEntity.HasParking,
+			HasCafeteria = hotelEntity.HasCafeteria,
 			CoverImagePath = Path.Combine("Images", "Covers", $"Cover{hotelEntity.Id}.png"),
 			Address = new AddressGet
 			{
@@ -98,6 +108,7 @@ public class HotelsController(
 	// POST: api/Hotels
 	[HttpPost]
 	[SwaggerResponse(201)]
+	[SwaggerResponse(401)]
 	[SwaggerResponse(404)]
 	public async Task<IActionResult> Post([FromBody] HotelPost hotel)
 	{
@@ -108,7 +119,12 @@ public class HotelsController(
 		var hotelEntity = new HotelEntity
 		{
 			Name = hotel.Name,
-			Description = hotel.Description
+			Description = hotel.Description,
+			PricePerNight = hotel.PricePerNight,
+			HasInternet = hotel.HasInternet,
+			HasTelevision = hotel.HasTelevision,
+			HasParking = hotel.HasParking,
+			HasCafeteria = hotel.HasCafeteria
 		};
 
 		await _hotelRepository.AddAsync(hotelEntity);
@@ -148,6 +164,7 @@ public class HotelsController(
 	// PUT: api/Hotels/1
 	[HttpPut("{id}")]
 	[SwaggerResponse(204)]
+	[SwaggerResponse(401)]
 	[SwaggerResponse(404)]
 	public async Task<IActionResult> Put(int id, [FromBody] HotelPut hotel)
 	{
@@ -164,26 +181,52 @@ public class HotelsController(
 			coverImage.Save(Path.Combine(_environment.WebRootPath, "Images", "Covers", $"cover{hotelEntity.Id}.png"));
 		}
 
-		hotelEntity.Name = hotel.Name;
-		hotelEntity.Description = hotel.Description;
+		#region Update HotelEntity
+
+		hotelEntity.Update(
+			hotel.Name,
+			hotel.Description,
+			hotel.PricePerNight,
+			hotel.HasInternet,
+			hotel.HasTelevision,
+			hotel.HasParking,
+			hotel.HasCafeteria);
 
 		_hotelRepository.Update(hotelEntity);
 		await _hotelRepository.SaveChangesAsync();
 
-		addressEntity.Street = hotel.Address.Street;
-		addressEntity.HouseNumber = hotel.Address.HouseNumber;
-		addressEntity.PostalCode = hotel.Address.PostalCode;
-		addressEntity.CityId = hotel.Address.CityId;
-		addressEntity.HotelId = hotelEntity.Id;
+		#endregion
+
+		#region Update AddressEntity
+
+		var address = hotel.Address;
+
+		addressEntity.Update(
+			address.Street,
+			address.HouseNumber,
+			address.PostalCode,
+			address.CityId,
+			hotelEntity.Id
+			);
 
 		_addressRepository.Update(addressEntity);
 		await _addressRepository.SaveChangesAsync();
 
-		contactEntity.PhoneNumber = hotel.Contact.PhoneNumber;
-		contactEntity.Email = hotel.Contact.Email;
+		#endregion
+
+		#region Update ContactEntity
+
+		var contact = hotel.Contact;
+
+		contactEntity.Update(
+			contact.PhoneNumber,
+			contact.Email,
+			hotelEntity.Id);
 
 		_contactRepository.Update(contactEntity);
 		await _contactRepository.SaveChangesAsync();
+
+		#endregion
 
 		return NoContent();
 	}
@@ -191,6 +234,7 @@ public class HotelsController(
 	// DELETE: api/Hotels/1
 	[HttpDelete]
 	[SwaggerResponse(204)]
+	[SwaggerResponse(401)]
 	[SwaggerResponse(404)]
 	public async Task<IActionResult> Delete(int id)
 	{

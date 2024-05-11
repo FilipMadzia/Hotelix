@@ -54,6 +54,7 @@ public class CitiesController(CityRepository _cityRepository) : ControllerBase
 	// POST: api/Cities
 	[HttpPost]
 	[SwaggerResponse(201)]
+	[SwaggerResponse(401)]
 	public async Task<IActionResult> Post([FromBody] CityPost city)
 	{
 		var cityEntity = new CityEntity { Name = city.Name };
@@ -67,6 +68,7 @@ public class CitiesController(CityRepository _cityRepository) : ControllerBase
 	// PUT: api/Cities/1
 	[HttpPut("{id}")]
 	[SwaggerResponse(204)]
+	[SwaggerResponse(401)]
 	[SwaggerResponse(404)]
 	public async Task<IActionResult> Put(int id, [FromBody] CityPut city)
 	{
@@ -74,7 +76,7 @@ public class CitiesController(CityRepository _cityRepository) : ControllerBase
 
 		if(cityEntity == null) return NotFound();
 
-		cityEntity.Name = city.Name;
+		cityEntity.Update(city.Name);
 
 		_cityRepository.Update(cityEntity);
 		await _cityRepository.SaveChangesAsync();
@@ -85,6 +87,7 @@ public class CitiesController(CityRepository _cityRepository) : ControllerBase
 	// DELETE: api/Cities/1
 	[HttpDelete("{id}")]
 	[SwaggerResponse(204)]
+	[SwaggerResponse(401)]
 	[SwaggerResponse(404)]
 	public async Task<IActionResult> Delete(int id)
 	{

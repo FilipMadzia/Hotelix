@@ -11,4 +11,13 @@ public class AddressEntity : BaseEntity
 
 	public int HotelId { get; set; }
 	public HotelEntity Hotel { get; set; } = null!;
+
+	public void Update(string street, int houseNumber, string postalCode, int cityId, int hotelId)
+	{
+		Street = street;
+		HouseNumber = houseNumber;
+		PostalCode = postalCode;
+		CityId = cityId;
+		HotelId = hotelId;
+	}
 }
