@@ -1,30 +1,34 @@
 ﻿using Hotelix.Mobile.Models;
+using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
 using System.Text.Json;
 
 namespace Hotelix.Mobile.Services;
 
-public static class HotelsService
+public class HotelsService(IConfiguration _configuration)
 {
-	static HttpClient _client = new();
-	static JsonSerializerOptions _serializerOptions = new()
+	HttpClient _client = new();
+	JsonSerializerOptions _serializerOptions = new()
 	{
 		PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
 		WriteIndented = true
 	};
-	static Uri uri = new("http://192.168.100.6:5000/api/Hotels");
+	Uri apiUrl = new(_configuration.GetRequiredSection("urls").Get<Urls>().ApiUrl);
+	Uri coverImagesUrl = new(_configuration.GetRequiredSection("urls").Get<Urls>().CoverImagesUrl);
 
-	public static async Task<List<Hotel>> GetHotelsAsync()
+	public async Task<List<Hotel>> GetHotelsAsync()
 	{
+		var hotels = new List<Hotel>();
+
 		try
 		{
-			var response = await _client.GetAsync(uri);
+			var response = await _client.GetAsync(apiUrl + "Hotels");
 
 			if(response.IsSuccessStatusCode)
 			{
 				var content = await response.Content.ReadAsStringAsync();
 
-				return JsonSerializer.Deserialize<List<Hotel>>(content, _serializerOptions) ?? new List<Hotel>();
+				hotels = JsonSerializer.Deserialize<List<Hotel>>(content, _serializerOptions) ?? new List<Hotel>();
 			}
 		}
 		catch(Exception ex)
@@ -32,20 +36,27 @@ public static class HotelsService
 			Debug.WriteLine(ex);
 		}
 
-		return new List<Hotel>();
+		foreach(var hotel in hotels)
+		{
+			hotel.CoverImagePath = coverImagesUrl + hotel.CoverImagePath;
+		}
+
+		return hotels;
 	}
 
-	public static async Task<Hotel> GetHotelAsync(int id)
+	public async Task<Hotel> GetHotelAsync(int id)
 	{
+		var hotel = new Hotel();
+
 		try
 		{
-			var response = await _client.GetAsync(uri + "/" + id);
+			var response = await _client.GetAsync(apiUrl + "/Hotels/" + id);
 
 			if(response.IsSuccessStatusCode)
 			{
 				var content = await response.Content.ReadAsStringAsync();
 
-				return JsonSerializer.Deserialize<Hotel>(content, _serializerOptions) ?? new Hotel();
+				hotel = JsonSerializer.Deserialize<Hotel>(content, _serializerOptions) ?? new Hotel();
 			}
 		}
 		catch(Exception ex)
@@ -53,6 +64,8 @@ public static class HotelsService
 			Debug.WriteLine(ex);
 		}
 
-		return new Hotel();
+		hotel.CoverImagePath = coverImagesUrl + hotel.CoverImagePath;
+
+		return hotel;
 	}
 }

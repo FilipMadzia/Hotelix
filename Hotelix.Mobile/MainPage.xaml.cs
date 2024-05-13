@@ -6,9 +6,9 @@ public partial class MainPage : ContentPage
 {
 	public List<Hotel> Hotels { get; set; }
 
-	public MainPage()
+	public MainPage(HotelsService _service)
 	{
-		Hotels = Task.Run(() => HotelsService.GetHotelsAsync()).Result;
+		Hotels = Task.Run(() => _service.GetHotelsAsync()).Result;
 		
 		InitializeComponent();
 
