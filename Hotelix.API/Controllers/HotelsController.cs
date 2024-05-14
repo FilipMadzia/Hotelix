@@ -36,7 +36,7 @@ public class HotelsController(
 			HasTelevision = x.HasTelevision,
 			HasParking = x.HasParking,
 			HasCafeteria = x.HasCafeteria,
-			CoverImagePath = Path.Combine("Images", "Covers", $"Cover{x.Id}.png"),
+			CoverImage = $"Cover{x.Id}.png",
 			Address = new AddressGet
 			{
 				Id = x.Address.Id,
@@ -81,7 +81,7 @@ public class HotelsController(
 			HasTelevision = hotelEntity.HasTelevision,
 			HasParking = hotelEntity.HasParking,
 			HasCafeteria = hotelEntity.HasCafeteria,
-			CoverImagePath = Path.Combine("Images", "Covers", $"Cover{hotelEntity.Id}.png"),
+			CoverImage = $"Cover{hotelEntity.Id}.png",
 			Address = new AddressGet
 			{
 				Id = hotelEntity.Address.Id,
@@ -133,7 +133,7 @@ public class HotelsController(
 		using(var ms = new MemoryStream(hotel.CoverImage))
 		{
 			var coverImage = Image.FromStream(ms);
-			coverImage.Save(Path.Combine(_environment.WebRootPath, "Images", "Covers", $"cover{hotelEntity.Id}.png"));
+			coverImage.Save(Path.Combine(_environment.WebRootPath, "Images", "Covers", $"Cover{hotelEntity.Id}.png"));
 		}
 
 		var addressEntity = new AddressEntity
@@ -178,7 +178,7 @@ public class HotelsController(
 		using(var ms = new MemoryStream(hotel.CoverImage))
 		{
 			var coverImage = Image.FromStream(ms);
-			coverImage.Save(Path.Combine(_environment.WebRootPath, "Images", "Covers", $"cover{hotelEntity.Id}.png"));
+			coverImage.Save(Path.Combine(_environment.WebRootPath, "Images", "Covers", $"Cover{hotelEntity.Id}.png"));
 		}
 
 		#region Update HotelEntity

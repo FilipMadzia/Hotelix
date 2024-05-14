@@ -8,9 +8,9 @@
 			<DataTemplate>
 				<ViewCell>
 					<StackLayout Orientation="Horizontal">
-						<Image Source="{Binding CoverImagePath}" />
+						<Image Source="{Binding CoverImage}" />
 						<StackLayout HorizontalOptions="StartAndExpand">
-							<Label Text="{Binding CoverImagePath}" />
+							<Label Text="{Binding Name}" />
 						</StackLayout>
 					</StackLayout>
 				</ViewCell>

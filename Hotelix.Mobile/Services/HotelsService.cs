@@ -38,7 +38,7 @@ public class HotelsService(IConfiguration _configuration)
 
 		foreach(var hotel in hotels)
 		{
-			hotel.CoverImagePath = coverImagesUrl + hotel.CoverImagePath;
+			hotel.CoverImage = coverImagesUrl + hotel.CoverImage;
 		}
 
 		return hotels;
@@ -64,7 +64,7 @@ public class HotelsService(IConfiguration _configuration)
 			Debug.WriteLine(ex);
 		}
 
-		hotel.CoverImagePath = coverImagesUrl + hotel.CoverImagePath;
+		hotel.CoverImage = coverImagesUrl + hotel.CoverImage;
 
 		return hotel;
 	}

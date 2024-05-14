@@ -10,7 +10,7 @@ public class HotelGet
 	public required bool HasTelevision { get; set; }
 	public required bool HasParking { get; set; }
 	public required bool HasCafeteria { get; set; }
-	public required string CoverImagePath { get; set; }
+	public required string CoverImage { get; set; }
 	public required AddressGet Address { get; set; }
 	public required ContactGet Contact { get; set; }
 }
