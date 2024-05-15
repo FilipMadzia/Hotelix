@@ -29,6 +29,7 @@ namespace Hotelix.Mobile
 			builder.Configuration.AddConfiguration(config);
 
 			builder.Services.AddTransient<HotelsService>();
+			builder.Services.AddTransient<CitiesService>();
 			builder.Services.AddTransient<MainPage>();
 
 #if DEBUG

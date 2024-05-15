@@ -11,6 +11,7 @@
 						<Image Source="{Binding CoverImage}" />
 						<StackLayout HorizontalOptions="StartAndExpand">
 							<Label Text="{Binding Name}" />
+							<Label Text="{Binding Description}" />
 						</StackLayout>
 					</StackLayout>
 				</ViewCell>
