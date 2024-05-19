@@ -129,9 +129,9 @@ namespace Hotelix.API.Data.Migrations
                 columns: new[] { "Id", "CreatedAt", "Name", "SoftDeleted", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6015), "Bielsko-Biała", false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6059) },
-                    { 2, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6066), "Kraków", false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6068) },
-                    { 3, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6070), "Katowice", false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6071) }
+                    { 1, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8593), "Bielsko-Biała", false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8637) },
+                    { 2, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8648), "Kraków", false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8649) },
+                    { 3, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8651), "Katowice", false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8652) }
                 });
 
             migrationBuilder.InsertData(
@@ -139,12 +139,12 @@ namespace Hotelix.API.Data.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "HasCafeteria", "HasInternet", "HasParking", "HasTelevision", "Name", "PricePerNight", "SoftDeleted", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6114), "Lorem Ipsum", false, true, true, false, "Hotel Prezydent", 0m, false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6116) },
-                    { 2, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6122), null, false, false, false, true, "Hotel Prezes", 0m, false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6123) },
-                    { 3, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6125), "Lorem Ipsum", true, false, true, false, "Hotel Kierownik", 0m, false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6126) },
-                    { 4, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6129), null, false, false, false, false, "Hotel Praktykant", 0m, false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6131) },
-                    { 5, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6132), "Lorem Ipsum", false, false, false, false, "Hotel Stażysta", 0m, false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6134) },
-                    { 6, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6137), null, false, true, false, false, "Hotel Senior", 0m, false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6138) }
+                    { 1, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8686), "Hotel Prezydent to kwintesencja luksusu i wygody, położony w samym sercu miasta. Ten prestiżowy hotel oferuje swoim gościom nie tylko wyjątkowe wnętrza, ale również najnowocześniejsze udogodnienia, takie jak telewizja satelitarna i szybki internet bezprzewodowy. Każdy pokój w hotelu został zaprojektowany z myślą o komforcie i stylu, zapewniając idealne warunki do odpoczynku i pracy. Goście mogą delektować się wyśmienitymi daniami w eleganckiej jadalni, gdzie serwowane są potrawy przygotowane przez renomowanych szefów kuchni. Hotelowa restauracja słynie z doskonałej kuchni i obsługi na najwyższym poziomie. Hotel Prezydent jest doskonałym miejscem dla tych, którzy pragną połączyć relaks z rozrywką. Tuż obok hotelu znajduje się słynne kasyno, które przyciąga miłośników gier i emocji. To idealne miejsce na spędzenie wieczoru, próbując szczęścia w grach karcianych czy ruletce. Zapraszamy do Hotelu Prezydenta, gdzie luksus spotyka się z komfortem, a każdy pobyt staje się niezapomnianym doświadczeniem.", true, true, false, true, "Hotel Prezydent", 69.99m, false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8688) },
+                    { 2, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8696), null, false, false, false, true, "Hotel Prezes", 52.00m, false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8698) },
+                    { 3, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8700), "Hotel Kierownik to oaza spokoju i luksusu, położona na przedmieściach, z dala od miejskiego zgiełku. Ten elegancki hotel zaprasza gości do przestronnych i komfortowo urządzonych pokoi, gdzie każdy detal został dopracowany z największą starannością. Centralnym punktem hotelu jest luksusowa jadalnia, która zachwyca nie tylko wykwintnym menu, ale również wyrafinowanym wystrojem. To tutaj, wśród delikatnych tkanin i lśniącego srebra, goście mogą cieszyć się wyjątkowymi daniami kuchni międzynarodowej i lokalnej, przygotowywanymi przez doświadczonych szefów kuchni. Hotel Kierownik szczyci się również przestronnym parkingiem, który zapewnia wygodę i bezpieczeństwo dla wszystkich odwiedzających. Dzięki temu goście mogą bez problemu podróżować własnym samochodem i cieszyć się łatwym dostępem do hotelu. Położony wśród zielonych terenów przedmieścia, hotel stanowi idealne miejsce dla tych, którzy szukają ciszy i relaksu, jednocześnie pragnąc zachować łatwy dostęp do atrakcji miejskich. Hotel Kierownik to wyjątkowe miejsce, które zapewnia niezapomniane wrażenia i najwyższy standard obsługi.", true, false, true, false, "Hotel Kierownik", 40.00m, false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8701) },
+                    { 4, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8704), null, false, false, false, false, "Hotel Praktykant", 1.99m, false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8705) },
+                    { 5, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8707), null, false, true, false, false, "Hotel Stażysta", 0.99m, false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8708) },
+                    { 6, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8711), "Hotel Senior to synonim wygody i spokoju, idealnie dostosowany do potrzeb osób starszych. Położony w cichej i bezpiecznej okolicy, hotel zapewnia swoim gościom komfortowy i dostojny wypoczynek. Wnętrza hotelu są przestronne i łatwo dostępne, co gwarantuje wygodę użytkowania przez osoby w każdym wieku. W jadalni hotelowej goście mogą cieszyć się bogatym wyborem potraw, które są nie tylko smaczne, ale również dostosowane do różnorodnych diet i potrzeb żywieniowych. Każdy posiłek jest przygotowywany z myślą o zdrowiu i zadowoleniu gości, co czyni jadalnię sercem hotelu. Hotel Senior oferuje również rozrywkę dzięki telewizji satelitarnej z mnóstwem kanałów, które umożliwiają dostęp do ulubionych programów, filmów i seriali. To idealne rozwiązanie dla tych, którzy cenią sobie relaks przy dobrej telewizji. Z myślą o pełnym komforcie, hotel zapewnia szereg udogodnień, takich jak obsługa pokoju, pomoc w organizacji czasu wolnego oraz transport do pobliskich atrakcji. Hotel Senior to miejsce, gdzie tradycja gościnności łączy się z nowoczesnymi rozwiązaniami, tworząc idealne warunki dla seniorów pragnących spędzić czas w przyjaznej i eleganckiej atmosferze.", true, false, false, true, "Hotel Senior", 15.99m, false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8713) }
                 });
 
             migrationBuilder.InsertData(
@@ -152,8 +152,8 @@ namespace Hotelix.API.Data.Migrations
                 columns: new[] { "Id", "CreatedAt", "Password", "SoftDeleted", "UpdatedAt", "UserName" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6302), "fikunia123", false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6304), "FilipMadzia" },
-                    { 2, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6306), "kochamBobry", false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6308), "WojtekWróbel" }
+                    { 1, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8913), "fikunia123", false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8915), "FilipMadzia" },
+                    { 2, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8918), "kochamBobry", false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8919), "WojtekWróbel" }
                 });
 
             migrationBuilder.InsertData(
@@ -161,12 +161,12 @@ namespace Hotelix.API.Data.Migrations
                 columns: new[] { "Id", "CityId", "CreatedAt", "HotelId", "HouseNumber", "PostalCode", "SoftDeleted", "Street", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6201), 1, 10, "43-382", false, "Tańskiego", new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6203) },
-                    { 2, 1, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6211), 2, 12, "43-345", false, "Słowackiego", new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6212) },
-                    { 3, 2, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6215), 3, 1, "31-436", false, "Wojska polskiego", new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6216) },
-                    { 4, 2, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6218), 4, 24, "31-450", false, "Powstańców", new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6219) },
-                    { 5, 3, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6221), 5, 34, "40-102", false, "Węglowa", new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6223) },
-                    { 6, 3, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6226), 6, 4, "40-304", false, "Kopalniana", new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6228) }
+                    { 1, 1, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8744), 1, 10, "43-382", false, "Tańskiego", new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8812) },
+                    { 2, 1, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8818), 2, 12, "43-345", false, "Słowackiego", new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8819) },
+                    { 3, 2, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8822), 3, 1, "31-436", false, "Wojska polskiego", new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8823) },
+                    { 4, 2, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8825), 4, 24, "31-450", false, "Powstańców", new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8826) },
+                    { 5, 3, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8828), 5, 34, "40-102", false, "Węglowa", new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8829) },
+                    { 6, 3, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8832), 6, 4, "40-304", false, "Kopalniana", new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8834) }
                 });
 
             migrationBuilder.InsertData(
@@ -174,12 +174,12 @@ namespace Hotelix.API.Data.Migrations
                 columns: new[] { "Id", "CreatedAt", "Email", "HotelId", "PhoneNumber", "SoftDeleted", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6254), "prezydent@hotelix.pl", 1, "123 456 789", false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6256) },
-                    { 2, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6260), null, 2, "123 456 789", false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6261) },
-                    { 3, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6263), "kierownik@hotelix.pl", 3, null, false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6264) },
-                    { 4, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6266), "praktykant@hotelix.pl", 4, "123 456 789", false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6267) },
-                    { 5, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6269), null, 5, "123 456 789", false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6270) },
-                    { 6, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6273), "senior@hotelix.pl", 6, null, false, new DateTime(2024, 5, 11, 14, 27, 12, 984, DateTimeKind.Local).AddTicks(6274) }
+                    { 1, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8867), "prezydent@hotelix.pl", 1, "123 456 789", false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8869) },
+                    { 2, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8873), null, 2, "123 456 789", false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8874) },
+                    { 3, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8876), "kierownik@hotelix.pl", 3, null, false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8877) },
+                    { 4, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8879), "praktykant@hotelix.pl", 4, "123 456 789", false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8880) },
+                    { 5, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8882), null, 5, "123 456 789", false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8883) },
+                    { 6, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8886), "senior@hotelix.pl", 6, null, false, new DateTime(2024, 5, 19, 14, 1, 28, 18, DateTimeKind.Local).AddTicks(8887) }
                 });
 
             migrationBuilder.CreateIndex(
