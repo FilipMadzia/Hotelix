@@ -6,18 +6,19 @@
     xmlns:local="clr-namespace:Hotelix.Mobile"
     Shell.FlyoutBehavior="Disabled"
     Title="Hotelix.Mobile"
-     BackgroundColor="#15161d"
-     >
+    BackgroundColor="#15161d">
 
     <Shell.TitleView>
         <Grid BackgroundColor="#15161d">
-            <Label Text="Home" TextColor="#bfc8c0" FontSize="Large"  FontAttributes="Bold"/>
+            <Label Text="text" TextColor="#bfc8c0" FontSize="Large"  FontAttributes="Bold"/>
         </Grid>
     </Shell.TitleView>
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage"
-        />
-
+        Route="MainPage"/>
+    <ShellContent
+    Title="Detail"
+    ContentTemplate="{DataTemplate local:DetailPage}"
+    Route="DetailPage"/>
 </Shell>
