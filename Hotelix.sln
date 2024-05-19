@@ -5,7 +5,9 @@ VisualStudioVersion = 17.8.34601.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotelix.API", "Hotelix.API\Hotelix.API.csproj", "{E5E3CCD1-0F65-4029-BCB3-BD230B477236}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotelix.Mobile", "Hotelix.Mobile\Hotelix.Mobile.csproj", "{52F8A74B-651B-41DB-8498-0C0ED781EE63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotelix.Mobile", "Hotelix.Mobile\Hotelix.Mobile.csproj", "{52F8A74B-651B-41DB-8498-0C0ED781EE63}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Hotelix.Web", "Hotelix.Web\Hotelix.Web.esproj", "{827D2D06-AD98-4686-9941-E6089F3B99B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,12 @@ Global
 		{52F8A74B-651B-41DB-8498-0C0ED781EE63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52F8A74B-651B-41DB-8498-0C0ED781EE63}.Release|Any CPU.Build.0 = Release|Any CPU
 		{52F8A74B-651B-41DB-8498-0C0ED781EE63}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{827D2D06-AD98-4686-9941-E6089F3B99B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{827D2D06-AD98-4686-9941-E6089F3B99B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{827D2D06-AD98-4686-9941-E6089F3B99B3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{827D2D06-AD98-4686-9941-E6089F3B99B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{827D2D06-AD98-4686-9941-E6089F3B99B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{827D2D06-AD98-4686-9941-E6089F3B99B3}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
