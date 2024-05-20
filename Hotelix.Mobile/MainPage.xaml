@@ -9,7 +9,6 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-
     <ListView ItemsSource="{Binding Hotels}" HasUnevenRows="True" RowHeight="100" ItemSelected="ListView_ItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>

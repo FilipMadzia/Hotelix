@@ -10,7 +10,7 @@
 
     <Shell.TitleView>
         <Grid BackgroundColor="#15161d">
-            <Label Text="text" TextColor="#bfc8c0" FontSize="Large"  FontAttributes="Bold"/>
+            <Label Text="" TextColor="#bfc8c0" FontSize="Large"  FontAttributes="Bold"/>
         </Grid>
     </Shell.TitleView>
     <ShellContent
