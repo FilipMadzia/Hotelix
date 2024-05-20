@@ -1,10 +1,9 @@
-﻿namespace Hotelix.Mobile
+﻿namespace Hotelix.Mobile;
+
+public partial class AppShell : Shell
 {
-	public partial class AppShell : Shell
+	public AppShell()
 	{
-		public AppShell()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
 	}
 }
