@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
-
 namespace Hotelix.Mobile
 {
 	public static class MauiProgram
@@ -31,9 +30,10 @@ namespace Hotelix.Mobile
 			builder.Services.AddTransient<HotelsService>();
 			builder.Services.AddTransient<CitiesService>();
 			builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<DetailPage>();
 
 #if DEBUG
-			builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
 			return builder.Build();
