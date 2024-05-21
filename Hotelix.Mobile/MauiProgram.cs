@@ -1,4 +1,5 @@
-﻿using Hotelix.Mobile.Services;
+﻿using Hotelix.Mobile.Models;
+using Hotelix.Mobile.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
@@ -29,8 +30,10 @@ namespace Hotelix.Mobile
 
 			builder.Services.AddTransient<HotelsService>();
 			builder.Services.AddTransient<CitiesService>();
+
 			builder.Services.AddTransient<MainPage>();
 			builder.Services.AddTransient<DetailPage>();
+			builder.Services.AddTransient<Hotel>();
 
 #if DEBUG
 			builder.Logging.AddDebug();

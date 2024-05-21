@@ -13,12 +13,8 @@
             <Label Text="" TextColor="#bfc8c0" FontSize="Large"  FontAttributes="Bold"/>
         </Grid>
     </Shell.TitleView>
-    <ShellContent
+	<ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage"/>
-    <ShellContent
-    Title="Detail"
-    ContentTemplate="{DataTemplate local:DetailPage}"
-    Route="DetailPage"/>
 </Shell>

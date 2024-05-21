@@ -18,9 +18,10 @@ public partial class MainPage : ContentPage
 
 	private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
 	{
-		if(e.SelectedItem is Hotel selectedHotel)
-		{
-			await Navigation.PushAsync(new DetailPage(selectedHotel));
-		}
+		var hotel = e.SelectedItem as Hotel;
+
+		if(hotel == null) throw new Exception();
+
+		await Shell.Current.GoToAsync($"{nameof(DetailPage)}?{nameof(Hotel)}={hotel}");
 	}
 }

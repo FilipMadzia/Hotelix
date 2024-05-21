@@ -11,6 +11,7 @@ public partial class DetailPage : ContentPage
 		InitializeComponent();
 		SelectedHotel = selectedHotel;
 		BindingContext = SelectedHotel;
+
 		SetVisibility();
 		ToggleDescriptionExpansionInitial();
 	}
