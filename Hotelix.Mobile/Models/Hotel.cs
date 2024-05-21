@@ -1,6 +1,5 @@
 ﻿namespace Hotelix.Mobile.Models;
 
-[QueryProperty(nameof(Hotel), nameof(Hotel))]
 public class Hotel
 {
 	public int Id { get; set; }

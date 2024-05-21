@@ -9,7 +9,7 @@ public partial class MainPage : ContentPage
 
 	public MainPage(HotelsService _service)
 	{
-		Hotels = Task.Run(() => _service.GetHotelsAsync()).Result;
+		Hotels = Task.Run(_service.GetHotelsAsync).Result;
 
 		InitializeComponent();
 
@@ -22,6 +22,6 @@ public partial class MainPage : ContentPage
 
 		if(hotel == null) throw new Exception();
 
-		await Shell.Current.GoToAsync($"{nameof(DetailPage)}?{nameof(Hotel)}={hotel}");
+		await Navigation.PushAsync(new DetailPage(hotel));
 	}
 }

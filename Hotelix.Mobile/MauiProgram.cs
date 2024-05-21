@@ -33,7 +33,6 @@ namespace Hotelix.Mobile
 
 			builder.Services.AddTransient<MainPage>();
 			builder.Services.AddTransient<DetailPage>();
-			builder.Services.AddTransient<Hotel>();
 
 #if DEBUG
 			builder.Logging.AddDebug();

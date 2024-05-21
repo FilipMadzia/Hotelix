@@ -5,14 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Hotelix.Mobile"
     Shell.FlyoutBehavior="Disabled"
-    Title="Hotelix.Mobile"
     BackgroundColor="#15161d">
 
-    <Shell.TitleView>
-        <Grid BackgroundColor="#15161d">
-            <Label Text="" TextColor="#bfc8c0" FontSize="Large"  FontAttributes="Bold"/>
-        </Grid>
-    </Shell.TitleView>
+	<Shell.TitleView>
+		<Grid BackgroundColor="#15161d">
+			<Label Text="" TextColor="#bfc8c0" FontSize="Large"  FontAttributes="Bold"/>
+		</Grid>
+	</Shell.TitleView>
+
 	<ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"

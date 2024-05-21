@@ -6,10 +6,10 @@ public partial class DetailPage : ContentPage
 {
 	public Hotel SelectedHotel { get; set; }
 
-	public DetailPage(Hotel selectedHotel)
+	public DetailPage(Hotel hotel)
 	{
 		InitializeComponent();
-		SelectedHotel = selectedHotel;
+		SelectedHotel = hotel;
 		BindingContext = SelectedHotel;
 
 		SetVisibility();
