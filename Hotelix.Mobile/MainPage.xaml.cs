@@ -6,10 +6,12 @@ namespace Hotelix.Mobile;
 public partial class MainPage : ContentPage
 {
 	public List<Hotel> Hotels { get; set; }
+	public List<City> Cities { get; set; }
 
-	public MainPage(HotelsService _service)
+	public MainPage(HotelsService _hotelsService, CitiesService _citiesService)
 	{
-		Hotels = Task.Run(() => _service.GetHotelsAsync()).Result;
+		Hotels = Task.Run(_hotelsService.GetHotelsAsync).Result;
+		Cities = Task.Run(_citiesService.GetCitiesAsync).Result;
 
 		InitializeComponent();
 

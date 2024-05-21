@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace Hotelix.Mobile.Services;
 
-class CitiesService(IConfiguration _configuration)
+public class CitiesService(IConfiguration _configuration)
 {
 	HttpClient _client = new();
 	JsonSerializerOptions _serializerOptions = new()
