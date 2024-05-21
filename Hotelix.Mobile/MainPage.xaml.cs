@@ -9,7 +9,7 @@ public partial class MainPage : ContentPage
 
 	public MainPage(HotelsService _service)
 	{
-		Hotels = Task.Run(() => _service.GetHotelsAsync()).Result;
+		Hotels = Task.Run(_service.GetHotelsAsync).Result;
 
 		InitializeComponent();
 
@@ -18,9 +18,10 @@ public partial class MainPage : ContentPage
 
 	private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
 	{
-		if(e.SelectedItem is Hotel selectedHotel)
-		{
-			await Navigation.PushAsync(new DetailPage(selectedHotel));
-		}
+		var hotel = e.SelectedItem as Hotel;
+
+		if(hotel == null) throw new Exception();
+
+		await Navigation.PushAsync(new DetailPage(hotel));
 	}
 }
