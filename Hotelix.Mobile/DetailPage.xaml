@@ -10,8 +10,8 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ScrollView>
-        <StackLayout Padding="20" Spacing="10">
-            <Label Text="{Binding Name}" 
+		<StackLayout Padding="20" Spacing="10">
+			<Label Text="{Binding Name}" 
                    FontAttributes="Bold" 
                    FontSize="36"
                    HorizontalOptions="Center"
