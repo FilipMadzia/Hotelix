@@ -7,8 +7,8 @@ import { Observable, catchError, map, retry, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class HotelsService {
-  apiUrl = 'http://192.168.100.6:5000/api';
-  coverImagesUrl = 'http://192.168.100.6:5000/Images/Covers/';
+  apiUrl = 'http://localhost:5000/api';
+  coverImagesUrl = 'http://localhost:5000/Images/Covers/';
   httpOptions = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
@@ -28,22 +28,26 @@ export class HotelsService {
         ));
   }
 
-  getHotel(id: number): Observable<Hotel> {
-    return this.http
-      .get<Hotel>(this.apiUrl + '/Hotels/' + id)
-      .pipe(retry(1), catchError(this.handleError));
+  getHotel(id: number | string): Observable<Hotel> {
+    return this.getHotels().pipe(
+      map((hotels: Hotel[]) => hotels.find(hotel => hotel.id === +id))
+    );
   }
 
   handleError(error: any) {
     let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
+
+    if(error.error instanceof ErrorEvent) {
       // Get client-side error
       errorMessage = error.error.message;
-    } else {
+    }
+    else {
       // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
+    
     window.alert(errorMessage);
+
     return throwError(() => {
       return errorMessage;
     });

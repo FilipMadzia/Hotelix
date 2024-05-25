@@ -1,0 +1,6 @@
+<div *ngIf="hotel$ | async as hotel">
+    <h3>{{hotel.name}}</h3>
+    <p>{{hotel.description}}</p>
+</div>
+
+<button type="button" routerLink="/hotels">Powrót</button>
