@@ -1,6 +1,60 @@
-<div *ngIf="hotel$ | async as hotel">
-    <h3>{{hotel.name}}</h3>
-    <p>{{hotel.description}}</p>
-</div>
+
 
 <button type="button" routerLink="/hotels">Powrót</button>
+
+<div *ngIf="hotel$ | async as hotel" class="hotel">
+
+  <p class="hotel-name"><b>{{hotel.name}}</b>, {{hotel.address.street}} {{hotel.address.houseNumber}}, {{hotel.address.postalCode}} {{hotel.address.city.name}}</p>
+  <div class="container">
+    <div class="hotel-image">
+      <img src="{{hotel.coverImage}}">
+      <div class="hotel-description" *ngIf="hotel.description">
+        {{hotel.description}}
+      </div>
+    </div>
+    <div class="hotel-information">
+      <b>{{hotel.pricePerNight}} zł</b> za noc
+      <hr>
+      <button (click)="openContactInfo()" class="btn">
+        <span>Informacje kontaktowe</span>
+      </button>
+      <br />
+      <div class="hotel-amenities">
+        <div class="amenity">
+          <div *ngIf="hotel.hasInternet; then checkMark else xMark"></div>
+          Internet
+        </div>
+        <div class="amenity">
+          <div *ngIf="hotel.hasTelevision; then checkMark else xMark"></div>
+          Telewizja
+        </div>
+        <div class="amenity">
+          <div *ngIf="hotel.hasParking; then checkMark else xMark"></div>
+          Parking
+        </div>
+        <div class="amenity">
+          <div *ngIf="hotel.hasCafeteria; then checkMark else xMark"></div>
+          Kawiarnia
+        </div>
+      </div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1286.9932287199108!2d19.04517063385134!3d49.82391972978375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4716a17f6d12fc1d%3A0xd7834b7936503097!2sHotel%20Prezydent!5e0!3m2!1spl!2spl!4v1716740990095!5m2!1spl!2spl" width="425" height="425" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+  <div class="contact-background" [class.d-none]="!contactOpened" (click)="closeContactInfo()">
+
+  </div>
+  <div class="contact" [class.contact-in]="contactOpened && touched" [class.contact-out]="!contactOpened && touched">
+    <br />
+    <h2>{{hotel.name}}</h2>
+    <p *ngIf="hotel.contact.phoneNumber">Telefon komórkowy: {{hotel.contact.phoneNumber}}</p>
+    <p *ngIf="hotel.contact.email">Email: {{hotel.contact.email}}</p>
+  </div>
+</div>
+
+<ng-template #checkMark>
+  ✅
+</ng-template>
+
+<ng-template #xMark>
+  ❌
+</ng-template>
