@@ -1,0 +1,136 @@
+.hotel {
+  margin-top: 6vw;
+  width: 80vw;
+  margin-left: 10vw;
+  margin-bottom: 5vw;
+}
+
+.hotel-name {
+  font-size: 24px;
+}
+
+.container {
+  display: flex;
+}
+
+.hotel-image, .hotel-image img {
+  width: 48vw;
+}
+
+  .hotel-image img {
+    border: 1px solid black;
+  }
+
+.hotel-information {
+  width: 32vw;
+  padding-left: 5vw;
+  font-size: 28px;
+}
+
+.btn {
+  text-transform: uppercase;
+  width: 28vw;
+  display: flex;
+  background-color: #ee4751;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  color: #fdfdfb;
+  font-weight: 600;
+  padding: 1.5vw;
+}
+
+  .btn span {
+    width: 100%;
+    text-align: center;
+  }
+
+hr {
+  background-color: #f2f2f2;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+}
+
+.hotel-description {
+  margin-top: 3vw;
+  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  border-radius: 5px;
+  padding: 1vw;
+}
+
+.hotel-amenities {
+  display: flex;
+  width: 28vw;
+  height: 8vw;
+  padding: 1vw;
+  flex-wrap: wrap;
+  flex-direction: column;
+  vertical-align: middle;
+  align-items: center;
+  gap: 1vw;
+}
+
+.amenity {
+  font-size: 18px;
+  width: 8vw;
+}
+
+.contact {
+  width: 20vw;
+  height: 100vh;
+  left: 80vw;
+  top: 0;
+  position: fixed;
+  background-color: white;
+  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  animation-fill-mode: forwards;
+  animation-duration: .3s;
+  display: none;
+  text-align: center;
+}
+
+.contact-in {
+  display: block;
+  animation-name: contact-in;
+}
+
+.contact-out {
+  display: block;
+  animation-name: contact-out;
+}
+
+.contact-background {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.d-none {
+    display: none;
+}
+
+@keyframes contact-in {
+
+  0% {
+    left: 100vw;
+  }
+
+  100% {
+    left: 80vw;
+  }
+}
+
+@keyframes contact-out {
+
+  0% {
+    left: 80vw;
+  }
+
+  100% {
+    left: 100vw;
+  }
+}

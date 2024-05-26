@@ -14,6 +14,8 @@ import { AsyncPipe, NgIf } from '@angular/common';
 })
 export class HotelDetailsComponent {
   hotel$: Observable<Hotel>;
+  contactOpened = false;
+  touched = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private service: HotelsService) {}
 
@@ -23,4 +25,15 @@ export class HotelDetailsComponent {
         this.service.getHotel(params.get('id')!)
     ));
   }
+
+  openContactInfo() {
+    this.touched = true;
+    this.contactOpened = true;
+  }
+
+  closeContactInfo() {
+    this.touched = true;
+    this.contactOpened = false;
+  }
+
 }
