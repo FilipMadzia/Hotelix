@@ -1,0 +1,15 @@
+header {
+  width: 100vw;
+  height: 10vh;
+  background-color: #3b4151;
+  font-size: 4vh;
+  padding: 1vw;
+  padding-left: 3vw;
+  color: white;
+  position: fixed;
+  top: 0;
+}
+
+  header span {
+    cursor: pointer;
+  }
