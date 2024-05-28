@@ -12,16 +12,6 @@
     </ContentPage.Resources>
 
 	<StackLayout>
-		<ListView ItemsSource="{Binding Cities}">
-			<ListView.ItemTemplate>
-				<DataTemplate>
-					<ViewCell>
-						<Button Text="{Binding Name}" />
-					</ViewCell>
-				</DataTemplate>
-			</ListView.ItemTemplate>
-		</ListView>
-
 		<ListView ItemsSource="{Binding Hotels}" HasUnevenRows="True" RowHeight="100" ItemSelected="ListView_ItemSelected">
 			<ListView.ItemTemplate>
 				<DataTemplate>
