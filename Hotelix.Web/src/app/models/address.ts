@@ -1,6 +1,6 @@
 import { City } from "./city";
 
-export class Address {
+export interface Address {
     id: number;
     street: string;
     houseNumber: number;

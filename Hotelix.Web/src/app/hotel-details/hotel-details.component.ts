@@ -13,7 +13,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
   styleUrl: './hotel-details.component.css'
 })
 export class HotelDetailsComponent {
-  hotel$: Observable<Hotel>;
+  hotel$: Observable<Hotel> | undefined;
   contactOpened = false;
   touched = false;
 

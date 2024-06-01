@@ -15,7 +15,7 @@ export class HotelsService {
 
   getHotels(): Observable<Hotel[]> {
     return this.http
-      .get<Hotel[]>(this.apiUrl + '/Hotels')
+      .get<Hotel[]>(this.apiUrl + '/Hotels', { headers: this.httpOptions })
       .pipe(
         retry(1),
         catchError(this.handleError),
@@ -29,9 +29,17 @@ export class HotelsService {
   }
 
   getHotel(id: number | string): Observable<Hotel> {
-    return this.getHotels().pipe(
-      map((hotels: Hotel[]) => hotels.find(hotel => hotel.id === +id))
-    );
+    return this.http
+      .get<Hotel>(this.apiUrl + '/Hotels/' + id, { headers: this.httpOptions })
+      .pipe(
+        retry(1),
+        catchError(this.handleError),
+        map((hotel: Hotel) =>
+          {
+            hotel.coverImage = this.coverImagesUrl + hotel.coverImage;
+
+            return hotel;
+          }));
   }
 
   handleError(error: any) {

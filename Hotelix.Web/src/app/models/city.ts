@@ -1,4 +1,4 @@
-export class City {
+export interface City {
     id: number;
     name: string;
 }

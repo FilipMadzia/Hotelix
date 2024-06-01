@@ -1,7 +1,7 @@
 import { Address } from "./address";
 import { Contact } from "./contact";
 
-export class Hotel {
+export interface Hotel {
     id: number;
     name: string;
     description: string;
