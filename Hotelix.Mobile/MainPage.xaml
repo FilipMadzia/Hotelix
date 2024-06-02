@@ -11,46 +11,58 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-	<StackLayout>
-		<ListView ItemsSource="{Binding Hotels}" HasUnevenRows="True" RowHeight="100" ItemSelected="ListView_ItemSelected">
-			<ListView.ItemTemplate>
-				<DataTemplate>
-					<ViewCell>
-						<StackLayout Orientation="Horizontal" Padding="0" BackgroundColor="#202129">
-							<Frame WidthRequest="100" HeightRequest="100" Padding="0" HasShadow="False" BorderColor="Gray" CornerRadius="0">
-								<Image Source="{Binding CoverImage}" 
+    <StackLayout>
+        <Picker x:Name="CityPicker"
+                Title="Select a city"
+                ItemsSource="{Binding Cities}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedIndexChanged="CityPicker_SelectedIndexChanged"
+                TitleColor="Gray"
+                TextColor="#bfc8c0"
+                BackgroundColor="#15161d">
+        </Picker>
+        <Button Text="Wyczyść filtry"
+                TextColor="White"
+                BackgroundColor="#3a3b41"
+                Clicked="ClearFiltersButton_Clicked" />
+        <ListView ItemsSource="{Binding Hotels}" HasUnevenRows="True" RowHeight="100" ItemSelected="ListView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="0" BackgroundColor="#202129">
+                            <Frame WidthRequest="100" HeightRequest="100" Padding="0" HasShadow="False" BorderColor="Gray" CornerRadius="0">
+                                <Image Source="{Binding CoverImage}" 
                                Aspect="AspectFill" 
                                WidthRequest="100" 
                                HeightRequest="100" />
-							</Frame>
-							<StackLayout HorizontalOptions="StartAndExpand"
+                            </Frame>
+                            <StackLayout HorizontalOptions="StartAndExpand"
                                  VerticalOptions="Center" 
                                  Margin="20,0">
-								<StackLayout Orientation="Horizontal">
-									<Label Text="{Binding Name}" 
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Name}" 
                                    FontAttributes="Bold" 
                                    FontSize="Medium"
                                    LineBreakMode="TailTruncation"
                                    MaxLines="1"
                                    WidthRequest="150"/>
-									<Label Text="{Binding PricePerNight, StringFormat='{0} zł/noc'}" 
+                                    <Label Text="{Binding PricePerNight, StringFormat='{0} zł/noc'}" 
                                    FontAttributes="Bold" 
                                    FontSize="14" 
                                    Margin="10,0,0,0"
                                    HorizontalTextAlignment="Center"
                                     HorizontalOptions="End"
                                    />
-								</StackLayout>
-								<Label Text="{Binding Description}" 
+                                </StackLayout>
+                                <Label Text="{Binding Description}" 
                                LineBreakMode="TailTruncation" 
                                MaxLines="2" 
                                FontSize="Small"/>
-							</StackLayout>
-						</StackLayout>
-					</ViewCell>
-				</DataTemplate>
-			</ListView.ItemTemplate>
-		</ListView>
-	</StackLayout>
-
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

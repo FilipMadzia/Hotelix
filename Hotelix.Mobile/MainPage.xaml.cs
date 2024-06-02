@@ -1,29 +1,62 @@
 ﻿using Hotelix.Mobile.Models;
 using Hotelix.Mobile.Services;
+using System.Collections.ObjectModel;
 
-namespace Hotelix.Mobile;
-
-public partial class MainPage : ContentPage
+namespace Hotelix.Mobile
 {
-	public List<Hotel> Hotels { get; set; }
-	public List<City> Cities { get; set; }
+    public partial class MainPage : ContentPage
+    {
+        public ObservableCollection<Hotel> Hotels { get; set; }
+        private List<Hotel> AllHotels { get; set; }
+        public List<City> Cities { get; set; }
+        public MainPage(HotelsService _hotelsService, CitiesService _citiesService)
+        {
+            AllHotels = Task.Run(_hotelsService.GetHotelsAsync).Result;
+            Hotels = new ObservableCollection<Hotel>(AllHotels);
+            Cities = Task.Run(_citiesService.GetCitiesAsync).Result;
+            InitializeComponent();
+            BindingContext = this;
+        }
 
-	public MainPage(HotelsService _hotelsService, CitiesService _citiesService)
-	{
-		Hotels = Task.Run(_hotelsService.GetHotelsAsync).Result;
-		Cities = Task.Run(_citiesService.GetCitiesAsync).Result;
+        private void CityPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterHotels();
+        }
 
-		InitializeComponent();
+        private void FilterHotels()
+        {
+            var selectedCity = (City)CityPicker.SelectedItem;
+            Hotels.Clear();
 
-		BindingContext = this;
-	}
+            var filteredHotels = AllHotels.AsQueryable();
 
-	private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-	{
-		var hotel = e.SelectedItem as Hotel;
+            if (selectedCity != null)
+            {
+                filteredHotels = filteredHotels.Where(h => h.Address.City.Id == selectedCity.Id);
+            }
+            foreach (var hotel in filteredHotels.ToList())
+            {
+                Hotels.Add(hotel);
+            }
+        }
 
-		if(hotel == null) throw new Exception();
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var hotel = e.SelectedItem as Hotel;
 
-		await Navigation.PushAsync(new DetailPage(hotel));
-	}
+            if (hotel == null) return;
+
+            await Navigation.PushAsync(new DetailPage(hotel));
+        }
+        private void ClearFiltersButton_Clicked(object sender, EventArgs e)
+        {
+            CityPicker.SelectedIndex = -1;  
+            Hotels.Clear();
+
+            foreach (var hotel in AllHotels)
+            {
+                Hotels.Add(hotel);
+            }
+        }
+    }
 }
