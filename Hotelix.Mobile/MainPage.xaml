@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Hotelix.Mobile.MainPage"
              BackgroundColor="#15161d">
-	
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Label">
@@ -13,7 +13,7 @@
 
     <StackLayout>
         <Picker x:Name="CityPicker"
-                Title="Select a city"
+                Title="Wybierz miasto"
                 ItemsSource="{Binding Cities}"
                 ItemDisplayBinding="{Binding Name}"
                 SelectedIndexChanged="CityPicker_SelectedIndexChanged"
@@ -21,6 +21,23 @@
                 TextColor="#bfc8c0"
                 BackgroundColor="#15161d">
         </Picker>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Min Price:" TextColor="White" VerticalOptions="Center" />
+            <Slider x:Name="MinPriceSlider" 
+                    ValueChanged="OnPriceSliderValueChanged" 
+                    VerticalOptions="Center"
+                    WidthRequest="200"/>
+            <Label x:Name="MinPriceLabel" Text="0" TextColor="White" VerticalOptions="Center" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Max Price:" TextColor="White" VerticalOptions="Center" />
+            <Slider x:Name="MaxPriceSlider" 
+                    ValueChanged="OnPriceSliderValueChanged" 
+                    VerticalOptions="Center"
+                    WidthRequest="200"/>
+            <Label x:Name="MaxPriceLabel" Text="1000" TextColor="White" VerticalOptions="Center" />
+        </StackLayout>
         <Button Text="Wyczyść filtry"
                 TextColor="White"
                 BackgroundColor="#3a3b41"

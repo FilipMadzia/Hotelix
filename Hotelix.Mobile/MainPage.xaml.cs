@@ -1,7 +1,6 @@
 ﻿using Hotelix.Mobile.Models;
 using Hotelix.Mobile.Services;
 using System.Collections.ObjectModel;
-
 namespace Hotelix.Mobile
 {
     public partial class MainPage : ContentPage
@@ -16,6 +15,20 @@ namespace Hotelix.Mobile
             Cities = Task.Run(_citiesService.GetCitiesAsync).Result;
             InitializeComponent();
             BindingContext = this;
+
+            if (AllHotels.Any())
+            {
+                double minPrice = AllHotels.Min(h => (double)h.PricePerNight);
+                double maxPrice = AllHotels.Max(h => (double)h.PricePerNight);
+                MinPriceSlider.Minimum = minPrice;
+                MinPriceSlider.Maximum = maxPrice;
+                MaxPriceSlider.Minimum = minPrice;
+                MaxPriceSlider.Maximum = maxPrice;
+                MinPriceSlider.Value = minPrice;
+                MaxPriceSlider.Value = maxPrice;
+                MinPriceLabel.Text = minPrice.ToString("0");
+                MaxPriceLabel.Text = maxPrice.ToString("0");
+            }
         }
 
         private void CityPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -23,9 +36,24 @@ namespace Hotelix.Mobile
             FilterHotels();
         }
 
+        private void OnPriceSliderValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            if (sender == MinPriceSlider)
+            {
+                MinPriceLabel.Text = MinPriceSlider.Value.ToString("0");
+            }
+            else if (sender == MaxPriceSlider)
+            {
+                MaxPriceLabel.Text = MaxPriceSlider.Value.ToString("0");
+            }
+
+            FilterHotels();
+        }
         private void FilterHotels()
         {
             var selectedCity = (City)CityPicker.SelectedItem;
+            double minPrice = MinPriceSlider.Value;
+            double maxPrice = MaxPriceSlider.Value;
             Hotels.Clear();
 
             var filteredHotels = AllHotels.AsQueryable();
@@ -34,6 +62,9 @@ namespace Hotelix.Mobile
             {
                 filteredHotels = filteredHotels.Where(h => h.Address.City.Id == selectedCity.Id);
             }
+
+            filteredHotels = filteredHotels.Where(h => (double)h.PricePerNight >= minPrice && (double)h.PricePerNight <= maxPrice);
+        
             foreach (var hotel in filteredHotels.ToList())
             {
                 Hotels.Add(hotel);
@@ -48,9 +79,14 @@ namespace Hotelix.Mobile
 
             await Navigation.PushAsync(new DetailPage(hotel));
         }
+
         private void ClearFiltersButton_Clicked(object sender, EventArgs e)
         {
-            CityPicker.SelectedIndex = -1;  
+            CityPicker.SelectedIndex = -1;
+            MinPriceSlider.Value = MinPriceSlider.Minimum;
+            MaxPriceSlider.Value = MaxPriceSlider.Maximum;
+            MinPriceLabel.Text = MinPriceSlider.Minimum.ToString("0");
+            MaxPriceLabel.Text = MaxPriceSlider.Maximum.ToString("0");
             Hotels.Clear();
 
             foreach (var hotel in AllHotels)
