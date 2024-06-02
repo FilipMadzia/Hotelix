@@ -49,6 +49,10 @@ namespace Hotelix.Mobile
 
             FilterHotels();
         }
+        private void OnSwitchToggled(object sender, ToggledEventArgs e)
+        {
+            FilterHotels();
+        }
         private void FilterHotels()
         {
             var selectedCity = (City)CityPicker.SelectedItem;
@@ -64,13 +68,16 @@ namespace Hotelix.Mobile
             }
 
             filteredHotels = filteredHotels.Where(h => (double)h.PricePerNight >= minPrice && (double)h.PricePerNight <= maxPrice);
-        
+            filteredHotels = filteredHotels.Where(h =>
+             (!InternetSwitch.IsToggled || h.HasInternet) &&
+             (!TelevisionSwitch.IsToggled || h.HasTelevision) &&
+             (!ParkingSwitch.IsToggled || h.HasTelevision) &&
+             (!CafeteriaSwitch.IsToggled || h.HasCafeteria));
             foreach (var hotel in filteredHotels.ToList())
             {
                 Hotels.Add(hotel);
             }
         }
-
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var hotel = e.SelectedItem as Hotel;
@@ -87,6 +94,10 @@ namespace Hotelix.Mobile
             MaxPriceSlider.Value = MaxPriceSlider.Maximum;
             MinPriceLabel.Text = MinPriceSlider.Minimum.ToString("0");
             MaxPriceLabel.Text = MaxPriceSlider.Maximum.ToString("0");
+            InternetSwitch.IsToggled = false;
+            TelevisionSwitch.IsToggled = false;
+            ParkingSwitch.IsToggled = false;
+            CafeteriaSwitch.IsToggled = false;
             Hotels.Clear();
 
             foreach (var hotel in AllHotels)
