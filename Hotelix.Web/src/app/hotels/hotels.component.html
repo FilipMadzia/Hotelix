@@ -5,7 +5,7 @@
         <img src="{{hotel.coverImage}}" class="card-img-top object-fit-cover" alt="{{hotel.name}}">
         <div class="card-body">
           <h4 class="card-title">{{hotel.name}}</h4>
-          <p class="card-text">{{hotel.pricePerNight}}zł</p>
+          <p class="card-text">{{hotel.pricePerNight}}zł za noc</p>
           <a class="btn btn-primary" [routerLink]="['/hotel-details', hotel.id]">Więcej</a>
         </div>
       </div>

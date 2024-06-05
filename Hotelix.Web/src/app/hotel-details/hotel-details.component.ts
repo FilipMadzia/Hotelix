@@ -13,27 +13,14 @@ import { AsyncPipe, NgIf } from '@angular/common';
   styleUrl: './hotel-details.component.css'
 })
 export class HotelDetailsComponent {
-  hotel$: Observable<Hotel> | undefined;
-  contactOpened = false;
-  touched = false;
+  hotel: Observable<Hotel> | undefined;
 
   constructor(private route: ActivatedRoute, private router: Router, private service: HotelsService) {}
 
   ngOnInit() {
-    this.hotel$ = this.route.paramMap.pipe(
+    this.hotel = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
         this.service.getHotel(params.get('id')!)
     ));
   }
-
-  openContactInfo() {
-    this.touched = true;
-    this.contactOpened = true;
-  }
-
-  closeContactInfo() {
-    this.touched = true;
-    this.contactOpened = false;
-  }
-
 }
