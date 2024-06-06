@@ -1,12 +1,22 @@
 <div class="container">
-    <form>
-        <div class="mb-3 mt-3">
-            <label for="login" class="form-label">Login:</label>
-            <input type="text" class="form-control" id="login" name="login" value="{{login}}">
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Password:</label>
-            <input type="password" class="form-control" id="password" name="password" value="{{password}}">
+    <form (submit)="onSubmit()" [formGroup]="loginForm" class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <h1 class="mt-5">Zaloguj się</h1>
+            <div class="form-floating mb-3 mt-3">
+                <input type="text" class="form-control" id="login" name="login" formControlName="login" placeholder="Enter your login" required />
+                <label for="login" class="form-label">Login:</label>
+                <div class="text-danger" *ngIf="login?.invalid && (login?.dirty || login?.touched)">
+                    <div *ngIf="login?.errors?.['required']">Pole login jest wymagane</div>
+                </div>
+            </div>
+            <div class="form-floating mb-3 mt-3">
+                <input type="password" class="form-control" id="password" name="password" formControlName="password" placeholder="Enter your password" required />
+                <label for="password" class="form-label">Password:</label>
+                <div class="text-danger" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+                    <div *ngIf="password?.errors?.['required']">Pole hasło jest wymagane</div>
+                </div>
+            </div>
+            <button [disabled]="loginForm.invalid" class="btn btn-primary w-100" type="submit">Zaloguj się</button>
         </div>
     </form>
 </div>

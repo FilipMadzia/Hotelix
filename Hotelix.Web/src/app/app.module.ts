@@ -8,6 +8,7 @@ import { HotelsComponent } from './hotels/hotels.component';
 import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     HotelsComponent,
     HotelDetailsComponent,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

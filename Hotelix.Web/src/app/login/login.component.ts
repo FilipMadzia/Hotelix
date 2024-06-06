@@ -7,18 +7,24 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  loginForm = this.formBuilder.group({
-    login: ['test', Validators.required],
-    password: ['test', Validators.required]
-  });
+  loginForm;
 
   get login() {
-    return this.loginForm.get('login')?.value;
+    return this.loginForm.get('login');
   }
 
   get password() {
-    return this.loginForm.get('password')?.value;
+    return this.loginForm.get('password');
   }
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {
+    this.loginForm = this.formBuilder.group({
+      login: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  onSubmit(): void {
+    console.log(this.login?.value);
+  }
 }
