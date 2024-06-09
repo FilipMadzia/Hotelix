@@ -7,15 +7,15 @@ import { Observable, catchError, map, retry, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class HotelsService {
-  apiUrl = 'http://localhost:5000/api';
+  baseUrl = 'http://localhost:5000/api';
   coverImagesUrl = 'http://localhost:5000/Images/Covers/';
-  httpOptions = new HttpHeaders({'Content-Type': 'application/json'});
+  headers = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
 
   getHotels(): Observable<Hotel[]> {
     return this.http
-      .get<Hotel[]>(this.apiUrl + '/Hotels', { headers: this.httpOptions })
+      .get<Hotel[]>(this.baseUrl + '/Hotels', { headers: this.headers })
       .pipe(
         retry(1),
         catchError(this.handleError),
@@ -30,16 +30,16 @@ export class HotelsService {
 
   getHotel(id: number | string): Observable<Hotel> {
     return this.http
-      .get<Hotel>(this.apiUrl + '/Hotels/' + id, { headers: this.httpOptions })
+      .get<Hotel>(this.baseUrl + '/Hotels/' + id, { headers: this.headers })
       .pipe(
         retry(1),
         catchError(this.handleError),
-        map((hotel: Hotel) =>
-          {
-            hotel.coverImage = this.coverImagesUrl + hotel.coverImage;
+        map((hotel: Hotel) => {
+          hotel.coverImage = this.coverImagesUrl + hotel.coverImage;
 
-            return hotel;
-          }));
+          return hotel;
+        })
+      );
   }
 
   handleError(error: any) {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,7 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  loginForm;
+  loginForm: FormGroup;
 
   get login() {
     return this.loginForm.get('login');
@@ -17,14 +18,16 @@ export class LoginComponent {
     return this.loginForm.get('password');
   }
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private service: AuthService) {
     this.loginForm = this.formBuilder.group({
       login: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
-  onSubmit(): void {
-    console.log(this.login?.value);
+  onSubmit(): void {    
+    this.service.login(this.login?.value, this.password?.value).subscribe((response: string) => 
+      console.log(response)
+    );
   }
 }
