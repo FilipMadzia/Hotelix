@@ -2,20 +2,24 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Hotel } from '../models/hotel';
 import { Observable, catchError, map, retry, throwError } from 'rxjs';
+import { AppConfigService } from '../app-config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HotelsService {
-  baseUrl = 'http://localhost:5000/api';
-  coverImagesUrl = 'http://localhost:5000/Images/Covers/';
+  baseUrl: string;
+  coverImagesUrl: string;
   headers = new HttpHeaders({'Content-Type': 'application/json'});
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private config: AppConfigService) {
+    this.baseUrl = this.config.apiBaseUrl;
+    this.coverImagesUrl = this.config.coverImagesBaseUrl;
+  }
 
   getHotels(): Observable<Hotel[]> {
     return this.http
-      .get<Hotel[]>(this.baseUrl + '/Hotels', { headers: this.headers })
+      .get<Hotel[]>(this.baseUrl + 'Hotels', { headers: this.headers })
       .pipe(
         retry(1),
         catchError(this.handleError),
@@ -30,7 +34,7 @@ export class HotelsService {
 
   getHotel(id: number | string): Observable<Hotel> {
     return this.http
-      .get<Hotel>(this.baseUrl + '/Hotels/' + id, { headers: this.headers })
+      .get<Hotel>(this.baseUrl + 'Hotels/' + id, { headers: this.headers })
       .pipe(
         retry(1),
         catchError(this.handleError),
