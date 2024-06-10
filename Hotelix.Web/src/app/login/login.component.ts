@@ -25,9 +25,14 @@ export class LoginComponent {
     });
   }
 
-  onSubmit(): void {    
-    this.service.login(this.login?.value, this.password?.value).subscribe((response: string) => 
-      console.log(response)
-    );
+  onSubmit(): void {
+    this.service.login(this.login?.value, this.password?.value).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.error(error.status);
+      },
+    });
   }
 }

@@ -10,7 +10,7 @@ import { AppConfigService } from '../app-config.service';
 export class HotelsService {
   baseUrl: string;
   coverImagesUrl: string;
-  headers = new HttpHeaders({'Content-Type': 'application/json'});
+  headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient, private config: AppConfigService) {
     this.baseUrl = this.config.apiBaseUrl;
@@ -23,13 +23,14 @@ export class HotelsService {
       .pipe(
         retry(1),
         catchError(this.handleError),
-        map((hotels: Hotel[]) => 
-          hotels.map(hotel => {
+        map((hotels: Hotel[]) =>
+          hotels.map((hotel) => {
             hotel.coverImage = this.coverImagesUrl + hotel.coverImage;
 
             return hotel;
           })
-        ));
+        )
+      );
   }
 
   getHotel(id: number | string): Observable<Hotel> {
@@ -49,15 +50,14 @@ export class HotelsService {
   handleError(error: any) {
     let errorMessage = '';
 
-    if(error.error instanceof ErrorEvent) {
+    if (error.error instanceof ErrorEvent) {
       // Get client-side error
       errorMessage = error.error.message;
-    }
-    else {
+    } else {
       // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    
+
     window.alert(errorMessage);
 
     return throwError(() => {
