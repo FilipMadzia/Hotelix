@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  error401: boolean = false;
 
   get login() {
     return this.loginForm.get('login');
@@ -18,7 +20,7 @@ export class LoginComponent {
     return this.loginForm.get('password');
   }
 
-  constructor(private formBuilder: FormBuilder, private service: AuthService) {
+  constructor(private formBuilder: FormBuilder, private service: AuthService, private cookieService: CookieService) {
     this.loginForm = this.formBuilder.group({
       login: ['', Validators.required],
       password: ['', Validators.required]
@@ -28,10 +30,11 @@ export class LoginComponent {
   onSubmit(): void {
     this.service.login(this.login?.value, this.password?.value).subscribe({
       next: (response) => {
-        console.log(response);
+        this.error401 = false;
+        this.cookieService.set('token', response);
       },
       error: (error) => {
-        console.error(error.status);
+        this.error401 = true;
       },
     });
   }
