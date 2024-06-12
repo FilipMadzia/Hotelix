@@ -15,4 +15,8 @@ export class AppConfigService {
   get coverImagesBaseUrl(): string {
     return this.config.coverImagesBaseUrl;
   }
+
+  get tokenExpireTime(): number {
+    return this.config.tokenExpireTime;
+  }
 }

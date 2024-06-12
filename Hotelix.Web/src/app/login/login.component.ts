@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { CustomCookieService } from '../services/custom-cookie.service';
 
 @Component({
   selector: 'app-login',
@@ -21,8 +21,8 @@ export class LoginComponent {
     return this.loginForm.get('password');
   }
 
-  constructor(private formBuilder: FormBuilder, private service: AuthService, private cookieService: CookieService, private router: Router) {
-    if(this.cookieService.get('token') != null) {
+  constructor(private formBuilder: FormBuilder, private service: AuthService, private cookieService: CustomCookieService, private router: Router) {
+    if(this.cookieService.token != '') {
       this.router.navigate(['/admin-panel']);
     }
 
@@ -37,15 +37,14 @@ export class LoginComponent {
       next: (response) => {
         this.error401 = false;
 
-        const expireDate: Date = new Date();
-        expireDate.setDate(expireDate.getDate() + 3);
-
-        this.cookieService.set('token', response, expireDate);
+        this.cookieService.token = response;
 
         this.router.navigate(['/admin-panel']);
       },
       error: (error) => {
-        this.error401 = true;
+        if(error.status === 401) {
+          this.error401 = true;
+        }
       },
     });
   }
