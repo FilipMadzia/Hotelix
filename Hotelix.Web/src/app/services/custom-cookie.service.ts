@@ -8,8 +8,13 @@ import { AppConfigService } from '../app-config.service';
 export class CustomCookieService {
   constructor(private cookieService: CookieService, private config: AppConfigService) { }
 
-  get token(): string {
-    return this.cookieService.get('token');
+  get token(): string | null {
+    var token = this.cookieService.get('token');
+
+    if(token == '')
+      return null;
+    else
+      return token;
   }
 
   set token(value: string) {

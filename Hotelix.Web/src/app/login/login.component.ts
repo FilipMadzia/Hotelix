@@ -22,7 +22,7 @@ export class LoginComponent {
   }
 
   constructor(private formBuilder: FormBuilder, private service: AuthService, private cookieService: CustomCookieService, private router: Router) {
-    if(this.cookieService.token != '') {
+    if(this.cookieService.token != null) {
       this.router.navigate(['/admin-panel']);
     }
 
@@ -35,8 +35,6 @@ export class LoginComponent {
   onSubmit(): void {
     this.service.login(this.login?.value, this.password?.value).subscribe({
       next: (response) => {
-        this.error401 = false;
-
         this.cookieService.token = response;
 
         this.router.navigate(['/admin-panel']);
@@ -44,6 +42,9 @@ export class LoginComponent {
       error: (error) => {
         if(error.status === 401) {
           this.error401 = true;
+        }
+        else {
+          throw new Error(`${error.status} - ${error.message}`);
         }
       },
     });
