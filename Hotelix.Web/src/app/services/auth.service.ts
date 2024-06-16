@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppConfigService } from './app-config.service';
 
@@ -9,6 +9,7 @@ import { AppConfigService } from './app-config.service';
 export class AuthService {
   apiBaseUrl: string;
   headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  loggedIn: EventEmitter<any> = new EventEmitter();
 
   constructor(private http: HttpClient, private config: AppConfigService) {
     this.apiBaseUrl = config.apiBaseUrl;
@@ -20,6 +21,6 @@ export class AuthService {
         this.apiBaseUrl + 'Auth',
         { username, password },
         { headers: this.headers, responseType: 'text' },
-      )
+      );
   }
 }

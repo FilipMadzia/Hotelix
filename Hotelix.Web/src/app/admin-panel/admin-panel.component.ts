@@ -8,13 +8,14 @@ import { City } from '../models/city';
 import { NgFor } from '@angular/common';
 import { Hotel } from '../models/hotel';
 import { HotelsService } from '../services/hotels.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   standalone: true,
   selector: 'app-admin-panel',
   templateUrl: './admin-panel.component.html',
   styleUrl: './admin-panel.component.css',
-  imports: [NgFor]
+  imports: [NgFor],
 })
 export class AdminPanelComponent {
   decodedToken: Token;
@@ -27,8 +28,10 @@ export class AdminPanelComponent {
     private cookieService: CustomCookieService,
     private router: Router,
     private citiesService: CitiesService,
-    private hotelsService: HotelsService) {
-    if(this.cookieService.token == null) {
+    private hotelsService: HotelsService,
+    private appComponent: AppComponent
+  ) {
+    if (this.cookieService.token == null) {
       this.router.navigate(['/login']);
     }
 
@@ -37,11 +40,17 @@ export class AdminPanelComponent {
   }
 
   ngOnInit() {
-    this.citiesService.getCities().subscribe((data: City[]) =>
-      this.cities = data
-    );
-    this.hotelsService.getHotels().subscribe((data: Hotel[]) =>
-      this.hotels = data
-    );
+    this.citiesService
+      .getCities()
+      .subscribe((data: City[]) => (this.cities = data));
+    this.hotelsService
+      .getHotels()
+      .subscribe((data: Hotel[]) => (this.hotels = data));
+  }
+
+  logout(): void {
+    this.cookieService.token = '';
+    this.appComponent.onLogout();
+    this.router.navigate(['/login']);
   }
 }
