@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Hotel } from '../models/hotel';
 import { Observable, catchError, map, retry, throwError } from 'rxjs';
-import { AppConfigService } from '../app-config.service';
+import { AppConfigService } from './app-config.service';
 
 @Injectable({
   providedIn: 'root'
