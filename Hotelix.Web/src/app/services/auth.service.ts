@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { AppConfigService } from './app-config.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   apiBaseUrl: string;
@@ -16,11 +16,10 @@ export class AuthService {
   }
 
   login(username: string, password: string): Observable<string> {
-    return this.http
-      .post(
-        this.apiBaseUrl + 'Auth',
-        { username, password },
-        { headers: this.headers, responseType: 'text' },
-      );
+    return this.http.post(
+      this.apiBaseUrl + 'Auth',
+      { username, password },
+      { headers: this.headers, responseType: 'text' }
+    );
   }
 }

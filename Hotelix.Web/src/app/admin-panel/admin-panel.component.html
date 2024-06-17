@@ -36,6 +36,9 @@
                     <tr *ngFor="let city of cities">
                         <td>{{city.id}}</td>
                         <td>{{city.name}}</td>
+                        <td>
+                            <button type="button" class="btn btn-danger float-end" (click)="deleteCity(city.id)">Usuń</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
