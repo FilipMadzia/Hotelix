@@ -18,7 +18,7 @@
                         <td>{{hotel.name}}</td>
                         <td>{{hotel.pricePerNight}}zł</td>
                         <td>
-                            <button type="button" class="btn btn-danger float-end">Usuń</button>
+                            <button type="button" class="btn btn-danger float-end" (click)="deleteHotel(hotel.id)">Usuń</button>
                         </td>
                     </tr>
                 </tbody>

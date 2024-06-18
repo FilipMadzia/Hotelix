@@ -56,13 +56,15 @@ export class AdminPanelComponent {
   }
 
   deleteCity(id: number | string): void {
-    this.citiesService
-      .deleteCity(id)
-      .subscribe(
-        () => {
-          this.cities = this.cities.filter((city) => city.id != id);
-          this.hotels = this.hotels.filter((hotel) => hotel.address.city.id != id);
-        }
-      );
+    this.citiesService.deleteCity(id).subscribe(() => {
+      this.cities = this.cities.filter((city) => city.id != id);
+      this.hotels = this.hotels.filter((hotel) => hotel.address.city.id != id);
+    });
+  }
+
+  deleteHotel(id: number | string): void {
+    this.hotelsService.deleteHotel(id).subscribe(() => {
+      this.hotels = this.hotels.filter((hotel) => hotel.id != id);
+    });
   }
 }
