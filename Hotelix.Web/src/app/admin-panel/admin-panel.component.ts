@@ -9,6 +9,7 @@ import { NgFor } from '@angular/common';
 import { Hotel } from '../models/hotel';
 import { HotelsService } from '../services/hotels.service';
 import { AppComponent } from '../app.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   standalone: true,
@@ -52,5 +53,18 @@ export class AdminPanelComponent {
     this.cookieService.token = '';
     this.appComponent.onLogout();
     this.router.navigate(['/login']);
+  }
+
+  deleteCity(id: number | string): void {
+    this.citiesService.deleteCity(id).subscribe(() => {
+      this.cities = this.cities.filter((city) => city.id != id);
+      this.hotels = this.hotels.filter((hotel) => hotel.address.city.id != id);
+    });
+  }
+
+  deleteHotel(id: number | string): void {
+    this.hotelsService.deleteHotel(id).subscribe(() => {
+      this.hotels = this.hotels.filter((hotel) => hotel.id != id);
+    });
   }
 }
