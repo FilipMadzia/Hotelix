@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { AppConfigService } from '../app-config.service';
+import { AppConfigService } from './app-config.service';
 
 @Injectable({
   providedIn: 'root'
