@@ -232,7 +232,7 @@ public class HotelsController(
 	}
 
 	// DELETE: api/Hotels/1
-	[HttpDelete]
+	[HttpDelete("{id}")]
 	[SwaggerResponse(204)]
 	[SwaggerResponse(401)]
 	[SwaggerResponse(404)]
