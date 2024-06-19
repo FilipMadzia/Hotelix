@@ -25,6 +25,20 @@ Hotelix is a school project made primarily by myself, it's a simulation of havin
 
 > Gallery
 
+Web application
+
+[![Zrzut-ekranu-2024-06-19-130004.png](https://i.postimg.cc/TPYgcyXz/Zrzut-ekranu-2024-06-19-130004.png)](https://i.postimg.cc/TPYgcyXz)
+
+[![Zrzut-ekranu-2024-06-19-130020.png](https://i.postimg.cc/zvWgfKng/Zrzut-ekranu-2024-06-19-130020.png)](https://i.postimg.cc/zvWgfKng)
+
+[![Zrzut-ekranu-2024-06-19-130030.png](https://i.postimg.cc/Y9TFkbm7/Zrzut-ekranu-2024-06-19-130030.png)](https://i.postimg.cc/Y9TFkbm7)
+
+[![Zrzut-ekranu-2024-06-19-130052.png](https://i.postimg.cc/FKWcC9r7/Zrzut-ekranu-2024-06-19-130052.png)](https://i.postimg.cc/FKWcC9r7)
+
+[![Zrzut-ekranu-2024-06-19-130059.png](https://i.postimg.cc/Y9vFJJ08/Zrzut-ekranu-2024-06-19-130059.png)](https://i.postimg.cc/Y9vFJJ08)
+
+[![Zrzut-ekranu-2024-06-19-130112.png](https://i.postimg.cc/8krWwQqz/Zrzut-ekranu-2024-06-19-130112.png)](https://i.postimg.cc/8krWwQqz)
+
 <details><summary>API</summary>
 
 [![Zrzut-ekranu-2024-05-28-192353.png](https://i.postimg.cc/MKTjxgFK/Zrzut-ekranu-2024-05-28-192353.png)](https://postimg.cc/MKTjxgFK)
@@ -46,15 +60,5 @@ Hotelix is a school project made primarily by myself, it's a simulation of havin
 [![Zrzut-ekranu-2024-05-28-194122.png](https://i.postimg.cc/hGJkB49b/Zrzut-ekranu-2024-05-28-194122.png)](https://i.postimg.cc/hGJkB49b)
 
 [![Zrzut-ekranu-2024-05-28-194139.png](https://i.postimg.cc/y8pMt3S8/Zrzut-ekranu-2024-05-28-194139.png)](https://i.postimg.cc/y8pMt3S8)
-
-</details>
-
-<details><summary>Web application</summary>
-
-[![Zrzut-ekranu-2024-05-28-194450.png](https://i.postimg.cc/zGvMCDPZ/Zrzut-ekranu-2024-05-28-194450.png)](https://postimg.cc/zGvMCDPZ)
-
-[![Zrzut-ekranu-2024-05-28-194507.png](https://i.postimg.cc/wBsGrfpw/Zrzut-ekranu-2024-05-28-194507.png)](https://i.postimg.cc/wBsGrfpw)
-
-[![Zrzut-ekranu-2024-05-28-194530.png](https://i.postimg.cc/9QkkJ3v4/Zrzut-ekranu-2024-05-28-194530.png)](https://i.postimg.cc/9QkkJ3v4)
 
 </details>
