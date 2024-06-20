@@ -55,11 +55,19 @@ export class AdminPanelComponent {
     this.router.navigate(['/login']);
   }
 
+  addCity(): void {
+    console.log('add city');
+  }
+
   deleteCity(id: number | string): void {
     this.citiesService.deleteCity(id).subscribe(() => {
       this.cities = this.cities.filter((city) => city.id != id);
       this.hotels = this.hotels.filter((hotel) => hotel.address.city.id != id);
     });
+  }
+
+  addHotel(): void {
+    console.log('add hotel');
   }
 
   deleteHotel(id: number | string): void {

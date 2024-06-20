@@ -7,9 +7,10 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <td>Id</td>
-                        <td>Nazwa</td>
-                        <td>Cena za noc</td>
+                        <th>Id</th>
+                        <th>Nazwa</th>
+                        <th>Cena za noc</th>
+                        <td><button type="button" class="btn btn-primary float-end" (click)="addHotel()" data-bs-toggle="modal" data-bs-target="#addHotelModal">Dodaj</button></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,8 +29,9 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <td>Id</td>
-                        <td>Nazwa</td>
+                        <th>Id</th>
+                        <th>Nazwa</th>
+                        <td><button type="button" class="btn btn-primary float-end" (click)="addCity()" data-bs-toggle="modal" data-bs-target="#addCityModal">Dodaj</button></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,3 +47,49 @@
         </div>
     </div>
 </div>
+
+<!-- Add city modal -->
+<div class="modal fade" id="addCityModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Dodaj miasto</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal">‎ </button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          Dodaj miasto
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Anuluj</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add hotel modal -->
+<div class="modal fade" id="addHotelModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Dodaj hotel</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal">‎ </button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          Dodaj hotel
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Anuluj</button>
+        </div>
+      </div>
+    </div>
+  </div>
