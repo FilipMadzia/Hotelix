@@ -26,7 +26,7 @@
         </tbody>
       </table>
     </div>
-    
+
     <!-- Table of cities -->
     <div class="col-lg-6 col-md-6 col-sm-12">
       <table class="table table-striped">
@@ -56,15 +56,14 @@
 <div class="modal fade" id="addCityModal">
   <div class="modal-dialog">
     <div class="modal-content">
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Dodaj miasto</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal">‎ </button>
-      </div>
+      <form (submit)="addCity()" [formGroup]="addCityForm">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Dodaj miasto</h4>
+        </div>
 
-      <!-- Modal body -->
-      <div class="modal-body">
-        <form [formGroup]="addCityForm">
+        <!-- Modal body -->
+        <div class="modal-body">
           <div class="form-floating">
             <input type="text" class="form-control" id="cityName" name="cityName" formControlName="cityName"
               placeholder="Enter your city name" required />
@@ -73,14 +72,14 @@
               <div *ngIf="cityName?.errors?.['required']">Pole nazwa miasta jest wymagane</div>
             </div>
           </div>
-        </form>
-      </div>
+        </div>
 
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button [disabled]="addCityForm.invalid" class="btn btn-primary" (click)="addCity()">Dodaj</button>
-        <button type="button" #closeButton class="btn btn-danger" data-bs-dismiss="modal">Anuluj</button>
-      </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" [disabled]="addCityForm.invalid" class="btn btn-primary">Dodaj</button>
+          <button type="button" #closeButton class="btn btn-danger" data-bs-dismiss="modal">Anuluj</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -92,7 +91,6 @@
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Dodaj hotel</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal">‎ </button>
       </div>
 
       <!-- Modal body -->

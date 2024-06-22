@@ -6,7 +6,7 @@
                 <strong>Nieprawidłowy login lub hasło</strong>
             </div>
             <div class="form-floating mb-3 mt-3">
-                <input type="text" class="form-control" id="login" name="login" formControlName="login" placeholder="Enter your login" required />
+                <input type="text" class="form-control" id="login" name="login" formControlName="login" placeholder="Enter your login" required autofocus />
                 <label for="login" class="form-label">Login:</label>
                 <div class="text-danger" *ngIf="login?.invalid && (login?.dirty || login?.touched)">
                     <div *ngIf="login?.errors?.['required']">Pole login jest wymagane</div>
