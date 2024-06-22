@@ -11,12 +11,14 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AddCityComponent } from './add-city/add-city.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     LoginComponent,
+    AddCityComponent,
     AdminPanelComponent
   ],
   imports: [

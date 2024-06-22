@@ -8,7 +8,6 @@ import { City } from '../models/city';
 import { Hotel } from '../models/hotel';
 import { HotelsService } from '../services/hotels.service';
 import { AppComponent } from '../app.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-panel',
@@ -18,8 +17,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AdminPanelComponent {
   decodedToken: Token;
   username: string;
-  addCityForm: FormGroup;
-  @ViewChild('closeButton') closeButton?: ElementRef;
 
   cities: City[] = [];
   hotels: Hotel[] = [];
@@ -29,8 +26,7 @@ export class AdminPanelComponent {
     private router: Router,
     private citiesService: CitiesService,
     private hotelsService: HotelsService,
-    private appComponent: AppComponent,
-    private formBuilder: FormBuilder
+    private appComponent: AppComponent
   ) {
     if (this.cookieService.token == null) {
       this.router.navigate(['/login']);
@@ -38,15 +34,6 @@ export class AdminPanelComponent {
 
     this.decodedToken = jwtDecode(this.cookieService.token ?? '');
     this.username = this.decodedToken.sub;
-
-    // add city form
-    this.addCityForm = this.formBuilder.group({
-      cityName: ['', Validators.required],
-    });
-  }
-
-  get cityName() {
-    return this.addCityForm.get('cityName');
   }
 
   ngOnInit() {
@@ -64,28 +51,11 @@ export class AdminPanelComponent {
     this.router.navigate(['/login']);
   }
 
-  addCity(): void {
-    this.citiesService.addCity(this.cityName?.value).subscribe(() => {
-      var newCity: City = {
-        id: this.cities[this.cities.length - 1].id + 1,
-        name: this.cityName?.value
-      };
-
-      this.cities.push(newCity);
-    });
-
-    this.closeButton?.nativeElement.click();
-  }
-
   deleteCity(id: number | string): void {
     this.citiesService.deleteCity(id).subscribe(() => {
       this.cities = this.cities.filter((city) => city.id != id);
       this.hotels = this.hotels.filter((hotel) => hotel.address.city.id != id);
     });
-  }
-
-  addHotel(): void {
-    console.log('add hotel');
   }
 
   deleteHotel(id: number | string): void {
