@@ -32,6 +32,19 @@ export class CitiesService {
     });
   }
 
+  addCity(name: string): Observable<any> {
+    return this.http.post<City>(
+      this.baseUrl + 'Cities',
+      { name },
+      {
+        headers: new HttpHeaders().set(
+          'Authorization',
+          'Bearer ' + this.cookieService.token
+        ),
+      }
+    );
+  }
+
   deleteCity(id: number | string): Observable<any> {
     return this.http.delete<City>(this.baseUrl + 'Cities/' + id, {
       headers: new HttpHeaders().set(

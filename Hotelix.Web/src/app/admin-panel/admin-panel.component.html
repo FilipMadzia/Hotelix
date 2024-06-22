@@ -1,47 +1,107 @@
-
 <div class="container">
-    <h1>Witaj {{username}} <button type="button" class="btn btn-danger" (click)="logout()">Wyloguj</button></h1>
+  <h1>Witaj {{username}} <button type="button" class="btn btn-danger" (click)="logout()">Wyloguj</button></h1>
 
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <td>Id</td>
-                        <td>Nazwa</td>
-                        <td>Cena za noc</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let hotel of hotels">
-                        <td>{{hotel.id}}</td>
-                        <td>{{hotel.name}}</td>
-                        <td>{{hotel.pricePerNight}}zł</td>
-                        <td>
-                            <button type="button" class="btn btn-danger float-end" (click)="deleteHotel(hotel.id)">Usuń</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-12">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <td>Id</td>
-                        <td>Nazwa</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let city of cities">
-                        <td>{{city.id}}</td>
-                        <td>{{city.name}}</td>
-                        <td>
-                            <button type="button" class="btn btn-danger float-end" (click)="deleteCity(city.id)">Usuń</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+  <div class="row">
+    <!-- Table of hotels -->
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nazwa</th>
+            <th>Cena za noc</th>
+            <td><button type="button" class="btn btn-primary float-end" data-bs-toggle="modal"
+                data-bs-target="#addHotelModal">Dodaj</button></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hotel of hotels">
+            <td>{{hotel.id}}</td>
+            <td>{{hotel.name}}</td>
+            <td>{{hotel.pricePerNight}}zł</td>
+            <td>
+              <button type="button" class="btn btn-danger float-end" (click)="deleteHotel(hotel.id)">Usuń</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
+    <!-- Table of cities -->
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nazwa</th>
+            <td><button type="button" class="btn btn-primary float-end" data-bs-toggle="modal"
+                data-bs-target="#addCityModal">Dodaj</button></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let city of cities">
+            <td>{{city.id}}</td>
+            <td>{{city.name}}</td>
+            <td>
+              <button type="button" class="btn btn-danger float-end" (click)="deleteCity(city.id)">Usuń</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Add city modal -->
+<div class="modal fade" id="addCityModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form (submit)="addCity()" [formGroup]="addCityForm">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Dodaj miasto</h4>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="cityName" name="cityName" formControlName="cityName"
+              placeholder="Enter your city name" required />
+            <label for="login" class="form-label">Nazwa miasta:</label>
+            <div class="text-danger" *ngIf="cityName?.invalid && (cityName?.dirty || cityName?.touched)">
+              <div *ngIf="cityName?.errors?.['required']">Pole nazwa miasta jest wymagane</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" [disabled]="addCityForm.invalid" class="btn btn-primary">Dodaj</button>
+          <button type="button" #closeButton class="btn btn-danger" data-bs-dismiss="modal">Anuluj</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Add hotel modal -->
+<div class="modal fade" id="addHotelModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Dodaj hotel</h4>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Dodaj hotel
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Anuluj</button>
+      </div>
+    </div>
+  </div>
 </div>
