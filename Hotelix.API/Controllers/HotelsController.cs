@@ -158,7 +158,7 @@ public class HotelsController(
 		await _contactRepository.AddAsync(contactEntity);
 		await _contactRepository.SaveChangesAsync();
 
-		return CreatedAtAction(nameof(Get), new { hotelEntity.Id }, hotel);
+		return CreatedAtAction(nameof(Get), new { hotelEntity.Id }, new { hotelEntity.Id, hotel });
 	}
 
 	// PUT: api/Hotels/1
