@@ -8,6 +8,7 @@ import { City } from '../models/city';
 import { Hotel } from '../models/hotel';
 import { HotelsService } from '../services/hotels.service';
 import { AppComponent } from '../app.component';
+import { CityAdd } from '../models/city.add';
 
 @Component({
   selector: 'app-admin-panel',
@@ -49,6 +50,15 @@ export class AdminPanelComponent {
     this.cookieService.token = '';
     this.appComponent.onLogout();
     this.router.navigate(['/login']);
+  }
+
+  onCityAdd(data: CityAdd) {
+    var newCity: City = {
+      id: data.id,
+      name: data.city.name,
+    };
+
+    this.cities.push(newCity);
   }
 
   deleteCity(id: number | string): void {

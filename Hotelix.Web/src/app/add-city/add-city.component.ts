@@ -1,9 +1,17 @@
-import { Component, ElementRef, Injectable, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Injectable,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CitiesService } from '../services/cities.service';
+import { CityAdd } from '../models/city.add';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 @Component({
   selector: 'app-add-city',
@@ -13,7 +21,8 @@ import { CitiesService } from '../services/cities.service';
 export class AddCityComponent {
   addCityForm: FormGroup;
   @ViewChild('closeButton') closeButton?: ElementRef;
-  
+  @Output() onCityAdd = new EventEmitter<CityAdd>();
+
   get cityName() {
     return this.addCityForm.get('cityName');
   }
@@ -28,7 +37,11 @@ export class AddCityComponent {
   }
 
   addCity(): void {
-    this.citiesService.addCity(this.cityName?.value).subscribe(() => {});
+    this.citiesService
+      .addCity(this.cityName?.value)
+      .subscribe((data: CityAdd) => {
+        this.onCityAdd.emit(data);
+      });
 
     this.closeButton?.nativeElement.click();
   }
