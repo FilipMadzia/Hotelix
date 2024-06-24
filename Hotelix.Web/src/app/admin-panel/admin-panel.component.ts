@@ -61,16 +61,8 @@ export class AdminPanelComponent {
     this.cities.push(newCity);
   }
 
-  deleteCity(id: number | string): void {
-    this.citiesService.deleteCity(id).subscribe(() => {
-      this.cities = this.cities.filter((city) => city.id != id);
-      this.hotels = this.hotels.filter((hotel) => hotel.address.city.id != id);
-    });
-  }
-
-  deleteHotel(id: number | string): void {
-    this.hotelsService.deleteHotel(id).subscribe(() => {
-      this.hotels = this.hotels.filter((hotel) => hotel.id != id);
-    });
+  onCityDelete(data: City): void {
+    this.cities = this.cities.filter((city) => city.id != data.id);
+    this.hotels = this.hotels.filter((hotel) => hotel.address.city.id != data.id);
   }
 }

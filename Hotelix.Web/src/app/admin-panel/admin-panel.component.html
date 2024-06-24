@@ -20,8 +20,7 @@
 						<td>{{hotel.name}}</td>
 						<td>{{hotel.pricePerNight}}zł</td>
 						<td>
-							<button type="button" class="btn btn-danger float-end"
-								(click)="deleteHotel(hotel.id)">Usuń</button>
+							<button type="button" class="btn btn-danger float-end">Usuń</button>
 						</td>
 					</tr>
 				</tbody>
@@ -35,8 +34,10 @@
 					<tr>
 						<th>Id</th>
 						<th>Nazwa</th>
-						<td><button type="button" class="btn btn-primary float-end" data-bs-toggle="modal"
-								data-bs-target="#addCityModal">Dodaj</button></td>
+						<td>
+							<button type="button" class="btn btn-primary float-end" data-bs-toggle="modal"
+								data-bs-target="#addCityModal">Dodaj</button>
+						</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -44,8 +45,9 @@
 						<td>{{city.id}}</td>
 						<td>{{city.name}}</td>
 						<td>
-							<button type="button" class="btn btn-danger float-end"
-								(click)="deleteCity(city.id)">Usuń</button>
+							<app-delete-city [city]="city" (onCityDelete)="onCityDelete($event)"></app-delete-city>
+							<button type="button" class="btn btn-danger float-end" data-bs-toggle="modal"
+								data-bs-target="#deleteCityModal">Usuń</button>
 						</td>
 					</tr>
 				</tbody>
@@ -55,25 +57,3 @@
 </div>
 
 <app-add-city (onCityAdd)="onCityAdd($event)"></app-add-city>
-
-<!-- Add hotel modal -->
-<div class="modal fade" id="addHotelModal">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<!-- Modal Header -->
-			<div class="modal-header">
-				<h4 class="modal-title">Dodaj hotel</h4>
-			</div>
-
-			<!-- Modal body -->
-			<div class="modal-body">
-				Dodaj hotel
-			</div>
-
-			<!-- Modal footer -->
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Anuluj</button>
-			</div>
-		</div>
-	</div>
-</div>

@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AddCityComponent } from './add-city/add-city.component';
+import { DeleteCityComponent } from './delete-city/delete-city.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AddCityComponent } from './add-city/add-city.component';
     PageNotFoundComponent,
     LoginComponent,
     AddCityComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    DeleteCityComponent
   ],
   imports: [
     BrowserModule,
