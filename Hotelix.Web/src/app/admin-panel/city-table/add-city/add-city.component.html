@@ -6,6 +6,7 @@
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title">Dodaj miasto</h4>
+                    <button title="close" type="button" #closeButton class="btn btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
                 <!-- Modal body -->
@@ -23,7 +24,6 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="submit" [disabled]="addCityForm.invalid" class="btn btn-primary">Dodaj</button>
-                    <button type="button" #closeButton class="btn btn-danger" data-bs-dismiss="modal">Anuluj</button>
                 </div>
             </form>
         </div>

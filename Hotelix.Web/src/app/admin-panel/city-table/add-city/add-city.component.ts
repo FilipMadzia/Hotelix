@@ -1,22 +1,12 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Injectable,
-  Output,
-  ViewChild,
-} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CitiesService } from '../services/cities.service';
-import { City } from '../models/city';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { City } from '../../../models/city';
+import { CitiesService } from '../../../services/cities.service';
 
-@Injectable({
-  providedIn: 'root',
-})
 @Component({
   selector: 'app-add-city',
   templateUrl: './add-city.component.html',
-  styleUrl: './add-city.component.css',
+  styleUrl: './add-city.component.css'
 })
 export class AddCityComponent {
   addCityForm: FormGroup;

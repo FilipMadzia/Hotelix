@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nazwa</th>
+            <td>
+                <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#addCityModal">Dodaj</button>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let city of cities">
+            <td>{{city.id}}</td>
+            <td>{{city.name}}</td>
+            <td>
+                <app-delete-city [city]="city" (onCityDelete)="onCityDelete($event)"></app-delete-city>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<app-add-city (onCityAdd)="onCityAdd($event)"></app-add-city>
