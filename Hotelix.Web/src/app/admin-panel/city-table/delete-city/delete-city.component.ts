@@ -1,18 +1,11 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  Output,
-  ViewChild,
-} from '@angular/core';
-import { City } from '../models/city';
-import { CitiesService } from '../services/cities.service';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { City } from '../../../models/city';
+import { CitiesService } from '../../../services/cities.service';
 
 @Component({
   selector: 'app-delete-city',
   templateUrl: './delete-city.component.html',
-  styleUrl: './delete-city.component.css',
+  styleUrl: './delete-city.component.css'
 })
 export class DeleteCityComponent {
   @ViewChild('closeButton') closeButton?: ElementRef;

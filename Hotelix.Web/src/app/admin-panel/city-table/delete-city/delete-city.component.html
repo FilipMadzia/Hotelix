@@ -1,5 +1,7 @@
-<!-- Add city modal -->
-<div class="modal fade" id="deleteCityModal">
+<button type="button" class="btn btn-danger float-end" data-bs-toggle="modal" [attr.data-bs-target]="'#deleteCityModal' + city?.id">Usuń</button>
+
+<!-- Delete city modal -->
+<div class="modal fade" id="deleteCityModal{{city?.id}}">
     <div class="modal-dialog">
         <div class="modal-content">
                 <!-- Modal Header -->
