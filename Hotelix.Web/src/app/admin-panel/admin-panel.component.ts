@@ -8,7 +8,6 @@ import { City } from '../models/city';
 import { Hotel } from '../models/hotel';
 import { HotelsService } from '../services/hotels.service';
 import { AppComponent } from '../app.component';
-import { CityAdd } from '../models/city.add';
 
 @Component({
   selector: 'app-admin-panel',
@@ -52,10 +51,10 @@ export class AdminPanelComponent {
     this.router.navigate(['/login']);
   }
 
-  onCityAdd(data: CityAdd) {
+  onCityAdd(city: City) {
     var newCity: City = {
-      id: data.id,
-      name: data.city.name,
+      id: city.id,
+      name: city.name,
     };
 
     this.cities.push(newCity);
