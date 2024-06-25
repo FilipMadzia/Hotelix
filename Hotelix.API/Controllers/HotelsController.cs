@@ -158,7 +158,36 @@ public class HotelsController(
 		await _contactRepository.AddAsync(contactEntity);
 		await _contactRepository.SaveChangesAsync();
 
-		return CreatedAtAction(nameof(Get), new { hotelEntity.Id }, new { hotelEntity.Id, hotel });
+		return CreatedAtAction(nameof(Get), new { hotelEntity.Id }, new HotelGet
+		{
+			Id = hotelEntity.Id,
+			Name = hotelEntity.Name,
+			Description = hotelEntity.Description,
+			PricePerNight = hotelEntity.PricePerNight,
+			HasInternet = hotelEntity.HasInternet,
+			HasTelevision = hotelEntity.HasTelevision,
+			HasParking = hotelEntity.HasParking,
+			HasCafeteria = hotelEntity.HasCafeteria,
+			CoverImage = $"Cover{hotelEntity.Id}.png",
+			Address = new AddressGet
+			{
+				Id = hotelEntity.Address.Id,
+				Street = hotelEntity.Address.Street,
+				HouseNumber = hotelEntity.Address.HouseNumber,
+				PostalCode = hotelEntity.Address.PostalCode,
+				City = new CityGet
+				{
+					Id = hotelEntity.Address.CityId,
+					Name = hotelEntity.Address.City.Name
+				}
+			},
+			Contact = new ContactGet
+			{
+				Id = hotelEntity.Contact.Id,
+				PhoneNumber = hotelEntity.Contact.PhoneNumber,
+				Email = hotelEntity.Contact.Email
+			}
+		});
 	}
 
 	// PUT: api/Hotels/1

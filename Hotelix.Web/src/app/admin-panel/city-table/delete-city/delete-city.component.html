@@ -1,0 +1,24 @@
+<button type="button" class="btn btn-danger float-end" data-bs-toggle="modal" [attr.data-bs-target]="'#deleteCityModal' + city?.id">Usuń</button>
+
+<!-- Delete city modal -->
+<div class="modal fade" id="deleteCityModal{{city?.id}}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Usuń miasto</h4>
+                    <button title="close" type="button" #closeButton class="btn btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>Czy na pewno chcesz usunąć miasto {{city?.name}}? Tej akcji nie będzie można cofnąć!</p>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" (click)="deleteCity()">Usuń</button>
+                </div>
+        </div>
+    </div>
+</div>
