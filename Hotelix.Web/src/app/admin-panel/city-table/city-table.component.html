@@ -13,7 +13,7 @@
             <td>{{city.id}}</td>
             <td>{{city.name}}</td>
             <td>
-                <app-delete-city [city]="city" (onCityDelete)="onCityDelete($event)"></app-delete-city>
+                <a class="btn btn-secondary float-end" [routerLink]="['/admin-panel/city-details', city.id]">Więcej</a>
             </td>
         </tr>
     </tbody>

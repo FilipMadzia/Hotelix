@@ -10,17 +10,22 @@ import { AsyncPipe, NgIf } from '@angular/common';
   standalone: true,
   imports: [AsyncPipe, NgIf, RouterLink],
   templateUrl: './hotel-details.component.html',
-  styleUrl: './hotel-details.component.css'
+  styleUrl: './hotel-details.component.css',
 })
 export class HotelDetailsComponent {
   hotel: Observable<Hotel> | undefined;
 
-  constructor(private route: ActivatedRoute, private router: Router, private service: HotelsService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private hotelsService: HotelsService
+  ) {}
 
   ngOnInit() {
     this.hotel = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.service.getHotel(params.get('id')!)
-    ));
+        this.hotelsService.getHotel(params.get('id')!)
+      )
+    );
   }
 }

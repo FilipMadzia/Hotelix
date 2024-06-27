@@ -3,10 +3,6 @@ import { CustomCookieService } from '../services/custom-cookie.service';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { Token } from '../models/token';
-import { CitiesService } from '../services/cities.service';
-import { City } from '../models/city';
-import { Hotel } from '../models/hotel';
-import { HotelsService } from '../services/hotels.service';
 import { AppComponent } from '../app.component';
 
 @Component({
