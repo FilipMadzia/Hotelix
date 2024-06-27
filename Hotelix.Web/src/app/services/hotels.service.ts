@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Hotel } from '../models/hotel';
-import { Observable, catchError, map, retry, throwError } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { AppConfigService } from './app-config.service';
 import { CustomCookieService } from './custom-cookie.service';
 
@@ -54,6 +54,18 @@ export class HotelsService {
         'Authorization',
         'Bearer ' + this.cookieService.token
       ),
-    });
+    })
+    // .pipe(catchError(this.errorHandler));
   }
+
+  // errorHandler(error: HttpErrorResponse) {
+  //   if (error.error instanceof ErrorEvent) {
+  //     // A client-side or network error occurred. Handle it accordingly.
+  //     console.error('An error occurred:', error.error.message);
+  //   } else if(error.status === 401) {
+  //     this.appComponent.onLogout();
+  //   }
+
+  //   return throwError(() => new Error('Something else went wrong'));
+  // }
 }

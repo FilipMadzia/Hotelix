@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { CustomCookieService } from './services/custom-cookie.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { CustomCookieService } from './services/custom-cookie.service';
 export class AppComponent {
   loggedIn: boolean = false;
 
-  constructor(private cookieService: CustomCookieService) {
+  constructor(private cookieService: CustomCookieService, private router: Router) {
     if(this.cookieService.token != null) {
       this.loggedIn = true;
     }
@@ -20,6 +21,8 @@ export class AppComponent {
   }
 
   onLogout(): void {
+    this.cookieService.token = '';
     this.loggedIn = false;
+    this.router.navigate(['/login']);
   }
 }

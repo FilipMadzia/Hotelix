@@ -8,6 +8,8 @@ import {
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { City } from '../../../models/city';
 import { CitiesService } from '../../../services/cities.service';
+import { AppComponent } from '../../../app.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-city',
@@ -32,7 +34,8 @@ export class AddCityComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private citiesService: CitiesService
+    private citiesService: CitiesService,
+    private appComponent: AppComponent
   ) {
     this.addCityForm = this.formBuilder.group({
       cityName: ['', Validators.required],
@@ -40,8 +43,15 @@ export class AddCityComponent {
   }
 
   addCity(): void {
-    this.citiesService.addCity(this.cityName?.value).subscribe((data: City) => {
-      this.onCityAdd.emit(data);
+    this.citiesService.addCity(this.cityName?.value).subscribe({
+      next: (data: City) => {
+        this.onCityAdd.emit(data);
+      },
+      error: (error: HttpErrorResponse) => {
+        if(error.status === 401) {
+          this.appComponent.onLogout();
+        }
+      }
     });
 
     this.closeButton.nativeElement.click();

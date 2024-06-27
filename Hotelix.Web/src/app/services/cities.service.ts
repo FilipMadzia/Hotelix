@@ -1,4 +1,7 @@
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import {
+  HttpHeaders,
+  HttpClient,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppConfigService } from './app-config.service';
 import { City } from '../models/city';
@@ -42,15 +45,29 @@ export class CitiesService {
           'Bearer ' + this.cookieService.token
         ),
       }
-    );
+    )
+    // .pipe(catchError(this.errorHandler));
   }
 
   deleteCity(id: number | string): Observable<any> {
-    return this.http.delete<City>(this.baseUrl + 'Cities/' + id, {
-      headers: new HttpHeaders().set(
-        'Authorization',
-        'Bearer ' + this.cookieService.token
-      ),
-    });
+    return this.http
+      .delete<City>(this.baseUrl + 'Cities/' + id, {
+        headers: new HttpHeaders().set(
+          'Authorization',
+          'Bearer ' + this.cookieService.token
+        ),
+      })
+      // .pipe(catchError(this.errorHandler));
   }
+
+  // errorHandler(error: HttpErrorResponse) {
+  //   if (error.error instanceof ErrorEvent) {
+  //     // A client-side or network error occurred. Handle it accordingly.
+  //     console.error('An error occurred:', error.error.message);
+  //   } else if(error.status === 401) {
+  //     this.appComponent.onLogout();
+  //   }
+
+  //   return throwError(() => new Error('Something else went wrong'));
+  // }
 }
