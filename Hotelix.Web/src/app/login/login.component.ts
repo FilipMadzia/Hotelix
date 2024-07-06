@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, viewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
@@ -10,7 +10,8 @@ import { AppComponent } from '../app.component';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent {
+export class LoginComponent implements AfterViewInit {
+  @ViewChild('autofocus') loginInput!: ElementRef<HTMLInputElement>;
   loginForm: FormGroup;
   error401: boolean = false;
 
@@ -37,6 +38,10 @@ export class LoginComponent {
       login: ['', Validators.required],
       password: ['', Validators.required],
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.loginInput.nativeElement.focus();
   }
 
   onSubmit(): void {

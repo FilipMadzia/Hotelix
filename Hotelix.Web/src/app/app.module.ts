@@ -15,6 +15,7 @@ import { CityTableComponent } from './admin-panel/city-table/city-table.componen
 import { AddCityComponent } from './admin-panel/city-table/add-city/add-city.component';
 import { DeleteCityComponent } from './admin-panel/city-table/delete-city/delete-city.component';
 import { CityDetailsComponent } from './admin-panel/city-table/city-details/city-details.component';
+import { UpdateCityComponent } from './admin-panel/city-table/update-city/update-city.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CityDetailsComponent } from './admin-panel/city-table/city-details/city
     AdminPanelComponent,
     CityTableComponent,
     DeleteCityComponent,
-    CityDetailsComponent
+    CityDetailsComponent,
+    UpdateCityComponent
   ],
   imports: [
     BrowserModule,
