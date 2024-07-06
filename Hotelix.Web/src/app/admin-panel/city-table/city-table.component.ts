@@ -26,8 +26,4 @@ export class CityTableComponent {
 
     this.cities.push(newCity);
   }
-
-  onCityDelete(deletedCity: City) {
-    this.cities = this.cities.filter((city) => city.id != deletedCity.id);
-  }
 }

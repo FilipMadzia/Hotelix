@@ -1,0 +1,13 @@
+<div *ngIf="city | async as city" class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <h3>{{city.name}}</h3>
+
+            <p>Id: {{city.id}}</p>
+            <p>Nazwa: {{city.name}}</p>
+
+            <a class="btn btn-secondary" [routerLink]="['/admin-panel']">Powrót</a>
+            <app-delete-city [city]="city" (onCityDelete)="onCityDelete($event)"></app-delete-city>
+        </div>
+    </div>
+</div>

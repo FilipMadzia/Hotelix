@@ -3,9 +3,9 @@
         <tr>
             <th>Id</th>
             <th>Nazwa</th>
-            <td>
+            <th id="button-row">
                 <app-add-city (onCityAdd)="onCityAdd($event)"></app-add-city>
-            </td>
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -13,7 +13,7 @@
             <td>{{city.id}}</td>
             <td>{{city.name}}</td>
             <td>
-                <app-delete-city [city]="city" (onCityDelete)="onCityDelete($event)"></app-delete-city>
+                <a class="btn btn-primary w-100" [routerLink]="['/admin-panel/city-details', city.id]">Więcej</a>
             </td>
         </tr>
     </tbody>
