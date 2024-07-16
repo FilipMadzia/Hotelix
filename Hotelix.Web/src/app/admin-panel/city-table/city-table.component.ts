@@ -10,12 +10,12 @@ import { CitiesService } from '../../services/cities.service';
 export class CityTableComponent {
   cities: City[] = [];
 
-  constructor(private citiesService: CitiesService) {}
+  constructor(private citiesService: CitiesService) { }
 
   ngOnInit() {
     this.citiesService
       .getCities()
-      .subscribe((data: City[]) => (this.cities = data));
+      .subscribe((data: City[]) => this.cities = data);
   }
 
   onCityAdd(city: City) {
