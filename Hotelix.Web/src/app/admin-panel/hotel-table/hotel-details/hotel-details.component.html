@@ -1,0 +1,19 @@
+<div *ngIf="hotel | async as hotel" class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <h3>{{hotel.name}}</h3>
+
+            <p>Id: {{hotel.id}}</p>
+            <p>Name: {{hotel.name}}</p>
+            <p>Opis: {{hotel.description}}</p>
+            <p>Cena za noc: {{hotel.pricePerNight}}zł za noc</p>
+            <p>Internet: {{hotel.hasInternet}}</p>
+            <p>Telewizja: {{hotel.hasTelevision}}</p>
+            <p>Parking: {{hotel.hasParking}}</p>
+            <p>Stołówka: {{hotel.hasCafeteria}}</p>
+            <p>Ścieżka do okładki: {{hotel.coverImage}} <a href="{{hotel.coverImage}}" target="_blank">Zobacz zdjęcie</a></p>
+
+            <a class="btn btn-secondary" [routerLink]="['/admin-panel']">Powrót</a>
+        </div>
+    </div>
+</div>
