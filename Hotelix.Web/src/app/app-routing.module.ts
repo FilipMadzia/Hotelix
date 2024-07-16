@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LoginComponent } from './login/login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { CityDetailsComponent } from './admin-panel/city-table/city-details/city-details.component';
+import { HotelDetailsComponent as HotelDetailsComponentAdmin } from './admin-panel/hotel-table/hotel-details/hotel-details.component';
 
 const routes: Routes = [
   { path: 'hotel-details/:id', component: HotelDetailsComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'admin-panel', component: AdminPanelComponent },
   { path: 'admin-panel/city-details/:id', component: CityDetailsComponent },
+  { path: 'admin-panel/hotel-details/:id', component: HotelDetailsComponentAdmin },
   { path: '', redirectTo: '/hotels', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
