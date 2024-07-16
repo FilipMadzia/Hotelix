@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nazwa</th>
+            <th>Miasto</th>
+            <th id="button-row">
+                <button>Dodaj</button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let hotel of hotels">
+            <td>{{hotel.id}}</td>
+            <td>{{hotel.name}}</td>
+            <td>{{hotel.address.city.name}}</td>
+            <td>
+                <a class="btn btn-primary w-100" [routerLink]="['/admin-panel/hotel-details', hotel.id]">Więcej</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
