@@ -7,6 +7,7 @@
             <p>Nazwa: {{city.name}}</p>
 
             <a class="btn btn-secondary" [routerLink]="['/admin-panel']">Powrót</a>
+            <app-update-city [city]="city" (onCityUpdate)="onCityUpdate($event)"></app-update-city>
             <app-delete-city [city]="city" (onCityDelete)="onCityDelete($event)"></app-delete-city>
         </div>
     </div>
