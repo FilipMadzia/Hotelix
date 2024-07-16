@@ -37,6 +37,10 @@ export class CityDetailsComponent {
     this.router.navigate(['/admin-panel']);
   }
 
+  onCityUpdate(city: City) {
+    this.city?.subscribe(x => x.name = city.name);
+  }
+
   logout(): void {
     this.cookieService.token = '';
     this.appComponent.onLogout();
