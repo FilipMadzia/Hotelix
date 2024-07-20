@@ -14,6 +14,7 @@
             <p>Ścieżka do okładki: {{hotel.coverImage}} <a href="{{hotel.coverImage}}" target="_blank">Zobacz zdjęcie</a></p>
 
             <a class="btn btn-secondary" [routerLink]="['/admin-panel']">Powrót</a>
+            <app-delete-hotel [hotel]="hotel" (onHotelDelete)="onHotelDelete($event)"></app-delete-hotel>
         </div>
     </div>
 </div>
