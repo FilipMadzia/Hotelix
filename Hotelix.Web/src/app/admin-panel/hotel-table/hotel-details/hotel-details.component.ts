@@ -33,6 +33,10 @@ export class HotelDetailsComponent {
     );
   }
 
+  onHotelDelete(hotel: Hotel) {
+    this.router.navigate(['/admin-panel']);
+  }
+
   logout(): void {
     this.cookieService.token = '';
     this.appComponent.onLogout();

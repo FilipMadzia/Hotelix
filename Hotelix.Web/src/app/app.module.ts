@@ -18,6 +18,7 @@ import { CityDetailsComponent } from './admin-panel/city-table/city-details/city
 import { UpdateCityComponent } from './admin-panel/city-table/update-city/update-city.component';
 import { HotelTableComponent } from './admin-panel/hotel-table/hotel-table.component';
 import { HotelDetailsComponent as HotelDetailsComponentAdmin } from './admin-panel/hotel-table/hotel-details/hotel-details.component';
+import { DeleteHotelComponent } from './admin-panel/hotel-table/delete-hotel/delete-hotel.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HotelDetailsComponent as HotelDetailsComponentAdmin } from './admin-pan
     CityDetailsComponent,
     UpdateCityComponent,
     HotelTableComponent,
-    HotelDetailsComponentAdmin
+    HotelDetailsComponentAdmin,
+    DeleteHotelComponent
   ],
   imports: [
     BrowserModule,
