@@ -1,23 +1,23 @@
-<button type="button" class="btn btn-danger" data-bs-toggle="modal" [attr.data-bs-target]="'#deleteCityModal'">Usuń</button>
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" [attr.data-bs-target]="'#deleteHotelModal'">Usuń</button>
 
-<!-- Delete city modal -->
-<div class="modal fade" id="deleteCityModal">
+<!-- Delete hotel modal -->
+<div class="modal fade" id="deleteHotelModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Usuń miasto</h4>
+                <h4 class="modal-title">Usuń hotel</h4>
                 <button title="close" type="button" #closeButton class="btn btn-close" data-bs-dismiss="modal"></button>
             </div>
 
             <!-- Modal body -->
             <div class="modal-body">
-                <p>Czy na pewno chcesz usunąć miasto {{city?.name}}? Tej akcji nie będzie można cofnąć!</p>
+                <p>Czy na pewno chcesz usunąć hotel {{hotel?.name}}? Tej akcji nie będzie można cofnąć!</p>
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" (click)="deleteCity()">Usuń</button>
+                <button type="button" class="btn btn-danger" (click)="deleteHotel()">Usuń</button>
             </div>
         </div>
     </div>
