@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { CustomCookieService } from './custom-cookie.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CitiesService {
   baseUrl: string;
@@ -22,13 +22,13 @@ export class CitiesService {
 
   getCities(): Observable<City[]> {
     return this.http.get<City[]>(this.baseUrl + 'Cities', {
-      headers: this.headers,
+      headers: this.headers
     });
   }
 
   getCity(id: number | string): Observable<City> {
     return this.http.get<City>(this.baseUrl + 'Cities/' + id, {
-      headers: this.headers,
+      headers: this.headers
     });
   }
 

@@ -1,1 +1,35 @@
-<p>add-hotel works!</p>
+<button type="button" class="btn btn-outline-success w-100" data-bs-toggle="modal"
+    data-bs-target="#addHotelModal">Dodaj</button>
+
+<!-- Add hotel modal -->
+<div class="modal fade" id="addHotelModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form (submit)="addHotel()" [formGroup]="addHotelForm">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Dodaj hotel</h4>
+                    <button title="close" type="button" #closeButton class="btn btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="hotelName" name="hotelName" formControlName="hotelName"
+                            placeholder="Enter your hotel name" required #hotelNameInput />
+                        <label for="hotelName" class="form-label">Nazwa hotelu:</label>
+                        <div class="text-danger" *ngIf="hotelName?.invalid && (hotelName?.dirty || hotelName?.touched)">
+                            <div *ngIf="hotelName?.errors?.['required']">Pole nazwa hotelu jest wymagane</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="submit" [disabled]="addHotelForm.invalid" class="btn btn-primary">Dodaj</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

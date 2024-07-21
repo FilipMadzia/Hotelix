@@ -35,11 +35,11 @@ export class AddCityComponent {
     private citiesService: CitiesService
   ) {
     this.addCityForm = this.formBuilder.group({
-      cityName: ['', Validators.required],
+      cityName: ['', Validators.required]
     });
   }
 
-  addCity(): void {
+  addCity() {
     this.citiesService.addCity(this.cityName?.value).subscribe((data: City) => {
       this.onCityAdd.emit(data);
     });

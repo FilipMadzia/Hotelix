@@ -4,9 +4,10 @@ import { Hotel } from '../models/hotel';
 import { Observable, catchError, map, retry, throwError } from 'rxjs';
 import { AppConfigService } from './app-config.service';
 import { CustomCookieService } from './custom-cookie.service';
+import { HotelAdd } from '../models/hotelAdd';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class HotelsService {
   baseUrl: string;
@@ -46,6 +47,19 @@ export class HotelsService {
           return hotel;
         })
       );
+  }
+
+  addHotel(hotel: HotelAdd) : Observable<any> {
+    return this.http.post<Hotel>(
+      this.baseUrl + 'Hotels/',
+      hotel,
+      {
+        headers: new HttpHeaders().set(
+          'Authorization',
+          'Beared ' + this.cookieService.token
+        )
+      }
+    );
   }
 
   deleteHotel(id: number | string): Observable<any> {
