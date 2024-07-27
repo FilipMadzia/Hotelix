@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Hotel } from '../../../models/hotel';
 import { HotelsService } from '../../../services/hotels.service';
+import { HotelAdd } from '../../../models/hotelAdd';
 
 @Component({
   selector: 'app-add-hotel',
@@ -24,18 +25,46 @@ export class AddHotelComponent {
     return this.addHotelForm.get('hotelName');
   }
 
+  get description() {
+    return this.addHotelForm.get('description');
+  }
+
+  get pricePerNight() {
+    return this.addHotelForm.get('pricePerNight');
+  }
+
+  get hasInternet() {
+    return this.addHotelForm.get('hasInternet');
+  }
+
+  get hasTelevision() {
+    return this.addHotelForm.get('hasTelevision');
+  }
+
+  get hasParking() {
+    return this.addHotelForm.get('hasParking');
+  }
+
+  get hasCafeteria() {
+    return this.addHotelForm.get('hasCafeteria');
+  }
+
+  get coverImage() {
+    return this.addHotelForm.get('coverImage');
+  }
+
   constructor(
     private formBuilder: FormBuilder,
     private hotelsService: HotelsService
   ) {
     this.addHotelForm = this.formBuilder.group({
-      hotelName: ['', Validators.required],
+      hotelName: ['Hotel name', Validators.required],
       description: [null],
-      pricePerNight: [0, Validators.required],
+      pricePerNight: [50.00, Validators.required],
       hasInternet: [false],
-      hasTelevision: [false],
+      hasTelevision: [true],
       hasParking: [false],
-      hasCafeteria: [false],
+      hasCafeteria: [true],
       coverImage: [new Blob()],
       address: this.formBuilder.group({
         street: ['', Validators.required],
@@ -51,6 +80,31 @@ export class AddHotelComponent {
   }
 
   addHotel() {
+    let hotelToAdd: HotelAdd = {
+      name: this.hotelName!.value,
+      description: this.description?.value,
+      pricePerNight: this.pricePerNight!.value,
+      hasInternet: this.hasInternet!.value,
+      hasTelevision: this.hasTelevision!.value,
+      hasParking: this.hasParking!.value,
+      hasCafeteria: this.hasCafeteria!.value,
+      coverImage: new Blob(),
+      address: {
+        street: '',
+        houseNumber: 0,
+        postalCode: '',
+        cityId: 0
+      },
+      contact: {
+        phoneNumber: undefined,
+        email: undefined
+      }
+    };
 
+    this.hotelsService.addHotel(hotelToAdd).subscribe((data: Hotel) => {
+      this.onHotelAdd.emit(data);
+    });
+
+    this.closeButton.nativeElement.click();
   }
 }

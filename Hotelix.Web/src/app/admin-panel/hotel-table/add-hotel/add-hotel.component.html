@@ -15,13 +15,58 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <div class="form-floating">
+                    <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="hotelName" name="hotelName" formControlName="hotelName"
                             placeholder="Enter your hotel name" required #hotelNameInput />
                         <label for="hotelName" class="form-label">Nazwa hotelu:</label>
                         <div class="text-danger" *ngIf="hotelName?.invalid && (hotelName?.dirty || hotelName?.touched)">
                             <div *ngIf="hotelName?.errors?.['required']">Pole nazwa hotelu jest wymagane</div>
                         </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="description" name="description" formControlName="description"
+                            placeholder="Enter your hotel description" required />
+                        <label for="description" class="form-label">Opis:</label>
+                        <div class="text-danger" *ngIf="description?.invalid && (description?.dirty || description?.touched)">
+                            <div *ngIf="description?.errors?.['required']">Pole opis jest wymagane</div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="pricePerNight" name="pricePerNight" formControlName="pricePerNight"
+                            placeholder="Enter price per night at your hotel" required />
+                        <label for="pricePerNight" class="form-label">Cena za noc:</label>
+                        <div class="text-danger" *ngIf="pricePerNight?.invalid && (pricePerNight?.dirty || pricePerNight?.touched)">
+                            <div *ngIf="pricePerNight?.errors?.['required']">Pole cena za noc jest wymagane</div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="hasInternet" name="hasInternet" formControlName="hasInternet"
+                            placeholder="Does your hotel have internet?" required>
+                        <label class="form-check-label" for="hasInternet">
+                            Internet
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="hasTelevision" name="hasTelevision" formControlName="hasTelevision"
+                            placeholder="Does your hotel have televison?" required>
+                        <label class="form-check-label" for="hasTelevision">
+                            Telewizja
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="hasParking" name="hasParking" formControlName="hasParking"
+                            placeholder="Does your hotel have parking?" required>
+                        <label class="form-check-label" for="hasParking">
+                            Parking
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="hasCafeteria" name="hasCafeteria" formControlName="hasCafeteria"
+                            placeholder="Does your hotel have cafeteria?" required>
+                        <label class="form-check-label" for="hasCafeteria">
+                            Stołówka
+                        </label>
                     </div>
                 </div>
 
