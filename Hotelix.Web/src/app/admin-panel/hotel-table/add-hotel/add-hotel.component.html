@@ -25,48 +25,80 @@
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="description" name="description" formControlName="description"
-                            placeholder="Enter your hotel description" required />
+                            placeholder="Enter your hotel description" />
                         <label for="description" class="form-label">Opis:</label>
-                        <div class="text-danger" *ngIf="description?.invalid && (description?.dirty || description?.touched)">
-                            <div *ngIf="description?.errors?.['required']">Pole opis jest wymagane</div>
-                        </div>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control" id="pricePerNight" name="pricePerNight" formControlName="pricePerNight"
-                            placeholder="Enter price per night at your hotel" required />
+                            placeholder="Enter price per night at your hotel" />
                         <label for="pricePerNight" class="form-label">Cena za noc:</label>
-                        <div class="text-danger" *ngIf="pricePerNight?.invalid && (pricePerNight?.dirty || pricePerNight?.touched)">
-                            <div *ngIf="pricePerNight?.errors?.['required']">Pole cena za noc jest wymagane</div>
-                        </div>
                     </div>
                     <hr />
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="hasInternet" name="hasInternet" formControlName="hasInternet"
-                            placeholder="Does your hotel have internet?" required>
+                            placeholder="Does your hotel have internet?">
                         <label class="form-check-label" for="hasInternet">
                             Internet
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="hasTelevision" name="hasTelevision" formControlName="hasTelevision"
-                            placeholder="Does your hotel have televison?" required>
+                            placeholder="Does your hotel have televison?">
                         <label class="form-check-label" for="hasTelevision">
                             Telewizja
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="hasParking" name="hasParking" formControlName="hasParking"
-                            placeholder="Does your hotel have parking?" required>
+                            placeholder="Does your hotel have parking?">
                         <label class="form-check-label" for="hasParking">
                             Parking
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="hasCafeteria" name="hasCafeteria" formControlName="hasCafeteria"
-                            placeholder="Does your hotel have cafeteria?" required>
+                            placeholder="Does your hotel have cafeteria?">
                         <label class="form-check-label" for="hasCafeteria">
                             Stołówka
                         </label>
+                    </div>
+                    <hr />
+                    <p class="text-muted">Zdjęcie</p>
+                    <hr />
+                    <p>Adres</p>
+                    <div formGroupName="address">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="street" name="street" formControlName="street"
+                                placeholder="Enter street" required />
+                            <label for="street" class="form-label">Ulica:</label>
+                            <div class="text-danger" *ngIf="street?.invalid && (street?.dirty || street?.touched)">
+                                <div *ngIf="street?.errors?.['required']">Pole ulica jest wymagane</div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="houseNumber" name="houseNumber" formControlName="houseNumber"
+                                placeholder="Enter house number" />
+                            <label for="street" class="form-label">Nr budynku:</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="postalCode" name="postalCode" formControlName="postalCode"
+                                placeholder="Enter postal code" />
+                            <label for="postalCode" class="form-label">Kod pocztowy:</label>
+                        </div>
+                    </div>
+                    <hr />
+                    <p>Informacje kontaktowe</p>
+                    <div formGroupName="contact">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber"
+                                placeholder="Enter phone number" />
+                            <label for="phoneNumber" class="form-label">Nr telefonu:</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="email" name="email" formControlName="email"
+                                placeholder="Enter email" />
+                            <label for="email" class="form-label">E-mail:</label>
+                        </div>
                     </div>
                 </div>
 

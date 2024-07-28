@@ -56,7 +56,7 @@ export class HotelsService {
       {
         headers: new HttpHeaders().set(
           'Authorization',
-          'Beared ' + this.cookieService.token
+          'Bearer ' + this.cookieService.token
         )
       }
     );

@@ -6,7 +6,7 @@ export interface HotelAdd {
     hasTelevision: boolean;
     hasParking: boolean;
     hasCafeteria: boolean;
-    coverImage: Blob;
+    coverImage: string;
     address: {
         street: string;
         houseNumber: number;
