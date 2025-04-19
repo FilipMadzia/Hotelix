@@ -7,7 +7,7 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<HotelixAPIContext>(options =>
+builder.Services.AddDbContext<HotelixApiContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("HotelixAPIContext") ?? throw new InvalidOperationException("Connection string 'HotelixAPIContext' not found.")));
 
 // Add services to the container.

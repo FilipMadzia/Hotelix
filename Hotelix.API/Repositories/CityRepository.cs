@@ -4,11 +4,11 @@ using Hotelix.Api.Data.Entities;
 namespace Hotelix.Api.Repositories;
 
 public class CityRepository(
-	HotelixAPIContext context,
+	HotelixApiContext context,
 	AddressRepository _addressRepository,
 	HotelRepository _hotelRepository) : BaseRepository<CityEntity>(context)
 {
-	readonly HotelixAPIContext _context = context;
+	readonly HotelixApiContext _context = context;
 
 	public override void SoftDelete(CityEntity city)
 	{

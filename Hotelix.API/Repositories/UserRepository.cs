@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hotelix.Api.Repositories;
 
-public class UserRepository(HotelixAPIContext _context) : IUserRepository
+public class UserRepository(HotelixApiContext _context) : IUserRepository
 {
 	public async Task<IEnumerable<UserEntity>> GetAllAsync() => await _context.Users
 		.Where(x => !x.SoftDeleted)

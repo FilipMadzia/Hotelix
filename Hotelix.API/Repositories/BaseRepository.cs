@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hotelix.Api.Repositories;
 
-public abstract class BaseRepository<T>(HotelixAPIContext _context) : IBaseRepository<T> where T : BaseEntity
+public abstract class BaseRepository<T>(HotelixApiContext _context) : IBaseRepository<T> where T : BaseEntity
 {
 	public virtual async Task<IEnumerable<T>> GetAllAsync() => await _context.Set<T>()
 		.Where(x => !x.SoftDeleted)

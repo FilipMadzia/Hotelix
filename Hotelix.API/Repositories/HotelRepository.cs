@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 namespace Hotelix.Api.Repositories;
 
 public class HotelRepository(
-	HotelixAPIContext context,
+	HotelixApiContext context,
 	AddressRepository _addressRepository,
 	ContactRepository _contactRepository) : BaseRepository<HotelEntity>(context)
 {
-	readonly HotelixAPIContext _context = context;
+	readonly HotelixApiContext _context = context;
 
 	public override async Task<IEnumerable<HotelEntity>> GetAllAsync() => await _context.Hotels
 		.Where(x => !x.SoftDeleted)
