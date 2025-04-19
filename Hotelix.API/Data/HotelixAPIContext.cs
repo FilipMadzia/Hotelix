@@ -1,8 +1,8 @@
-﻿using Hotelix.API.Data.Entities;
-using Hotelix.API.Data.Seeders;
+﻿using Hotelix.Api.Data.Entities;
+using Hotelix.Api.Data.Seeders;
 using Microsoft.EntityFrameworkCore;
 
-namespace Hotelix.API.Data;
+namespace Hotelix.Api.Data;
 
 public class HotelixAPIContext(DbContextOptions<HotelixAPIContext> options) : DbContext(options)
 {

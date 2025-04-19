@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Hotelix.API.Data.Entities;
+namespace Hotelix.Api.Data.Entities;
 
 public abstract class BaseEntity
 {

@@ -1,7 +1,7 @@
-﻿using Hotelix.API.Data.Entities;
+﻿using Hotelix.Api.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Hotelix.API.Data.Seeders;
+namespace Hotelix.Api.Data.Seeders;
 
 public class UsersSeeder
 {

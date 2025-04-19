@@ -1,4 +1,4 @@
-﻿namespace Hotelix.API.Data.Entities;
+﻿namespace Hotelix.Api.Data.Entities;
 
 public class HotelEntity : BaseEntity
 {

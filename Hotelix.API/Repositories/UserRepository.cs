@@ -1,8 +1,8 @@
-﻿using Hotelix.API.Data;
-using Hotelix.API.Data.Entities;
+﻿using Hotelix.Api.Data;
+using Hotelix.Api.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Hotelix.API.Repositories;
+namespace Hotelix.Api.Repositories;
 
 public class UserRepository(HotelixAPIContext _context) : IUserRepository
 {

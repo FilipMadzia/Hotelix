@@ -1,4 +1,4 @@
-﻿namespace Hotelix.API.Data.Entities;
+﻿namespace Hotelix.Api.Data.Entities;
 
 public class UserEntity(string userName, string password) : BaseEntity
 {

@@ -1,4 +1,4 @@
-﻿namespace Hotelix.API.Repositories;
+﻿namespace Hotelix.Api.Repositories;
 
 public interface IBaseRepository<T> where T : class
 {

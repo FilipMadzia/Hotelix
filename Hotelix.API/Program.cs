@@ -1,5 +1,5 @@
-using Hotelix.API.Data;
-using Hotelix.API.Repositories;
+using Hotelix.Api.Data;
+using Hotelix.Api.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;

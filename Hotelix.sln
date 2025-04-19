@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34601.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotelix.API", "Hotelix.API\Hotelix.API.csproj", "{E5E3CCD1-0F65-4029-BCB3-BD230B477236}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotelix.Api", "Hotelix.Api\Hotelix.Api.csproj", "{E5E3CCD1-0F65-4029-BCB3-BD230B477236}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotelix.Mobile", "Hotelix.Mobile\Hotelix.Mobile.csproj", "{52F8A74B-651B-41DB-8498-0C0ED781EE63}"
 EndProject

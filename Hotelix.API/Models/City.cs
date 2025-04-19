@@ -1,4 +1,4 @@
-﻿namespace Hotelix.API.Models;
+﻿namespace Hotelix.Api.Models;
 
 public class CityGet
 {

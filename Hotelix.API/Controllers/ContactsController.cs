@@ -1,9 +1,9 @@
-﻿using Hotelix.API.Models;
-using Hotelix.API.Repositories;
+﻿using Hotelix.Api.Models;
+using Hotelix.Api.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace Hotelix.API.Controllers;
+namespace Hotelix.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]

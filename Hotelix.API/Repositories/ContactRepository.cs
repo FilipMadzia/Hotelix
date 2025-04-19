@@ -1,6 +1,6 @@
-﻿using Hotelix.API.Data;
-using Hotelix.API.Data.Entities;
+﻿using Hotelix.Api.Data;
+using Hotelix.Api.Data.Entities;
 
-namespace Hotelix.API.Repositories;
+namespace Hotelix.Api.Repositories;
 
 public class ContactRepository(HotelixAPIContext context) : BaseRepository<ContactEntity>(context) { }

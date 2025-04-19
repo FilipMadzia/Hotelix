@@ -1,12 +1,12 @@
-﻿using Hotelix.API.Data.Entities;
-using Hotelix.API.Models;
-using Hotelix.API.Repositories;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Drawing;
+using Hotelix.Api.Data.Entities;
+using Hotelix.Api.Models;
+using Hotelix.Api.Repositories;
 
-namespace Hotelix.API.Controllers;
+namespace Hotelix.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
