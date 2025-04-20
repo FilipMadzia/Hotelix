@@ -1,26 +1,17 @@
-﻿namespace Hotelix.Api.Data.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
-public class HotelEntity : BaseEntity
+namespace Hotelix.Api.Data.Entities;
+
+public class HotelEntity : Entity
 {
+	[MaxLength(64)]
 	public required string Name { get; set; }
+	[MaxLength(512)]
 	public string? Description { get; set; }
+	[Precision(10, 2)]
 	public decimal PricePerNight { get; set; }
-	public bool HasInternet { get; set; }
-	public bool HasTelevision { get; set; }
-	public bool HasParking { get; set; }
-	public bool HasCafeteria { get; set; }
 
-	public AddressEntity Address { get; set; } = null!;
-	public ContactEntity Contact { get; set; } = null!;
-
-	public void Update(string name, string? description, decimal pricePerNight, bool hasInternet = false, bool hasTelevision = false, bool hasParking = false, bool hasCafeteria = false)
-	{
-		Name = name;
-		Description = description;
-		PricePerNight = pricePerNight;
-		HasInternet = hasInternet;
-		HasTelevision = hasTelevision;
-		HasParking = hasParking;
-		HasCafeteria = hasCafeteria;
-	}
+	public AddressEntity Address { get; set; }
+	public ContactEntity Contact { get; set; }
 }

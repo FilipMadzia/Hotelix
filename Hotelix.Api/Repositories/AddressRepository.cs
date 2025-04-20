@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hotelix.Api.Repositories;
 
-public class AddressRepository(HotelixApiContext context) : BaseRepository<AddressEntity>(context)
+public class AddressRepository(HotelixApiContext context) : Repository<AddressEntity>(context)
 {
 	readonly HotelixApiContext _context = context;
 

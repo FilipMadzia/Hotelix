@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Net.Mime;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using System.Drawing;
 using Hotelix.Api.Data.Entities;
 using Hotelix.Api.Models;
 using Hotelix.Api.Repositories;
@@ -18,7 +18,7 @@ public class HotelsController(
 	CityRepository _cityRepository,
 	ContactRepository _contactRepository) : ControllerBase
 {
-	// GET: api/Hotels
+	/*// GET: api/Hotels
 	[AllowAnonymous]
 	[HttpGet]
 	[SwaggerResponse(200, type: typeof(IEnumerable<HotelGet>))]
@@ -132,7 +132,7 @@ public class HotelsController(
 
 		using(var ms = new MemoryStream(hotel.CoverImage))
 		{
-			var coverImage = Image.FromStream(ms);
+			var coverImage = MediaTypeNames.Image.FromStream(ms);
 			coverImage.Save(Path.Combine(_environment.WebRootPath, "Images", "Covers", $"Cover{hotelEntity.Id}.png"));
 		}
 
@@ -275,5 +275,5 @@ public class HotelsController(
 		await _hotelRepository.SaveChangesAsync();
 
 		return NoContent();
-	}
+	}*/
 }

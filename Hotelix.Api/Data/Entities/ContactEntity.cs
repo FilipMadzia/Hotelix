@@ -1,17 +1,14 @@
-﻿namespace Hotelix.Api.Data.Entities;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class ContactEntity : BaseEntity
+namespace Hotelix.Api.Data.Entities;
+
+public class ContactEntity : Entity
 {
+	[MaxLength(9)]
 	public string? PhoneNumber { get; set; }
+	[MaxLength(254)]
 	public string? Email { get; set; }
 
 	public int HotelId { get; set; }
-	public HotelEntity Hotel { get; set; } = null!;
-
-	public void Update(string? phoneNumber, string? email, int hotelId)
-	{
-		PhoneNumber = phoneNumber;
-		Email = email;
-		HotelId = hotelId;
-	}
+	public HotelEntity Hotel { get; set; }
 }

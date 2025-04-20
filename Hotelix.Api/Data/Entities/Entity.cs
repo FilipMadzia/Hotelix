@@ -2,17 +2,12 @@
 
 namespace Hotelix.Api.Data.Entities;
 
-public abstract class BaseEntity
+public abstract class Entity
 {
 	[Key]
 	public int Id { get; set; }
-	public DateTime CreatedAt { get; private set; }
+
+	public DateTime CreatedAt { get; private set; } = DateTime.Now;
 	public DateTime UpdatedAt { get; set; }
 	public bool SoftDeleted { get; set; }
-
-	public BaseEntity()
-	{
-		CreatedAt = DateTime.Now;
-		UpdatedAt = DateTime.Now;
-	}
 }

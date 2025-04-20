@@ -6,7 +6,7 @@ namespace Hotelix.Api.Repositories;
 public class CityRepository(
 	HotelixApiContext context,
 	AddressRepository _addressRepository,
-	HotelRepository _hotelRepository) : BaseRepository<CityEntity>(context)
+	HotelRepository _hotelRepository) : Repository<CityEntity>(context)
 {
 	readonly HotelixApiContext _context = context;
 

@@ -1,7 +1,8 @@
-﻿namespace Hotelix.Api.Data.Entities;
+﻿using Microsoft.AspNetCore.Identity;
 
-public class UserEntity(string userName, string password) : BaseEntity
+namespace Hotelix.Api.Data.Entities;
+
+public class UserEntity : IdentityUser<int>
 {
-	public string UserName { get; set; } = userName;
-	public string Password { get; set; } = password;
+	public bool SoftDeleted { get; set; }
 }

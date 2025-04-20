@@ -7,7 +7,7 @@ namespace Hotelix.Api.Repositories;
 public class HotelRepository(
 	HotelixApiContext context,
 	AddressRepository _addressRepository,
-	ContactRepository _contactRepository) : BaseRepository<HotelEntity>(context)
+	ContactRepository _contactRepository) : Repository<HotelEntity>(context)
 {
 	readonly HotelixApiContext _context = context;
 

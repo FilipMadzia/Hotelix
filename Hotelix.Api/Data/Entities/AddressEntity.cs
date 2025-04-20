@@ -1,23 +1,18 @@
-﻿namespace Hotelix.Api.Data.Entities;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class AddressEntity : BaseEntity
+namespace Hotelix.Api.Data.Entities;
+
+public class AddressEntity : Entity
 {
+	[MaxLength(128)]
 	public required string Street { get; set; }
 	public int HouseNumber { get; set; }
+	[MaxLength(6)]
 	public required string PostalCode { get; set; }
 
 	public int CityId { get; set; }
-	public CityEntity City { get; set; } = null!;
+	public CityEntity City { get; set; }
 
 	public int HotelId { get; set; }
-	public HotelEntity Hotel { get; set; } = null!;
-
-	public void Update(string street, int houseNumber, string postalCode, int cityId, int hotelId)
-	{
-		Street = street;
-		HouseNumber = houseNumber;
-		PostalCode = postalCode;
-		CityId = cityId;
-		HotelId = hotelId;
-	}
+	public HotelEntity Hotel { get; set; }
 }

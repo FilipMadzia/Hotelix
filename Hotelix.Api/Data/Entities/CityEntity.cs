@@ -1,10 +1,11 @@
-﻿namespace Hotelix.Api.Data.Entities;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class CityEntity : BaseEntity
+namespace Hotelix.Api.Data.Entities;
+
+public class CityEntity : Entity
 {
+	[MaxLength(128)]
 	public required string Name { get; set; }
 
 	public ICollection<AddressEntity>? Addresses { get; set; }
-
-	public void Update(string name) => Name = name;
 }

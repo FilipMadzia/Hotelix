@@ -76,7 +76,7 @@ public class CitiesController(CityRepository _cityRepository) : ControllerBase
 
 		if(cityEntity == null) return NotFound();
 
-		cityEntity.Update(city.Name);
+		cityEntity.Name = city.Name;
 
 		_cityRepository.Update(cityEntity);
 		await _cityRepository.SaveChangesAsync();

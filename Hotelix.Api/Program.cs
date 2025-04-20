@@ -5,10 +5,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using Hotelix.Api.Data.Entities;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<HotelixApiContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("HotelixAPIContext") ?? throw new InvalidOperationException("Connection string 'HotelixAPIContext' not found.")));
+
+builder.Services.AddIdentity<UserEntity, IdentityRole<int>>()
+	.AddEntityFrameworkStores<HotelixApiContext>()
+	.AddDefaultTokenProviders();
 
 // Add services to the container.
 builder.Services.AddTransient<CityRepository>();

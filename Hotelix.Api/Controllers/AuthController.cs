@@ -14,7 +14,7 @@ public class AuthController(
 	IConfiguration _configuration,
 	UserRepository _userRepository) : ControllerBase
 {
-	[HttpPost]
+	/*[HttpPost]
 	public async Task<IActionResult> Auth([FromBody] UserPost user)
 	{
 		var userEntity = await _userRepository.GetByUserNameAsync(user.UserName);
@@ -48,5 +48,5 @@ public class AuthController(
 		var jwtToken = tokenHandler.WriteToken(token);
 
 		return Ok(jwtToken);
-	}
+	}*/
 }
