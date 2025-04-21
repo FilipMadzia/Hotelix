@@ -10,9 +10,9 @@ public class AddressEntity : Entity
 	[MaxLength(6)]
 	public required string PostalCode { get; set; }
 
-	public int CityId { get; set; }
+	public Guid CityId { get; set; }
 	public CityEntity City { get; set; }
 
-	public int HotelId { get; set; }
+	public Guid HotelId { get; set; }
 	public HotelEntity Hotel { get; set; }
 }

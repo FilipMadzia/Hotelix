@@ -4,30 +4,31 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hotelix.Api.Repositories;
 
-public abstract class Repository<T>(HotelixApiContext _context) : IBaseRepository<T> where T : Entity
+public abstract class Repository<T>(HotelixDbContext context) where T : Entity
 {
-	public virtual async Task<IEnumerable<T>> GetAllAsync() => await _context.Set<T>()
+	public async Task<IEnumerable<T>> GetAllAsync() => await context.Set<T>()
 		.Where(x => !x.SoftDeleted)
 		.ToListAsync();
 
-	public virtual async Task<T?> GetAsync(int id) => await _context.Set<T>()
-		.SingleOrDefaultAsync(x => x.Id == id);
+	public async Task<T?> GetByIdAsync(Guid id) => await context.Set<T>()
+		.SingleOrDefaultAsync(x => x.Id == id && !x.SoftDeleted);
 
-	public async Task AddAsync(T entity) => await _context.Set<T>().AddAsync(entity);
+	public async Task AddAsync(T entity)
+	{
+		await context.Set<T>().AddAsync(entity);
+		await context.SaveChangesAsync();
+	}
 
-	public void Update(T entity)
+	public async Task Update(T entity)
 	{
 		entity.UpdatedAt = DateTime.Now;
-		_context.Entry(entity).State = EntityState.Modified;
+		context.Update(entity);
+		await context.SaveChangesAsync();
 	}
 
-	public virtual void Delete(T entity) => _context.Remove(entity);
-
-	public virtual void SoftDelete(T entity)
+	public async Task SoftDelete(T entity)
 	{
 		entity.SoftDeleted = true;
-		Update(entity);
+		await Update(entity);
 	}
-
-	public async Task SaveChangesAsync() => await _context.SaveChangesAsync();
 }

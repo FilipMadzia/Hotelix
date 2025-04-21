@@ -5,7 +5,7 @@ namespace Hotelix.Api.Data.Entities;
 public abstract class Entity
 {
 	[Key]
-	public int Id { get; set; }
+	public Guid Id { get; set; } = Guid.NewGuid();
 
 	public DateTime CreatedAt { get; private set; } = DateTime.Now;
 	public DateTime UpdatedAt { get; set; }

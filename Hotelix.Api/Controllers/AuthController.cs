@@ -1,52 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Hotelix.Api.Models;
-using Hotelix.Api.Repositories;
+﻿using Hotelix.Api.Data.Entities;
+using Hotelix.Api.Data.Enums;
+using Hotelix.Api.Dtos;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Hotelix.Api.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/[controller]/[action]")]
 [ApiController]
-public class AuthController(
-	IConfiguration _configuration,
-	UserRepository _userRepository) : ControllerBase
+public class AuthController(UserManager<UserEntity> userManager) : ControllerBase
 {
-	/*[HttpPost]
-	public async Task<IActionResult> Auth([FromBody] UserPost user)
+	[HttpPost]
+	public async Task<IActionResult> Register(RegisterDto registerDto)
 	{
-		var userEntity = await _userRepository.GetByUserNameAsync(user.UserName);
-
-		if(userEntity == null || user.Password != userEntity.Password) return Unauthorized();
-
-		var issuer = _configuration["Jwt:Issuer"];
-		var audience = _configuration["Jwt:Audience"];
-		var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!);
-		var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature);
-
-		var subject = new ClaimsIdentity(new[]
-		{
-			new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-			new Claim(JwtRegisteredClaimNames.Email, user.UserName)
-		});
-
-		var expires = DateTime.UtcNow.AddMinutes(double.Parse(_configuration["Jwt:ExpireTime"]!));
-
-		var tokenDescriptor = new SecurityTokenDescriptor
-		{
-			Subject = subject,
-			Expires = expires,
-			Issuer = issuer,
-			Audience = audience,
-			SigningCredentials = signingCredentials
-		};
-
-		var tokenHandler = new JwtSecurityTokenHandler();
-		var token = tokenHandler.CreateToken(tokenDescriptor);
-		var jwtToken = tokenHandler.WriteToken(token);
-
-		return Ok(jwtToken);
-	}*/
+		var user = new UserEntity { UserName = registerDto.Email, Email = registerDto.Email };
+		var result = await userManager.CreateAsync(user, registerDto.Password);
+		
+		if (!result.Succeeded)
+			return BadRequest(result.Errors);
+		
+		await userManager.AddToRoleAsync(user, nameof(IdentityRoles.HotelWorker));
+		
+		return Ok();
+	}
 }

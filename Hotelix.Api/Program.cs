@@ -1,5 +1,4 @@
 using Hotelix.Api.Data;
-using Hotelix.Api.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -9,19 +8,23 @@ using Hotelix.Api.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<HotelixApiContext>(options =>
-	options.UseSqlServer(builder.Configuration.GetConnectionString("HotelixAPIContext") ?? throw new InvalidOperationException("Connection string 'HotelixAPIContext' not found.")));
+builder.Services.AddDbContext<HotelixDbContext>(options =>
+	options.UseSqlServer(builder.Configuration.GetConnectionString("HotelixDbContext") ?? throw new InvalidOperationException("Connection string 'HotelixDbContext' not found.")));
 
-builder.Services.AddIdentity<UserEntity, IdentityRole<int>>()
-	.AddEntityFrameworkStores<HotelixApiContext>()
+builder.Services.AddIdentity<UserEntity, IdentityRole>(options =>
+	{
+		options.Password.RequireDigit = false;
+		options.Password.RequireLowercase = false;
+		options.Password.RequireNonAlphanumeric = false;
+		options.Password.RequireUppercase = false;
+		options.Password.RequiredLength = 6;
+		options.Password.RequiredUniqueChars = 0;
+		options.User.RequireUniqueEmail = true;
+	})
+	.AddEntityFrameworkStores<HotelixDbContext>()
 	.AddDefaultTokenProviders();
 
 // Add services to the container.
-builder.Services.AddTransient<CityRepository>();
-builder.Services.AddTransient<AddressRepository>();
-builder.Services.AddTransient<HotelRepository>();
-builder.Services.AddTransient<ContactRepository>();
-builder.Services.AddTransient<UserRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -99,9 +102,6 @@ app.UseStaticFiles();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
-IConfiguration configuration = app.Configuration;
-IWebHostEnvironment environment = app.Environment;
 
 app.MapControllers();
 

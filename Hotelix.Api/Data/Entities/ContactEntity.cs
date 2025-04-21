@@ -9,6 +9,6 @@ public class ContactEntity : Entity
 	[MaxLength(254)]
 	public string? Email { get; set; }
 
-	public int HotelId { get; set; }
+	public Guid HotelId { get; set; }
 	public HotelEntity Hotel { get; set; }
 }

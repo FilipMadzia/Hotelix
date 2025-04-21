@@ -2,7 +2,7 @@
 
 namespace Hotelix.Api.Data.Entities;
 
-public class UserEntity : IdentityUser<int>
+public class UserEntity : IdentityUser
 {
 	public bool SoftDeleted { get; set; }
 }
