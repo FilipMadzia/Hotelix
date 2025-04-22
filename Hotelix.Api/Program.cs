@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using Hotelix.Api.Data.Entities;
+using Hotelix.Api.Helpers;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +26,7 @@ builder.Services.AddIdentity<UserEntity, IdentityRole>(options =>
 	.AddDefaultTokenProviders();
 
 // Add services to the container.
+builder.Services.AddTransient<JwtHelper>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -88,7 +90,7 @@ app.UseCors(x => x
 	.AllowAnyMethod()
 	.AllowAnyHeader()
 	.AllowCredentials()
-	.SetIsOriginAllowed(origin => true));
+	.SetIsOriginAllowed(_ => true));
 
 // Configure the HTTP request pipeline.
 if(app.Environment.IsDevelopment())
