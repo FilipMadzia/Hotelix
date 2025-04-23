@@ -4,6 +4,7 @@ using Hotelix.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hotelix.Api.Data.Migrations
 {
     [DbContext(typeof(HotelixDbContext))]
-    partial class HotelixDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250423182926_AdminUserSeed")]
+    partial class AdminUserSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -228,17 +231,16 @@ namespace Hotelix.Api.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "be36a3cc-def2-41a2-848a-b08d79dcafc1",
+                            Id = "d499bbc9-891e-4982-ada3-f3ab894ccc3f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "90828777-0678-488b-9d8c-523c94d78170",
+                            ConcurrencyStamp = "5d8bf105-0f38-40ab-92b6-4543a03f3a75",
                             Email = "admin@admin.admin",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.ADMIN",
                             NormalizedUserName = "ADMIN@ADMIN.ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHVrDy6KLa5wa8KmcbwC/y3geq+LjQLN4u+B3iPHm/j0vCyBpLf4cdPT8NNWgSBTTw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9f5bd4da-cbd6-44cf-b0a7-4bb73a8cdb79",
+                            SecurityStamp = "0195ef8c-a783-4427-9a40-419d24303360",
                             SoftDeleted = false,
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.admin"
@@ -274,22 +276,22 @@ namespace Hotelix.Api.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4f833339-9179-48da-a7ae-6d27ba33ac3a",
-                            ConcurrencyStamp = "b51582e8-8047-4a61-96ad-7b8fc070adac",
+                            Id = "af3149d7-4d9e-4ebe-955e-146901e400f8",
+                            ConcurrencyStamp = "fae1e366-b460-4b33-af78-ad3185e0cd89",
                             Name = "HotelWorker",
                             NormalizedName = "HOTELWORKER"
                         },
                         new
                         {
-                            Id = "42e3e43c-c3de-4fc6-a020-3f43ccec7d7b",
-                            ConcurrencyStamp = "6794c240-227e-4b49-9a7a-a60ab896e9de",
+                            Id = "d56148c9-c6a5-4569-9389-1034d05b6f56",
+                            ConcurrencyStamp = "a06ee5d4-6e99-4f60-9840-533a1caeb352",
                             Name = "HotelManager",
                             NormalizedName = "HOTELMANAGER"
                         },
                         new
                         {
-                            Id = "62b76ff3-a1d7-45be-b069-3cdeee3c22e7",
-                            ConcurrencyStamp = "60f54b64-1bf0-4770-9e5d-3af8051014ca",
+                            Id = "6ea2ca20-b617-45e7-9e63-48310a1d4a69",
+                            ConcurrencyStamp = "75b6634b-8b8f-4c27-bad1-ea02a8b8f535",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -384,8 +386,8 @@ namespace Hotelix.Api.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "be36a3cc-def2-41a2-848a-b08d79dcafc1",
-                            RoleId = "62b76ff3-a1d7-45be-b069-3cdeee3c22e7"
+                            UserId = "d499bbc9-891e-4982-ada3-f3ab894ccc3f",
+                            RoleId = "6ea2ca20-b617-45e7-9e63-48310a1d4a69"
                         });
                 });
 

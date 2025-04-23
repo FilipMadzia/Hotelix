@@ -25,4 +25,13 @@
     <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\Images\Covers\Cover1.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\Images\Covers\Cover2.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\Images\Covers\Cover3.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\Images\Covers\Cover4.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\Images\Covers\Cover5.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\Images\Covers\Cover6.png" />
+  </ItemGroup>
+
 </Project>
