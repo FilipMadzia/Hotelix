@@ -1,5 +1,0 @@
-{
-    "apiBaseUrl": "http://localhost:5000/api/",
-    "coverImagesBaseUrl": "http://localhost:5000/Images/Covers/",
-    "tokenExpireTime": 5
-}
