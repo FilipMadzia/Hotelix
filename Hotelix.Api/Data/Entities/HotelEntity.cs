@@ -14,4 +14,5 @@ public class HotelEntity : Entity
 
 	public AddressEntity Address { get; set; }
 	public ContactEntity Contact { get; set; }
+	public ICollection<UserEntity> Employees { get; set; }
 }
