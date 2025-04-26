@@ -1,6 +1,6 @@
 ﻿using Hotelix.Api.Data.Entities;
 using Hotelix.Api.Data.Enums;
-using Hotelix.Api.Dtos;
+using Hotelix.Api.Dtos.Auth;
 using Hotelix.Api.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -36,26 +36,5 @@ public class AuthController(UserManager<UserEntity> userManager, JwtHelper jwtHe
 		var token = await jwtHelper.GenerateJwtToken(user);
 
 		return Ok(token);
-	}
-
-	[HttpGet]
-	[Authorize(Roles = $"{AdminRole},{HotelWorkerRole}")]
-	public IActionResult HotelWorker()
-	{
-		return Ok("HotelWorker");
-	}
-	
-	[HttpGet]
-	[Authorize(Roles = $"{AdminRole},{HotelManagerRole}")]
-	public IActionResult HotelManager()
-	{
-		return Ok("HotelManager");
-	}
-	
-	[HttpGet]
-	[Authorize(Roles = AdminRole)]
-	public IActionResult Administrator()
-	{
-		return Ok("Administrator");
 	}
 }
