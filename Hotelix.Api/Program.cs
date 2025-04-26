@@ -7,6 +7,7 @@ using System.Text;
 using Hotelix.Api.Data.Entities;
 using Hotelix.Api.Helpers;
 using Hotelix.Api.Repositories;
+using Hotelix.Api.Repositories.Hotel;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,7 +29,7 @@ builder.Services.AddIdentity<UserEntity, IdentityRole>(options =>
 
 // Add services to the container.
 builder.Services.AddTransient<JwtHelper>();
-builder.Services.AddTransient<HotelRepository>();
+builder.Services.AddTransient<IHotelRepository, HotelRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
